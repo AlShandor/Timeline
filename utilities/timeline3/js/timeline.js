@@ -11808,7 +11808,7 @@ export var TL = (function (t) {
 				era_labels: {
 					positive_year: {
 						prefix: "",
-						suffix: "",
+						suffix: "CE",
 					},
 					negative_year: {
 						prefix: "",
