@@ -11,7 +11,7 @@ const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 const Home = () => {
     return (
         <>
-            <section className='w-full mb-12 flex-center flex-col'>
+            <section className='w-full max-w-[1200px] mb-12 flex-center flex-col'>
                 <h1 className='head_text text-center'>
                     Discover & Share
                     <br className='max-md:hidden' />
@@ -21,7 +21,7 @@ const Home = () => {
                     Timeline is an online tool that helps you study and visualize historical figures and events.
                 </p>
             </section>
-            <section>
+            <section className="max-w-[1300px]">
                 <div className="container">
                     <DynamicTimeline target={<div className="timeline" style={{ width: '1300px', height: 500 }} />}
                         events={events} title={title} />
