@@ -11,6 +11,10 @@ const Nav = () => {
                 <Image src="/images/logo.svg" alt="timeline logo" width={50} height={50} className="object-contain" />
                 <p className="logo_text">Timeline</p>
             </Link>
+
+            <Link href="/create-element" className="flex gap-2 flex-center">
+                <p className="outline_btn">Create</p>
+            </Link>
         </nav>
     )
 };

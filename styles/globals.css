@@ -18,11 +18,11 @@
 
 /* Tailwind Styles */
 .background {
-    @apply w-full h-screen fixed
+	@apply w-full h-screen fixed;
 }
 
 .main {
-	@apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+	@apply relative z-10 flex justify-center items-center flex-col max-w-[1600px] mx-auto;
 }
 
 .black_btn {
@@ -47,6 +47,18 @@
 
 .blue_gradient {
 	@apply bg-gradient-to-r from-primary-blue to-cyan-400 bg-clip-text text-transparent;
+}
+
+.create_section {
+	@apply mb-12 flex flex-col gap-7 glassmorphism max-w-[520px] w-full h-fit;
+}
+
+.create_section span {
+	@apply pl-1;
+}
+
+.create_section .required {
+	@apply text-red-500;
 }
 
 .desc {
@@ -80,7 +92,7 @@
 }
 
 .form_input {
-	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-700 outline-0;
 }
 
 /* Nav Component */
