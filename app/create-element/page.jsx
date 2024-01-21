@@ -8,7 +8,8 @@ import Form from "@components/Form";
 const CreateElement = () => {
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
-        headline: "",
+        headline_en: "",
+        headline_bg: "",
         start_year: "",
         start_month: "",
         start_day: "",
@@ -17,12 +18,15 @@ const CreateElement = () => {
         end_month: "",
         end_day: "",
         end_hour: "",
-        display_date: "",
-        text: "",
+        display_date_en: "",
+        display_date_bg: "",
+        text_en: "",
+        text_bg: "",
         background_url: "",
         background_color: "",
         media_url: "",
-        media_caption: "",
+        media_caption_en: "",
+        media_caption_bg: "",
         media_credit: "",
         media_thumbnail: "",
         group: "",

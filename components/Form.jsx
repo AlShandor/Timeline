@@ -29,142 +29,160 @@ const Form = ({
                     </label>
 
                     {/* Start Year */}
-                    <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Start Year<span className="required">*</span>
-                        </span>
+                    <div className="flex flex-row gap-4">
+                        <label className="w-full">
+                            <span className='font-satoshi font-semibold text-base text-gray-700'>
+                                Start Year<span className="required">*</span>
+                            </span>
 
-                        <input
-                            value={post.start_year}
-                            onChange={(e) => setPost({ ...post, start_year: e.target.value })}
-                            type='text'
-                            placeholder='Integer (example: 2024)'
-                            required
-                            className='form_input'
-                        />
-                    </label>
+                            <input
+                                value={post.start_year}
+                                onChange={(e) => setPost({ ...post, start_year: e.target.value })}
+                                type='text'
+                                placeholder='example: 2024'
+                                required
+                                className='form_input'
+                            />
+                        </label>
 
-                    {/* Start Month */}
-                    <label className="ml-12">
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Start Month
-                        </span>
+                        {/* Start Month */}
+                        <label className="text-center min-w-[60px]">
+                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                                Month
+                            </span>
 
-                        <input
-                            value={post.start_month}
-                            onChange={(e) => setPost({ ...post, start_month: e.target.value })}
-                            type='text'
-                            placeholder='1-12'
-                            className='form_input'
-                        />
-                    </label>
+                            <input
+                                value={post.start_month}
+                                onChange={(e) => setPost({ ...post, start_month: e.target.value })}
+                                type='text'
+                                placeholder='1-12'
+                                className='form_input_small'
+                            />
+                        </label>
 
-                    {/* Start Day */}
-                    <label className="ml-12">
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Start Day
-                        </span>
+                        {/* Start Day */}
+                        <label className="text-center min-w-[60px]">
+                            <span className='small-span font-satoshi font-semibold text-base text-gray-700 pl-0'>
+                                Day
+                            </span>
 
-                        <input
-                            value={post.start_day}
-                            onChange={(e) => setPost({ ...post, start_day: e.target.value })}
-                            type='text'
-                            placeholder='Integer'
-                            className='form_input'
-                        />
-                    </label>
+                            <input
+                                value={post.start_day}
+                                onChange={(e) => setPost({ ...post, start_day: e.target.value })}
+                                type='text'
+                                placeholder='1-31'
+                                className='form_input_small'
+                            />
+                        </label>
 
-                    {/* Start Hour */}
-                    <label className="ml-12">
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Start Hour
-                        </span>
+                        {/* Start Hour */}
+                        <label className="text-center min-w-[60px]">
+                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                                Hour
+                            </span>
 
-                        <input
-                            value={post.start_hour}
-                            onChange={(e) => setPost({ ...post, start_hour: e.target.value })}
-                            type='text'
-                            placeholder='0-23'
-                            className='form_input'
-                        />
-                    </label>
+                            <input
+                                value={post.start_hour}
+                                onChange={(e) => setPost({ ...post, start_hour: e.target.value })}
+                                type='text'
+                                placeholder='0-23'
+                                className='form_input_small'
+                            />
+                        </label>
+                    </div>
 
                     {/* End Year */}
+                    <div className="flex flex-row gap-4">
+                        <label className="w-full">
+                            <span className='font-satoshi font-semibold text-base text-gray-700'>
+                                End Year
+                            </span>
+
+                            <input
+                                value={post.end_year}
+                                onChange={(e) => setPost({ ...post, end_year: e.target.value })}
+                                type='text'
+                                placeholder='example: 2025'
+                                className='form_input'
+                            />
+                        </label>
+
+                        {/* End Month */}
+                        <label className="text-center min-w-[60px]">
+                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                                Month
+                            </span>
+
+                            <input
+                                value={post.end_month}
+                                onChange={(e) => setPost({ ...post, end_month: e.target.value })}
+                                type='text'
+                                placeholder='1-12'
+                                className='form_input_small'
+                            />
+                        </label>
+
+                        {/* End Day */}
+                        <label className="text-center min-w-[60px]">
+                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                                Day
+                            </span>
+
+                            <input
+                                value={post.end_day}
+                                onChange={(e) => setPost({ ...post, end_day: e.target.value })}
+                                type='text'
+                                placeholder='1-31'
+                                className='form_input_small'
+                            />
+                        </label>
+
+                        {/* End Hour */}
+                        <label className="text-center min-w-[60px]">
+                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                                Hour
+                            </span>
+
+                            <input
+                                value={post.end_hour}
+                                onChange={(e) => setPost({ ...post, end_hour: e.target.value })}
+                                type='text'
+                                placeholder='0-23'
+                                className='form_input_small'
+                            />
+                        </label>
+                    </div>
+
+                    {/* Display Date EN */}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            End Year
+                            Display Date EN
                         </span>
 
                         <input
-                            value={post.end_year}
-                            onChange={(e) => setPost({ ...post, end_year: e.target.value })}
-                            type='text'
-                            placeholder='Integer (example: 2024)'
-                            className='form_input'
-                        />
-                    </label>
-
-                    {/* End Month */}
-                    <label className="ml-12">
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            End Month
-                        </span>
-
-                        <input
-                            value={post.end_month}
-                            onChange={(e) => setPost({ ...post, end_month: e.target.value })}
-                            type='text'
-                            placeholder='1-12'
-                            className='form_input'
-                        />
-                    </label>
-
-                    {/* End Day */}
-                    <label className="ml-12">
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            End Day
-                        </span>
-
-                        <input
-                            value={post.end_day}
-                            onChange={(e) => setPost({ ...post, end_day: e.target.value })}
-                            type='text'
-                            placeholder='Integer'
-                            className='form_input'
-                        />
-                    </label>
-
-                    {/* End Hour */}
-                    <label className="ml-12">
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            End Hour
-                        </span>
-
-                        <input
-                            value={post.end_hour}
-                            onChange={(e) => setPost({ ...post, end_hour: e.target.value })}
-                            type='text'
-                            placeholder='Integer'
-                            className='form_input'
-                        />
-                    </label>
-
-                    {/* Display Date */}
-                    <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Display Date
-                        </span>
-
-                        <input
-                            value={post.display_date}
-                            onChange={(e) => setPost({ ...post, display_date: e.target.value })}
+                            value={post.display_date_en}
+                            onChange={(e) => setPost({ ...post, display_date_en: e.target.value })}
                             type='text'
                             placeholder='A string for presenting the date. ("BCE 29, Spring")'
                             className='form_input'
                         />
                     </label>
-                </section>
 
+                    {/* Display Date BG */}
+                    <label>
+                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                            Display Date BG
+                        </span>
+
+                        <input
+                            value={post.display_date_bg}
+                            onChange={(e) => setPost({ ...post, display_date_bg: e.target.value })}
+                            type='text'
+                            placeholder='Текст, който показва датата ("BCE 29, Пролет")'
+                            className='form_input'
+                        />
+                    </label>
+                </section>
 
                 {/* Text Section */}
                 <section className="create_section">
@@ -173,15 +191,15 @@ const Form = ({
                         <hr className="solid"></hr>
                     </label>
 
-                    {/* Headline */}
+                    {/* Headline EN*/}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Headline<span className="required">*</span>
+                            Headline EN<span className="required">*</span>
                         </span>
 
                         <input
-                            value={post.headline}
-                            onChange={(e) => setPost({ ...post, headline: e.target.value })}
+                            value={post.headline_en}
+                            onChange={(e) => setPost({ ...post, headline_en: e.target.value })}
                             type='text'
                             placeholder='Person or Event Description ("David", "David Becomes King")'
                             required
@@ -189,16 +207,46 @@ const Form = ({
                         />
                     </label>
 
-                    {/* Text */}
+                    {/* Headline BG*/}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Text
+                            Headline BG<span className="required">*</span>
+                        </span>
+
+                        <input
+                            value={post.headline_bg}
+                            onChange={(e) => setPost({ ...post, headline_bg: e.target.value })}
+                            type='text'
+                            placeholder='Личност или Събитие'
+                            required
+                            className='form_input'
+                        />
+                    </label>
+
+                    {/* Text EN */}
+                    <label>
+                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                            Text EN
                         </span>
 
                         <textarea
-                            value={post.text}
-                            onChange={(e) => setPost({ ...post, text: e.target.value })}
-                            placeholder='Any text. HTML markup is OK'
+                            value={post.text_en}
+                            onChange={(e) => setPost({ ...post, text_en: e.target.value })}
+                            placeholder='Any text. HTML markup is OK.'
+                            className='form_textarea'
+                        />
+                    </label>
+
+                    {/* Text BG */}
+                    <label>
+                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                            Text BG
+                        </span>
+
+                        <textarea
+                            value={post.text_bg}
+                            onChange={(e) => setPost({ ...post, text_bg: e.target.value })}
+                            placeholder='Текст. Може HTML.'
                             className='form_textarea'
                         />
                     </label>
@@ -236,7 +284,7 @@ const Form = ({
                             value={post.background_url}
                             onChange={(e) => setPost({ ...post, background_url: e.target.value })}
                             type='text'
-                            placeholder='URL: https://example.com'
+                            placeholder='https://example.com'
                             className='form_input'
                         />
                     </label>
@@ -259,7 +307,7 @@ const Form = ({
                     {/* Media URL */}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Media URL
+                            URL
                         </span>
 
                         <input
@@ -271,17 +319,32 @@ const Form = ({
                         />
                     </label>
 
-                    {/* Media Caption */}
+                    {/* Media Caption EN */}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Media Caption
+                            Caption EN
                         </span>
 
                         <input
-                            value={post.media_caption}
-                            onChange={(e) => setPost({ ...post, media_caption: e.target.value })}
+                            value={post.media_caption_en}
+                            onChange={(e) => setPost({ ...post, media_caption_en: e.target.value })}
                             type='text'
                             placeholder='Description under image. Any text. HTML markup is OK.'
+                            className='form_input'
+                        />
+                    </label>
+
+                    {/* Media Caption BG */}
+                    <label>
+                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                            Caption BG
+                        </span>
+
+                        <input
+                            value={post.media_caption_bg}
+                            onChange={(e) => setPost({ ...post, media_caption_bg: e.target.value })}
+                            type='text'
+                            placeholder='Описание под снимката. Текст. Може HTML.'
                             className='form_input'
                         />
                     </label>
@@ -289,7 +352,7 @@ const Form = ({
                     {/* Media Credit */}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Media Credit
+                            Credit
                         </span>
 
                         <input
@@ -304,7 +367,7 @@ const Form = ({
                     {/* Media Thumbnail */}
                     <label>
                         <span className='font-satoshi font-semibold text-base text-gray-700'>
-                            Media Thumbnail
+                            Thumbnail
                         </span>
 
                         <input

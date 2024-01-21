@@ -49,18 +49,6 @@
 	@apply bg-gradient-to-r from-primary-blue to-cyan-400 bg-clip-text text-transparent;
 }
 
-.create_section {
-	@apply mb-12 flex flex-col gap-7 glassmorphism max-w-[520px] w-full h-fit;
-}
-
-.create_section span {
-	@apply pl-1;
-}
-
-.create_section .required {
-	@apply text-red-500;
-}
-
 .desc {
 	@apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
 }
@@ -87,12 +75,32 @@
 }
 
 /* Form Component */
+.create_section {
+	@apply mb-12 flex flex-col gap-7 glassmorphism max-w-[520px] w-full h-fit;
+}
+
+.create_section span {
+	@apply pl-1;
+}
+
+.create_section span.small-span {
+    @apply pl-0;
+}
+
+.create_section .required {
+	@apply text-red-500;
+}
+
 .form_textarea {
-	@apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+	@apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-gray-500 border-solid border border-gray-400;
 }
 
 .form_input {
-	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-700 outline-0;
+	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-700 outline-gray-500 border-solid border border-gray-400;
+}
+
+.form_input_small {
+    @apply form_input max-w-[60px] text-center;
 }
 
 /* Nav Component */
