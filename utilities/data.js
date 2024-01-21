@@ -25,6 +25,8 @@ export const events = [
 		},
 		media: {
 			url: "https://assetsnffrgf-a.akamaihd.net/assets/a/lrc/univ/wpub/lrc_univ_lg.jpg",
+			caption: "Jesus Christ",
+			credit: "Image by <a href='jw.org'>jw.org</a>",
 		},
 	},
 	{
@@ -40,6 +42,7 @@ export const events = [
 		},
 		media: {
 			url: "https://cms-imgp.jw-cdn.org/img/p/1102013264/univ/art/1102013264_univ_cnt_3_xl.jpg",
+			credit: "Image by <a href='jw.org'>jw.org</a>",
 		},
 	},
 	{
