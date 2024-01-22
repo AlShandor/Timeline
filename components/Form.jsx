@@ -10,7 +10,7 @@ const Form = ({
     return (
         <section className='w-full max-w-full flex-start flex-col'>
             <h1 className='head_text text-left cursor-default'>
-                <span className='blue_gradient'>{type} Element</span>
+                <span className='blue_gradient'>{type} Timeline Element</span>
             </h1>
             <p className='desc text-left max-w-md cursor-default'>
                 {type} historical events and figures for the Timeline.
@@ -24,14 +24,14 @@ const Form = ({
                 {/* Date Section */}
                 <section className="create_section">
                     <label>
-                        <h1 className='mt-5 mb-1 text-2xl leading-[1.15] text-gray-400 cursor-default'>Date Section</h1>
+                        <h1 className='create_section_title'>Date Section</h1>
                         <hr className="solid"></hr>
                     </label>
 
                     {/* Start Year */}
                     <div className="flex flex-row gap-4">
                         <label className="w-full">
-                            <span className='font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='create_section_input_title'>
                                 Start Year<span className="required">*</span>
                             </span>
 
@@ -47,7 +47,7 @@ const Form = ({
 
                         {/* Start Month */}
                         <label className="text-center min-w-[60px]">
-                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='small-span create_section_input_title'>
                                 Month
                             </span>
 
@@ -62,7 +62,7 @@ const Form = ({
 
                         {/* Start Day */}
                         <label className="text-center min-w-[60px]">
-                            <span className='small-span font-satoshi font-semibold text-base text-gray-700 pl-0'>
+                            <span className='small-span create_section_input_title'>
                                 Day
                             </span>
 
@@ -77,7 +77,7 @@ const Form = ({
 
                         {/* Start Hour */}
                         <label className="text-center min-w-[60px]">
-                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='small-span create_section_input_title'>
                                 Hour
                             </span>
 
@@ -94,7 +94,7 @@ const Form = ({
                     {/* End Year */}
                     <div className="flex flex-row gap-4">
                         <label className="w-full">
-                            <span className='font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='create_section_input_title'>
                                 End Year
                             </span>
 
@@ -109,7 +109,7 @@ const Form = ({
 
                         {/* End Month */}
                         <label className="text-center min-w-[60px]">
-                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='small-span create_section_input_title'>
                                 Month
                             </span>
 
@@ -124,7 +124,7 @@ const Form = ({
 
                         {/* End Day */}
                         <label className="text-center min-w-[60px]">
-                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='small-span create_section_input_title'>
                                 Day
                             </span>
 
@@ -139,7 +139,7 @@ const Form = ({
 
                         {/* End Hour */}
                         <label className="text-center min-w-[60px]">
-                            <span className='small-span font-satoshi font-semibold text-base text-gray-700'>
+                            <span className='small-span create_section_input_title'>
                                 Hour
                             </span>
 
@@ -155,22 +155,23 @@ const Form = ({
 
                     {/* Display Date EN */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Display Date EN
                         </span>
+                        <span className="small-label">String presenting the date</span>
 
                         <input
                             value={post.display_date_en}
                             onChange={(e) => setPost({ ...post, display_date_en: e.target.value })}
                             type='text'
-                            placeholder='A string for presenting the date. ("BCE 29, Spring")'
+                            placeholder='example: "BCE 29, Spring"'
                             className='form_input'
                         />
                     </label>
 
                     {/* Display Date BG */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Display Date BG
                         </span>
 
@@ -178,7 +179,6 @@ const Form = ({
                             value={post.display_date_bg}
                             onChange={(e) => setPost({ ...post, display_date_bg: e.target.value })}
                             type='text'
-                            placeholder='Текст, който показва датата ("BCE 29, Пролет")'
                             className='form_input'
                         />
                     </label>
@@ -187,21 +187,22 @@ const Form = ({
                 {/* Text Section */}
                 <section className="create_section">
                     <label>
-                        <h1 className='mt-5 mb-1 text-2xl leading-[1.15] text-gray-400 cursor-default'>Text Section</h1>
+                        <h1 className='create_section_title'>Text Section</h1>
                         <hr className="solid"></hr>
                     </label>
 
                     {/* Headline EN*/}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Headline EN<span className="required">*</span>
                         </span>
+                        <span className="small-label">Person or Event Description</span>
 
                         <input
                             value={post.headline_en}
                             onChange={(e) => setPost({ ...post, headline_en: e.target.value })}
                             type='text'
-                            placeholder='Person or Event Description ("David", "David Becomes King")'
+                            placeholder='example: "David", "David Becomes King"'
                             required
                             className='form_input'
                         />
@@ -209,7 +210,7 @@ const Form = ({
 
                     {/* Headline BG*/}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Headline BG<span className="required">*</span>
                         </span>
 
@@ -217,7 +218,6 @@ const Form = ({
                             value={post.headline_bg}
                             onChange={(e) => setPost({ ...post, headline_bg: e.target.value })}
                             type='text'
-                            placeholder='Личност или Събитие'
                             required
                             className='form_input'
                         />
@@ -225,43 +225,43 @@ const Form = ({
 
                     {/* Text EN */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Text EN
                         </span>
 
                         <textarea
                             value={post.text_en}
                             onChange={(e) => setPost({ ...post, text_en: e.target.value })}
-                            placeholder='Any text. HTML markup is OK.'
+                            placeholder='Text and HTML'
                             className='form_textarea'
                         />
                     </label>
 
                     {/* Text BG */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Text BG
                         </span>
 
                         <textarea
                             value={post.text_bg}
                             onChange={(e) => setPost({ ...post, text_bg: e.target.value })}
-                            placeholder='Текст. Може HTML.'
                             className='form_textarea'
                         />
                     </label>
 
                     {/* Group */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Group
                         </span>
+                        <span className="small-label">If present, Timeline will organize events with the same value for group to be in the same row or adjacent rows, separate from events in other groups</span>
 
                         <input
                             value={post.group}
                             onChange={(e) => setPost({ ...post, group: e.target.value })}
                             type='text'
-                            placeholder='Any text. If present, Timeline will organize events with the same value for group to be in the same row or adjacent rows, separate from events in other groups. '
+                            placeholder='Text'
                             className='form_input'
                         />
                     </label>
@@ -270,13 +270,13 @@ const Form = ({
                 {/* Media Section */}
                 <section className="create_section">
                     <label>
-                        <h1 className='mt-5 mb-1 text-2xl leading-[1.15] text-gray-400 cursor-default'>Media Section</h1>
+                        <h1 className='create_section_title'>Media Section</h1>
                         <hr className="solid"></hr>
                     </label>
 
                     {/* Background URL */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Background URL
                         </span>
 
@@ -291,7 +291,7 @@ const Form = ({
 
                     {/* Background Color */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Background Color
                         </span>
 
@@ -306,7 +306,7 @@ const Form = ({
 
                     {/* Media URL */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             URL
                         </span>
 
@@ -321,22 +321,23 @@ const Form = ({
 
                     {/* Media Caption EN */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Caption EN
                         </span>
+                        <span className="small-label">Description under image</span>
 
                         <input
                             value={post.media_caption_en}
                             onChange={(e) => setPost({ ...post, media_caption_en: e.target.value })}
                             type='text'
-                            placeholder='Description under image. Any text. HTML markup is OK.'
+                            placeholder='Text and HTML'
                             className='form_input'
                         />
                     </label>
 
                     {/* Media Caption BG */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Caption BG
                         </span>
 
@@ -344,37 +345,38 @@ const Form = ({
                             value={post.media_caption_bg}
                             onChange={(e) => setPost({ ...post, media_caption_bg: e.target.value })}
                             type='text'
-                            placeholder='Описание под снимката. Текст. Може HTML.'
                             className='form_input'
                         />
                     </label>
 
                     {/* Media Credit */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Credit
                         </span>
+                        <span className="small-label">Image source under image (right corner)</span>
 
                         <input
                             value={post.media_credit}
                             onChange={(e) => setPost({ ...post, media_credit: e.target.value })}
                             type='text'
-                            placeholder='Image source under image (right corner). Any text. HTML markup is OK.'
+                            placeholder='Text and HTML'
                             className='form_input'
                         />
                     </label>
 
                     {/* Media Thumbnail */}
                     <label>
-                        <span className='font-satoshi font-semibold text-base text-gray-700'>
+                        <span className='create_section_input_title'>
                             Thumbnail
                         </span>
+                        <span className="small-label">A URL for an image (icon) to use in the timenav marker for this event</span>
 
                         <input
                             value={post.media_thumbnail}
                             onChange={(e) => setPost({ ...post, media_thumbnail: e.target.value })}
                             type='text'
-                            placeholder='A URL for an image (icon) to use in the timenav marker for this event.'
+                            placeholder='https://example.com/icon.svg'
                             className='form_input'
                         />
                     </label>
