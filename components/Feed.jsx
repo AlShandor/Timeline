@@ -4,24 +4,44 @@ import { useState, useEffect } from "react";
 import ElementCardList from "@components/ElementCardList";
 
 const Feed = ({ handleEdit, handleDelete }) => {
-    const [searchText, setSearchText] = useState('');
     const [elements, setElements] = useState([]);
 
-    const handleSearchChange = (e) => {
+    // Search states
+    const [searchText, setSearchText] = useState('');
+    const [searchTimeout, setSearchTimeout] = useState(null);
+    const [searchedResults, setSearchedResults] = useState([]);
 
-    };
+    const fetchElements = async () => {
+        const response = await fetch('/api/element');
+        const data = await response.json();
+
+        setElements(data);
+    }
 
     useEffect(() => {
-        const fetchElements = async () => {
-            const response = await fetch('/api/element');
-            const data = await response.json();
-
-            setElements(data);
-        }
-
         fetchElements();
     }, [])
 
+    const filterElements = (searchtext) => {
+        const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+        return elements.filter(
+            (item) =>
+                regex.test(item.headline_en)
+        );
+    };
+
+    const handleSearchChange = (e) => {
+        clearTimeout(searchTimeout);
+        setSearchText(e.target.value);
+
+        // debounce method
+        setSearchTimeout(
+            setTimeout(() => {
+                const searchResult = filterElements(e.target.value);
+                setSearchedResults(searchResult);
+            }, 500)
+        );
+    };
 
     return (
         <section className="feed">
@@ -36,12 +56,20 @@ const Feed = ({ handleEdit, handleDelete }) => {
                 />
             </form>
 
-            <ElementCardList
-                data={elements}
+            {searchText ? (
+                <ElementCardList
+                    data={searchedResults}
+                    handleAddClick={() => { }}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                />
+            ) : (<ElementCardList
+                    data={elements}
                 handleAddClick={() => { }}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
             />
+            )}
         </section>
     )
 }
