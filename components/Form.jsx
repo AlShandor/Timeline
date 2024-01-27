@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const Form = ({
     type,
-    post,
-    setPost,
+    element,
+    setElement,
     submitting,
     handleSubmit
 }) => {
@@ -36,8 +36,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.start_year}
-                                onChange={(e) => setPost({ ...post, start_year: e.target.value })}
+                                value={element.start_year}
+                                onChange={(e) => setElement({ ...element, start_year: e.target.value })}
                                 type='text'
                                 placeholder='example: 2024'
                                 required
@@ -52,8 +52,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.start_month}
-                                onChange={(e) => setPost({ ...post, start_month: e.target.value })}
+                                value={element.start_month}
+                                onChange={(e) => setElement({ ...element, start_month: e.target.value })}
                                 type='text'
                                 placeholder='1-12'
                                 className='form_input_small'
@@ -67,8 +67,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.start_day}
-                                onChange={(e) => setPost({ ...post, start_day: e.target.value })}
+                                value={element.start_day}
+                                onChange={(e) => setElement({ ...element, start_day: e.target.value })}
                                 type='text'
                                 placeholder='1-31'
                                 className='form_input_small'
@@ -82,8 +82,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.start_hour}
-                                onChange={(e) => setPost({ ...post, start_hour: e.target.value })}
+                                value={element.start_hour}
+                                onChange={(e) => setElement({ ...element, start_hour: e.target.value })}
                                 type='text'
                                 placeholder='0-23'
                                 className='form_input_small'
@@ -99,8 +99,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.end_year}
-                                onChange={(e) => setPost({ ...post, end_year: e.target.value })}
+                                value={element.end_year}
+                                onChange={(e) => setElement({ ...element, end_year: e.target.value })}
                                 type='text'
                                 placeholder='example: 2025'
                                 className='form_input'
@@ -114,8 +114,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.end_month}
-                                onChange={(e) => setPost({ ...post, end_month: e.target.value })}
+                                value={element.end_month}
+                                onChange={(e) => setElement({ ...element, end_month: e.target.value })}
                                 type='text'
                                 placeholder='1-12'
                                 className='form_input_small'
@@ -129,8 +129,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.end_day}
-                                onChange={(e) => setPost({ ...post, end_day: e.target.value })}
+                                value={element.end_day}
+                                onChange={(e) => setElement({ ...element, end_day: e.target.value })}
                                 type='text'
                                 placeholder='1-31'
                                 className='form_input_small'
@@ -144,8 +144,8 @@ const Form = ({
                             </span>
 
                             <input
-                                value={post.end_hour}
-                                onChange={(e) => setPost({ ...post, end_hour: e.target.value })}
+                                value={element.end_hour}
+                                onChange={(e) => setElement({ ...element, end_hour: e.target.value })}
                                 type='text'
                                 placeholder='0-23'
                                 className='form_input_small'
@@ -161,8 +161,8 @@ const Form = ({
                         <span className="small-label">String presenting the date</span>
 
                         <input
-                            value={post.display_date_en}
-                            onChange={(e) => setPost({ ...post, display_date_en: e.target.value })}
+                            value={element.display_date_en}
+                            onChange={(e) => setElement({ ...element, display_date_en: e.target.value })}
                             type='text'
                             placeholder='example: "BCE 29, Spring"'
                             className='form_input'
@@ -176,8 +176,8 @@ const Form = ({
                         </span>
 
                         <input
-                            value={post.display_date_bg}
-                            onChange={(e) => setPost({ ...post, display_date_bg: e.target.value })}
+                            value={element.display_date_bg}
+                            onChange={(e) => setElement({ ...element, display_date_bg: e.target.value })}
                             type='text'
                             className='form_input'
                         />
@@ -199,8 +199,8 @@ const Form = ({
                         <span className="small-label">Person or Event Description</span>
 
                         <input
-                            value={post.headline_en}
-                            onChange={(e) => setPost({ ...post, headline_en: e.target.value })}
+                            value={element.headline_en}
+                            onChange={(e) => setElement({ ...element, headline_en: e.target.value })}
                             type='text'
                             placeholder='example: "David", "David Becomes King"'
                             required
@@ -215,8 +215,8 @@ const Form = ({
                         </span>
 
                         <input
-                            value={post.headline_bg}
-                            onChange={(e) => setPost({ ...post, headline_bg: e.target.value })}
+                            value={element.headline_bg}
+                            onChange={(e) => setElement({ ...element, headline_bg: e.target.value })}
                             type='text'
                             required
                             className='form_input'
@@ -230,8 +230,8 @@ const Form = ({
                         </span>
 
                         <textarea
-                            value={post.text_en}
-                            onChange={(e) => setPost({ ...post, text_en: e.target.value })}
+                            value={element.text_en}
+                            onChange={(e) => setElement({ ...element, text_en: e.target.value })}
                             placeholder='Text and HTML'
                             className='form_textarea'
                         />
@@ -244,8 +244,8 @@ const Form = ({
                         </span>
 
                         <textarea
-                            value={post.text_bg}
-                            onChange={(e) => setPost({ ...post, text_bg: e.target.value })}
+                            value={element.text_bg}
+                            onChange={(e) => setElement({ ...element, text_bg: e.target.value })}
                             className='form_textarea'
                         />
                     </label>
@@ -258,8 +258,8 @@ const Form = ({
                         <span className="small-label">If present, Timeline will organize events with the same value for group to be in the same row or adjacent rows, separate from events in other groups</span>
 
                         <input
-                            value={post.group}
-                            onChange={(e) => setPost({ ...post, group: e.target.value })}
+                            value={element.group}
+                            onChange={(e) => setElement({ ...element, group: e.target.value })}
                             type='text'
                             placeholder='Text'
                             className='form_input'
@@ -281,8 +281,8 @@ const Form = ({
                         </span>
 
                         <input
-                            value={post.background_url}
-                            onChange={(e) => setPost({ ...post, background_url: e.target.value })}
+                            value={element.background_url}
+                            onChange={(e) => setElement({ ...element, background_url: e.target.value })}
                             type='text'
                             placeholder='https://example.com'
                             className='form_input'
@@ -296,8 +296,8 @@ const Form = ({
                         </span>
 
                         <input
-                            value={post.background_color}
-                            onChange={(e) => setPost({ ...post, background_color: e.target.value })}
+                            value={element.background_color}
+                            onChange={(e) => setElement({ ...element, background_color: e.target.value })}
                             type='text'
                             placeholder='example: #04AEEF'
                             className='form_input'
@@ -311,8 +311,8 @@ const Form = ({
                         </span>
 
                         <input
-                            value={post.media_url}
-                            onChange={(e) => setPost({ ...post, media_url: e.target.value })}
+                            value={element.media_url}
+                            onChange={(e) => setElement({ ...element, media_url: e.target.value })}
                             type='text'
                             placeholder='https://example.com'
                             className='form_input'
@@ -327,8 +327,8 @@ const Form = ({
                         <span className="small-label">Description under image</span>
 
                         <input
-                            value={post.media_caption_en}
-                            onChange={(e) => setPost({ ...post, media_caption_en: e.target.value })}
+                            value={element.media_caption_en}
+                            onChange={(e) => setElement({ ...element, media_caption_en: e.target.value })}
                             type='text'
                             placeholder='Text and HTML'
                             className='form_input'
@@ -342,8 +342,8 @@ const Form = ({
                         </span>
 
                         <input
-                            value={post.media_caption_bg}
-                            onChange={(e) => setPost({ ...post, media_caption_bg: e.target.value })}
+                            value={element.media_caption_bg}
+                            onChange={(e) => setElement({ ...element, media_caption_bg: e.target.value })}
                             type='text'
                             className='form_input'
                         />
@@ -357,8 +357,8 @@ const Form = ({
                         <span className="small-label">Image source under image (right corner)</span>
 
                         <input
-                            value={post.media_credit}
-                            onChange={(e) => setPost({ ...post, media_credit: e.target.value })}
+                            value={element.media_credit}
+                            onChange={(e) => setElement({ ...element, media_credit: e.target.value })}
                             type='text'
                             placeholder='Text and HTML'
                             className='form_input'
@@ -373,8 +373,8 @@ const Form = ({
                         <span className="small-label">A URL for an image (icon) to use in the timenav marker for this event</span>
 
                         <input
-                            value={post.media_thumbnail}
-                            onChange={(e) => setPost({ ...post, media_thumbnail: e.target.value })}
+                            value={element.media_thumbnail}
+                            onChange={(e) => setElement({ ...element, media_thumbnail: e.target.value })}
                             type='text'
                             placeholder='https://example.com/icon.svg'
                             className='form_input'
