@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { events, title } from '@utilities/data';
+import Feed from "@components/Feed";
 
 const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
     ssr: false,
@@ -26,6 +27,7 @@ const Home = () => {
                         events={events} title={title} />
                 </div>
             </section>
+            <Feed />
         </>
     );
 };

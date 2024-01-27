@@ -50,7 +50,7 @@
 }
 
 .search_input {
-	@apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+	@apply block w-full max-w-xl rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
@@ -67,7 +67,7 @@
 
 /* Feed Component */
 .feed {
-	@apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+	@apply mt-16 mx-auto w-full flex justify-center items-center flex-col gap-2;
 }
 
 /* Form Component */
@@ -124,8 +124,8 @@
 	@apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
 }
 
-/* PromptCard Component */
-.prompt_card {
+/* ElementCard Component */
+.element_card {
 	@apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
 }
 

@@ -307,7 +307,7 @@ const Form = ({
                     {/* Media URL */}
                     <label>
                         <span className='create_section_input_title'>
-                            URL
+                            Image URL
                         </span>
 
                         <input

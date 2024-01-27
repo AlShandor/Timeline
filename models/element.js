@@ -46,12 +46,10 @@ const ElementSchema = new Schema({
 	headline_en: {
 		type: String,
 		required: [true, "Headline EN is required."],
-		unique: true,
 	},
 	headline_bg: {
 		type: String,
 		required: [true, "Headline BG is required."],
-		unique: true,
 	},
 	text_en: {
 		type: String,
