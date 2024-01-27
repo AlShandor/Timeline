@@ -4,9 +4,9 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 
-useState
-
 const ElementCard = ({ element, handleAddClick, handleEdit, handleDelete }) => {
+    const pathName = usePathname();
+
     return (
         <div className="element_card">
             <div className="flex justify-between items-start gap-5">
@@ -24,7 +24,7 @@ const ElementCard = ({ element, handleAddClick, handleEdit, handleDelete }) => {
                             {element.headline_en}
                         </h3>
                         <p className='font-inter text-sm text-gray-500'>
-                            {element.start_year} 
+                            {element.start_year}
                         </p>
                     </div>
                 </div>
@@ -32,20 +32,22 @@ const ElementCard = ({ element, handleAddClick, handleEdit, handleDelete }) => {
 
             <p className='line-clamp-3 my-4 font-satoshi text-sm text-gray-700'>{element.text_en}</p>
 
-            <div className='mt-5 flex-center gap-4 border-t border-gray-300 pt-3'>
-                <p
-                    className='font-inter text-sm outline_btn cursor-pointer'
-                    onClick={handleEdit}
-                >
-                    Edit
-                </p>
-                <p
-                    className='font-inter text-sm text-red-500 cursor-pointer'
-                    onClick={handleDelete}
-                >
-                    Delete
-                </p>
-            </div>
+            {pathName === "/edit-element" && (
+                <div className='mt-5 flex-center gap-4 border-t border-gray-300 pt-3'>
+                    <p
+                        className='font-inter text-sm outline_btn cursor-pointer'
+                        onClick={handleEdit}
+                    >
+                        Edit
+                    </p>
+                    <p
+                        className='font-inter text-sm text-red-500 cursor-pointer'
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </p>
+                </div>
+            )}
         </div>
     )
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import ElementCardList from "@components/ElementCardList";
 
-const Feed = () => {
+const Feed = ({ handleEdit, handleDelete }) => {
     const [searchText, setSearchText] = useState('');
     const [elements, setElements] = useState([]);
 
@@ -39,6 +39,8 @@ const Feed = () => {
             <ElementCardList
                 data={elements}
                 handleAddClick={() => { }}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
             />
         </section>
     )

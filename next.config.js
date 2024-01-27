@@ -11,12 +11,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/**",
 			},
-            {
-                protocol: "https",
-                hostname: "jw.org",
-                port: "",
-                pathname: "/**",
-            },
+			{
+				protocol: "https",
+				hostname: "jw.org",
+				port: "",
+				pathname: "/**",
+			},
 			{
 				protocol: "https",
 				hostname: "wol.jw.org",

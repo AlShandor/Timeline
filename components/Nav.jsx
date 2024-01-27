@@ -12,9 +12,14 @@ const Nav = () => {
                 <p className="logo_text">Timeline</p>
             </Link>
 
-            <Link href="/create-element" className="flex gap-2 flex-center">
-                <p className="outline_btn">Create</p>
-            </Link>
+            <div className="flex gap-3">
+                <Link href="/create-element" className="inline-block">
+                    <p className="outline_btn">Create</p>
+                </Link>
+                <Link href="/edit-element" className="inline-block">
+                    <p className="outline_btn">Edit</p>
+                </Link>
+            </div>
         </nav>
     )
 };
