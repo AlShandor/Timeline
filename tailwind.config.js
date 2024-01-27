@@ -10,6 +10,7 @@ module.exports = {
 			fontFamily: {
 				satoshi: ["Satoshi", "sans-serif"],
 				inter: ["Inter", "sans-serif"],
+				noto: ["NotoSans", "sans-serif"],
 			},
 			colors: {
 				"primary-blue": "#04AEEF",

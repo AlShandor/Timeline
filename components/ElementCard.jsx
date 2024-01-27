@@ -23,8 +23,8 @@ const ElementCard = ({ element, handleAddClick, handleEdit, handleDelete }) => {
                         <h3 className='font-satoshi font-semibold text-gray-900'>
                             {element.headline_en}
                         </h3>
-                        <p className='font-inter text-sm text-gray-500'>
-                            {element.start_year}
+                        <p className='font-noto text-sm text-gray-500'>
+                            {element.start_year < 0 ? Math.abs(element.start_year) + ' BCE' : element.start_year + ' CE'} {element.end_year ? ' - ' + (element.end_year < 0 ? Math.abs(element.end_year) + ' BCE' : element.end_year + ' CE' ) : ''}
                         </p>
                     </div>
                 </div>
