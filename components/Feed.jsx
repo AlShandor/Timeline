@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import ElementCardList from "@components/ElementCardList";
 
-const Feed = ({ handleEdit, handleDelete }) => {
+const Feed = ({ setHomepageElements, handleEdit, handleDelete }) => {
+    const pathName = usePathname();
     const [elements, setElements] = useState([]);
 
     // Search states
@@ -16,6 +18,9 @@ const Feed = ({ handleEdit, handleDelete }) => {
         const data = await response.json();
 
         setElements(data);
+        if (pathName === "/") {
+            setHomepageElements(data);
+        }
     }
 
     useEffect(() => {
@@ -58,16 +63,16 @@ const Feed = ({ handleEdit, handleDelete }) => {
 
             {searchText ? (
                 <ElementCardList
-                    data={searchedResults}
+                    elements={searchedResults}
                     handleAddClick={() => { }}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}
                 />
             ) : (<ElementCardList
-                    data={elements}
-                handleAddClick={() => { }}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
+                    elements={elements}
+                    handleAddClick={() => { }}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
             />
             )}
         </section>

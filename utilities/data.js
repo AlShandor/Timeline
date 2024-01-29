@@ -8,7 +8,7 @@ export const title = {
 	},
 };
 
-export const events = [
+export const initialEvents = [
 	{
 		start_date: {
 			year: -2,

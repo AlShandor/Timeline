@@ -10,7 +10,7 @@ const Timeline = ({ target, events, title, options }) => {
         if (timelineEl.current) {
             new TL.Timeline(timelineEl.current, { events, title, options });
         }
-    }, []);
+    }, [events]);
     return cloneElement(target, { ref: timelineEl });
 };
 
