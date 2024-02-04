@@ -2,7 +2,7 @@ import ElementCard from "@components/ElementCard";
 
 const ElementCardList = ({ elements, handleAddClick, handleEdit, handleDelete }) => {
     return (
-        <div className="mt-16 prompt_layout">
+        <div className="prompt_layout">
             {elements.map((el) => (
                 <ElementCard
                     key={el._id}

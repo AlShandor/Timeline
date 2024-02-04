@@ -30,7 +30,7 @@ const ElementCard = ({ element, handleAddClick, handleEdit, handleDelete }) => {
                 </div>
             </div>
 
-            <p className='line-clamp-3 my-4 font-satoshi text-sm text-gray-700'>{element.text_en}</p>
+            <p className='line-clamp-3 my-4 h-[60px] font-satoshi text-sm text-gray-700'>{element.text_en}</p>
 
             {pathName === "/edit-element" && (
                 <div className='mt-5 flex-center gap-4 border-t border-gray-300 pt-3'>

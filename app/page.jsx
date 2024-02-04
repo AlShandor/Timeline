@@ -2,8 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { initialEvents, title } from '@utilities/data';
-import Feed from "@components/Feed";
 import { useState, useEffect } from "react";
+import Feed from "@components/Feed";
+import Footer from "@components/Footer";
 
 const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
     ssr: false,
@@ -99,6 +100,7 @@ const Home = () => {
                 elements={elements}
                 setHomepageElements={setElements}
             />
+            <Footer/>
         </>
     );
 };
