@@ -10,21 +10,22 @@ const ElementCard = ({ element, handleAddClick, handleEdit, handleDelete }) => {
     return (
         <div className="element_card">
             <div className="flex justify-between items-start gap-5">
-                <div className='flex-1 flex justify-start items-center gap-3'>
-                    <Image
-                        src={element.media_url}
-                        alt={element.headline_en}
-                        width={40}
-                        height={40}
-                        className="rounded-[5px] object-contain"
-                    />
+                <div className='flex-1 flex justify-start items-center gap-4'>
+                    <div className=" min-w-[90px] w-[90px] h-[90px] relative">
+                        <Image
+                            src={element.media_url}
+                            alt={element.headline_en}
+                            className="rounded-[5px] object-cover relative border border-gray-300"
+                            fill
+                        />
+                    </div>
 
                     <div className='flex flex-col'>
-                        <h3 className='font-satoshi font-semibold text-gray-900'>
+                        <h3 className='font-satoshi font-semibold text-gray-900 break-all line-clamp-3 leading-[22px]'>
                             {element.headline_en}
                         </h3>
                         <p className='font-noto text-sm text-gray-500'>
-                            {element.start_year < 0 ? Math.abs(element.start_year) + ' BCE' : element.start_year + ' CE'} {element.end_year ? ' - ' + (element.end_year < 0 ? Math.abs(element.end_year) + ' BCE' : element.end_year + ' CE' ) : ''}
+                            {element.start_year < 0 ? Math.abs(element.start_year) + ' BCE' : element.start_year + ' CE'} {element.end_year ? ' - ' + (element.end_year < 0 ? Math.abs(element.end_year) + ' BCE' : element.end_year + ' CE') : ''}
                         </p>
                     </div>
                 </div>
