@@ -2,24 +2,28 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import localFont from 'next/font/local'
 import { useState, useEffect } from 'react';
+
+const myFont = localFont({ src: '../public/fonts/GreatVibes-Regular.ttf' })
 
 const Nav = () => {
     return (
-        <nav className="flex-between w-full mb-4 pt-3">
-            <Link href="/" className="flex gap-2 flex-center">
-                <Image src="/images/logo.svg" alt="timeline logo" width={50} height={50} className="object-contain" />
-                <p className="logo_text">Timeline</p>
-            </Link>
+        <nav className="flex items-center justify-center w-full mb-4 py-3 px-4 z-20 relative bg-white border-b-[1px] border-gray-300">
+            <header className="z-40 flex px-6 gap-10 w-full flex-row relative flex-nowrap items-center justify-start max-w-[1600px]">
+                <Link href="/" className="flex flex-center">
+                    <p className={`${myFont.className} logo_text`} >Timeline</p>
+                </Link>
 
-            <div className="flex gap-3">
-                <Link href="/create-element" className="inline-block">
-                    <p className="outline_btn">Create</p>
-                </Link>
-                <Link href="/edit-element" className="inline-block">
-                    <p className="outline_btn">Edit</p>
-                </Link>
-            </div>
+                <div className="flex gap-1">
+                    <Link href="/create-element" className="inline-block">
+                        <p className="nav_btn">Create</p>
+                    </Link>
+                    <Link href="/edit-element" className="inline-block">
+                        <p className="nav_btn">Edit</p>
+                    </Link>
+                </div>
+            </header>
         </nav>
     )
 };

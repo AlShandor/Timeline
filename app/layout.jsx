@@ -12,8 +12,8 @@ const RootLayout = ({ children }) => {
         <html lang="en">
             <body>
                 <div className='background' />
+                <Nav />
                 <main className="main">
-                    <Nav />
                     {children}
                 </main>
             </body>
