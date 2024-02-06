@@ -93,7 +93,7 @@ const Home = () => {
             <section>
                 <div className="container w-[1600px] max-w-[1600px]">
                     <DynamicTimeline target={<div className="timeline" style={{ width: '100%', height: 500 }} />}
-                        events={events} title={title} />
+                        events={events} title={title} options="" />
                 </div>
             </section>
             <Feed
