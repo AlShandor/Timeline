@@ -11,8 +11,8 @@ const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 });
 
 const Home = () => {
-    const [events, setEvents] = useState([]);
-    const [elements, setElements] = useState([]);
+    const [events, setEvents] = useState<Array<IEvent>>([]);
+    const [elements, setElements] = useState<Array<IElement>>([]);
 
     const updateEvents = () => {
         setEvents(elements.map(el => (el.end_year) ? ({
@@ -43,7 +43,7 @@ const Home = () => {
                 credit: el.media_credit,
             },
         }) : ({
-                // event don't have end year
+                // event doesn't have end year
                 start_date: {
                     year: el.start_year,
                     month: el.start_month,
@@ -78,31 +78,45 @@ const Home = () => {
         updateEvents();
     };
 
+    function setHomepageElements(elementsList) {
+        setElements(elementsList);
+    }
+
     return (
-        <>
-            <section className='w-full mb-12 flex-center flex-col'>
-                <h1 className='head_text text-center'>
-                    Discover & Share
-                    <br className='max-md:hidden' />
-                    <span className='blue_gradient text-center'> Historical Figures and Events</span>
-                </h1>
-                <p className='desc text-center'>
-                    Timeline is an online tool that helps you study and visualize historical figures and events.
-                </p>
-            </section>
-            <section>
-                <div className="container w-[1600px] max-w-[1600px]">
-                    <DynamicTimeline target={<div className="timeline" style={{ width: '100%', height: 500 }} />}
-                        events={events} title={title} options="" />
-                </div>
-            </section>
-            <Feed
-                elements={elements}
-                setHomepageElements={setElements}
-            />
-            <Footer/>
-        </>
-    );
+		<>
+			<section className="w-full mb-12 flex-center flex-col">
+				<h1 className="head_text text-center">
+					Discover & Share
+					<br className="max-md:hidden" />
+					<span className="blue_gradient text-center">
+						{" "}
+						Historical Figures and Events
+					</span>
+				</h1>
+				<p className="desc text-center">
+					Timeline is an online tool that helps you study and
+					visualize historical figures and events.
+				</p>
+			</section>
+			<section>
+				<div className="container w-[1600px] max-w-[1600px]">
+					<DynamicTimeline
+						target={
+							<div
+								className="timeline"
+								style={{ width: "100%", height: 500 }}
+							/>
+						}
+						events={events}
+						title={title}
+						options=""
+					/>
+				</div>
+			</section>
+			<Feed setHomepageElements={setHomepageElements} />
+			<Footer />
+		</>
+	);
 };
 
 export default Home;

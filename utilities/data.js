@@ -12,9 +12,15 @@ export const initialEvents = [
 	{
 		start_date: {
 			year: -2,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		end_date: {
 			year: 33,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		text: {
 			headline: "Jesus Christ",
@@ -32,6 +38,15 @@ export const initialEvents = [
 	{
 		start_date: {
 			year: -2,
+			month: null,
+			day: null,
+			hour: null,
+		},
+		end_date: {
+			year: null,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		text: {
 			headline: "Jesus’ Birth",
@@ -42,12 +57,22 @@ export const initialEvents = [
 		},
 		media: {
 			url: "https://cms-imgp.jw-cdn.org/img/p/1102013264/univ/art/1102013264_univ_cnt_3_xl.jpg",
+			caption: null,
 			credit: "Image by <a href='jw.org'>jw.org</a>",
 		},
 	},
 	{
 		start_date: {
 			year: 11,
+			month: null,
+			day: null,
+			hour: null,
+		},
+		end_date: {
+			year: null,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		text: {
 			headline: "Jesus, 12 years old",
@@ -58,13 +83,23 @@ export const initialEvents = [
 		},
 		media: {
 			url: "https://cms-imgp.jw-cdn.org/img/p/1102016082/univ/art/1102016082_univ_lsr_xl.jpg",
+			caption: null,
+			credit: null,
 		},
 	},
 	{
 		start_date: {
 			year: 29,
 			month: 4,
+			day: null,
+			hour: null,
 			display_date: "29 CE, Spring",
+		},
+		end_date: {
+			year: null,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		text: {
 			headline: "Jesus baptised",
@@ -75,13 +110,23 @@ export const initialEvents = [
 		},
 		media: {
 			url: "https://cms-imgp.jw-cdn.org/img/p/1102014615/univ/art/1102014615_univ_cnt_2_xl.jpg",
+			caption: null,
+			credit: null,
 		},
 	},
 	{
 		start_date: {
 			year: 29,
 			month: 5,
+			day: null,
+			hour: null,
 			display_date: "29 CE, Spring",
+		},
+		end_date: {
+			year: null,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		text: {
 			headline: "Jesus tempted by Satan",
@@ -92,13 +137,23 @@ export const initialEvents = [
 		},
 		media: {
 			url: "https://wol.jw.org/en/wol/mp/r1/lp-e/jy/2015/150",
+			caption: null,
+			credit: null,
 		},
 	},
 	{
 		start_date: {
 			year: 29,
 			month: 6,
+			day: null,
+			hour: null,
 			display_date: "29 CE",
+		},
+		end_date: {
+			year: null,
+			month: null,
+			day: null,
+			hour: null,
 		},
 		text: {
 			headline: "Jesus Begins to Make Disciples",
@@ -109,6 +164,8 @@ export const initialEvents = [
 		},
 		media: {
 			url: "https://wol.jw.org/en/wol/mp/r1/lp-e/jy/2015/159",
+			caption: null,
+			credit: null,
 		},
 	},
 ];

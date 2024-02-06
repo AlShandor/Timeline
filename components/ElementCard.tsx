@@ -1,15 +1,19 @@
 "use client"
 
-import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
+
+interface Props {
+	element: IElement;
+	handleEdit: Function;
+	handleDelete: Function;
+}
 
 const ElementCard = ({
 	element,
-	handleAddClick,
 	handleEdit,
 	handleDelete,
-}) => {
+}: Props) => {
 	const pathName = usePathname();
 
 	return (
@@ -52,13 +56,13 @@ const ElementCard = ({
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
 					<p
 						className="font-inter text-sm outline_btn cursor-pointer"
-						onClick={handleEdit}
+						onClick={() => handleEdit(element)}
 					>
 						Edit
 					</p>
 					<p
 						className="font-inter text-sm text-red-500 cursor-pointer"
-						onClick={handleDelete}
+						onClick={() => handleDelete(element)}
 					>
 						Delete
 					</p>

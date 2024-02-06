@@ -1,9 +1,7 @@
 "use client"
 
 import Link from 'next/link';
-import Image from 'next/image';
 import localFont from 'next/font/local'
-import { useState, useEffect } from 'react';
 
 const myFont = localFont({ src: '../public/fonts/GreatVibes-Regular.ttf' })
 
