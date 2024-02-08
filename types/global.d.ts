@@ -36,10 +36,10 @@ declare global {
 			display_date?: string | null;
 		};
 		end_date?: {
-			year: number | null;
-			month: number | null;
-			day: number | null;
-			hour: number | null;
+			year?: number | null;
+			month?: number | null;
+			day?: number | null;
+			hour?: number | null;
 		};
 		text: {
 			headline: string | null;
