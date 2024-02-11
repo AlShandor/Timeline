@@ -1,7 +1,7 @@
 import Element from "@models/element";
 import { connectToDB } from "@utilities/database";
 
-export const POST = async (request) => {
+export  async function POST(request) {
 	const {
 		start_year,
 		start_month,

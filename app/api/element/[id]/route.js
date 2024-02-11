@@ -1,7 +1,7 @@
 import Element from "@models/element";
 import { connectToDB } from "@utilities/database";
 
-export const GET = async (request, { params }) => {
+export async function GET(request, { params }){
 	try {
 		await connectToDB();
 
@@ -16,7 +16,7 @@ export const GET = async (request, { params }) => {
 	}
 };
 
-export const PATCH = async (request, { params }) => {
+export  async function PATCH(request, { params }) {
 	const {
 		start_year,
 		start_month,
@@ -86,7 +86,7 @@ export const PATCH = async (request, { params }) => {
 	}
 };
 
-export const DELETE = async (request, { params }) => {
+export  async function DELETE(request, { params }) {
 	try {
 		await connectToDB();
 
