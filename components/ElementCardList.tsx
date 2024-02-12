@@ -1,13 +1,14 @@
 import ElementCard from "@components/ElementCard";
+import { useElements } from "@hooks/useElements";
 import { useRouter } from "next/navigation";
 
 interface Props {
 	elements: Array<IElement>;
-	updateElements: Function;
 }
 
-const ElementCardList = ({ elements, updateElements }: Props) => {
+const ElementCardList = ({ elements }: Props) => {
 	const router = useRouter();
+	const { setElements } = useElements();
 
 	const handleEdit = (element) => {
 		router.push(`/update-element?id=${element._id}`);
@@ -28,7 +29,7 @@ const ElementCardList = ({ elements, updateElements }: Props) => {
 					(item) => item._id !== element._id
 				);
 
-				updateElements(filteredElements);
+				setElements(filteredElements);
 
 				router.push("/edit-element");
 			} catch (error) {

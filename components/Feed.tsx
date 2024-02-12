@@ -1,35 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 import ElementCardList from "@components/ElementCardList";
 
 interface Props {
-	setHomepageElements: Function;
+	elements: IElement[];
 }
 
-const Feed = ({ setHomepageElements }: Props) => {
-	const pathName = usePathname();
-	const [elements, setElements] = useState<IElement[]>([]);
-
+const Feed = ({ elements }: Props) => {
 	// Search states
 	const [searchText, setSearchText] = useState<string | null>("");
 	const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | number | null>(null);
 	const [searchedResults, setSearchedResults] = useState<IElement[]>([]);
-
-	const fetchElements = async () => {
-		const response = await fetch("/api/element");
-		const data = await response.json();
-
-		setElements(data);
-		if (pathName === "/") {
-			setHomepageElements(data);
-		}
-	};
-
-	useEffect(() => {
-		fetchElements();
-	}, []);
 
 	const filterElements = (searchtext) => {
 		const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
@@ -49,13 +31,6 @@ const Feed = ({ setHomepageElements }: Props) => {
 		);
 	};
 
-    function updateElements(elementsList) {
-		setElements(elementsList);
-        if (pathName === "/") {
-			setHomepageElements(elementsList);
-		}
-	}
-
 	return (
 		<section className="feed">
 			<form className="relative w-full flex-center">
@@ -70,15 +45,9 @@ const Feed = ({ setHomepageElements }: Props) => {
 			</form>
 
 			{searchText ? (
-				<ElementCardList
-					elements={searchedResults}
-					updateElements={updateElements}
-				/>
+				<ElementCardList elements={searchedResults} />
 			) : (
-				<ElementCardList
-					elements={elements}
-					updateElements={updateElements}
-				/>
+				<ElementCardList elements={elements} />
 			)}
 		</section>
 	);

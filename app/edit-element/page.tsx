@@ -1,29 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Feed from "@components/Feed";
+import { useElements } from "@hooks/useElements";
 
 const Edit = () => {
-    const router = useRouter();
+	const { elements } = useElements();
 
-    const [elements, setElements] = useState([]);
+	return <Feed elements={elements} />;
+};
 
-    useEffect(() => {
-        const fetchElements = async () => {
-            const response = await fetch('/api/element');
-            const data = await response.json();
-
-            setElements(data);
-        }
-
-        fetchElements();
-    }, [])
-
-    return (
-        <Feed
-            setHomepageElements={null}
-        />
-    )
-}
 export default Edit;

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -9,11 +9,7 @@ interface Props {
 	handleDelete: Function;
 }
 
-const ElementCard = ({
-	element,
-	handleEdit,
-	handleDelete,
-}: Props) => {
+const ElementCard = ({ element, handleEdit, handleDelete }: Props) => {
 	const pathName = usePathname();
 
 	return (
