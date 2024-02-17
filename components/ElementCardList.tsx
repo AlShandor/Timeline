@@ -7,8 +7,9 @@ interface Props {
 }
 
 const ElementCardList = ({ elements }: Props) => {
+    // router
 	const router = useRouter();
-	const { setElements } = useElements();
+	const { setElements } = useElements("");
 
 	const handleEdit = (element) => {
 		router.push(`/update-element?id=${element._id}`);
@@ -25,6 +26,7 @@ const ElementCardList = ({ elements }: Props) => {
 					method: "DELETE",
 				});
 
+                //TODO implement hard reload
 				const filteredElements = elements.filter(
 					(item) => item._id !== element._id
 				);

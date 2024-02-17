@@ -6,13 +6,19 @@ import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 import { useEvents } from "@hooks/useEvents";
 import { useElements } from "@hooks/useElements";
+import { useSearchParams } from "next/navigation";
 
 const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 	ssr: false,
 });
 
 const Home = () => {
-	const { elements } = useElements();
+	// router
+	const searchParams = useSearchParams();
+    const queryParam = searchParams.get("query");
+    const query = queryParam ? queryParam : "";
+
+	const { elements } = useElements("");
 	const { events, updateEvents } = useEvents(elements);
 
 	const handleAdd = () => {
@@ -49,7 +55,7 @@ const Home = () => {
 					/>
 				</div>
 			</section>
-			<Feed elements={elements} />
+			<Feed elements={elements} queryParam={query} />
 			<Footer />
 		</>
 	);
