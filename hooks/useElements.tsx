@@ -4,8 +4,8 @@ export const useElements = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [needFetching, setNeedFetching] = useState(false);
 
-	const fetchElements = async () => {
-		const response = await fetch("/api/element");
+	const fetchElements = async (query) => {
+		const response = await fetch(`http://localhost:3000/api/searchTitle?query=${query}`);
 		const data = await response.json();
 
 		setElements(data);
@@ -22,7 +22,7 @@ export const useElements = () => {
 	useEffect(() => {
 		if (!needFetching) return;
 
-		fetchElements();
+		fetchElements("");
 	}, [needFetching]);
 
 	return { elements, setElements };

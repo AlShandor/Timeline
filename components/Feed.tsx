@@ -1,35 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ElementCardList from "@components/ElementCardList";
+import useDebounce from "@hooks/useDebounce";
 
 interface Props {
 	elements: IElement[];
 }
 
 const Feed = ({ elements }: Props) => {
-	// Search states
-	const [searchText, setSearchText] = useState<string | null>("");
-	const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | number | null>(null);
-	const [searchedResults, setSearchedResults] = useState<IElement[]>([]);
+	const [searchText, setSearchText] = useState("");
+    const [searchedResults, setSearchedResults] = useState([]);
+	const debouncedSearch = useDebounce(searchText, 500);
 
-	const filterElements = (searchtext) => {
-		const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
-		return elements.filter((item) => regex.test(item.headline_en));
-	};
+    const handleSearchChange = (e) => {
+        setSearchText(e.target.value);
+    }
 
-	const handleSearchChange = (e) => {
-		clearTimeout(searchTimeout);
-		setSearchText(e.target.value);
+	useEffect(() => {
+		if (debouncedSearch) {
+			const fetchData = async () => {
+				const response = await fetch(`http://localhost:3000/api/searchTitle?query=${debouncedSearch}`);
+				const data = await response.json();
+				setSearchedResults(data);
+			};
 
-		// debounce method
-		setSearchTimeout(
-			setTimeout(() => {
-				const searchResult = filterElements(e.target.value);
-				setSearchedResults(searchResult);
-			}, 500)
-		);
-	};
+			fetchData();
+		}
+	}, [debouncedSearch]);
 
 	return (
 		<section className="feed">
