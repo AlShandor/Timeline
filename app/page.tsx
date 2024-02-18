@@ -1,25 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
 import { title } from "@utilities/data";
+import { useEvents } from "@hooks/useEvents";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
-import { useEvents } from "@hooks/useEvents";
-import { useElements } from "@hooks/useElements";
-import { useSearchParams } from "next/navigation";
 
 const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 	ssr: false,
 });
 
 const Home = () => {
+	const [elements, setElements] = useState<Array<IElement>>([]);
+	const { events, updateEvents } = useEvents(elements);
+
 	// router
 	const searchParams = useSearchParams();
-    const queryParam = searchParams.get("query");
-    const query = queryParam ? queryParam : "";
-
-	const { elements } = useElements("");
-	const { events, updateEvents } = useEvents(elements);
+	const queryParam = searchParams.get("query");
+	const query = queryParam ? queryParam : "";
 
 	const handleAdd = () => {
 		updateEvents();
@@ -55,7 +55,7 @@ const Home = () => {
 					/>
 				</div>
 			</section>
-			<Feed elements={elements} queryParam={query} />
+			<Feed elements={elements} setElements={setElements} query={query} />
 			<Footer />
 		</>
 	);

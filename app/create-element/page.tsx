@@ -7,7 +7,7 @@ import Form from "@components/Form";
 
 const CreateElement = () => {
     const router = useRouter();
-    const [submitting, setIsSubmitting] = useState(false);
+    const [submitting, setIsSubmitting] = useState<boolean>(false);
     const [element, setElement] = useState({
         start_year: "",
         start_month: "",

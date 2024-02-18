@@ -10,7 +10,7 @@ const EditElement = () => {
     const searchParams = useSearchParams();
     const elementId = searchParams.get("id");
 
-    const [submitting, setIsSubmitting] = useState(false);
+    const [submitting, setIsSubmitting] = useState<boolean>(false);
     const [element, setElement] = useState({
         start_year: "",
         start_month: "",

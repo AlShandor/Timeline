@@ -1,41 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import ElementCardList from "@components/ElementCardList";
-import useDebounce from "@hooks/useDebounce";
-import fetcher from "@utilities/fetcher";
-import useSWR from "swr";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import useSWR from "swr";
+import fetcher from "@utilities/fetcher";
+import useDebounce from "@hooks/useDebounce";
+import ElementCardList from "@components/ElementCardList";
 
 interface Props {
-	elements: IElement[];
-	queryParam: string;
+	elements: Array<IElement>;
+    setElements: Function;
+    query: string
 }
 
-const Feed = ({ elements, queryParam }: Props) => {
-    // router
+const Feed = ( { elements, setElements, query }: Props) => {
 	const searchParams = useSearchParams();
-    const initialQuery = queryParam ? queryParam : "";
 
-    // search
-	const [searchText, setSearchText] = useState(initialQuery);
+	// search
+	const [searchText, setSearchText] = useState(query);
 	const debouncedSearch = useDebounce(searchText, 500);
-	const { data: searchedResults } = useSWR(() => 
-        debouncedSearch ? `/api/searchTitle?query=${debouncedSearch}` : null,
+	const { data: searchedResults } = useSWR(
+		() => debouncedSearch
+				? `/api/searchTitle?query=${debouncedSearch}`
+				: `/api/searchTitle?query=`,
 		fetcher
 	);
 
+	useEffect(() => {
+		setElements(searchedResults);
+	}, [searchedResults]);
+
 	const handleSearchChange = (e) => {
-        const query = e.target.value;
+		const query = e.target.value;
 		setSearchText(query);
 
-        // Shallow search params update
+		// Shallow search params update
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
 		updatedSearchParams.set("query", query);
 
-        window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
+		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
 
 	return (
@@ -50,13 +55,11 @@ const Feed = ({ elements, queryParam }: Props) => {
 					className="search_input peer"
 				/>
 			</form>
-
-			{searchText ? (
-				searchedResults && searchedResults.length > 0 && (
-					<ElementCardList elements={searchedResults} />
-				)
-			) : (
-				<ElementCardList elements={elements} />
+			{elements && elements.length > 0 && (
+				<ElementCardList
+					elements={elements}
+					setElements={setElements}
+				/>
 			)}
 		</section>
 	);
