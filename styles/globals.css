@@ -53,8 +53,12 @@
 	@apply block w-full max-w-xl rounded-md rounded-s-none border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
+.search_year {
+	@apply w-[100px] rounded-md border border-gray-200 bg-white py-2.5 font-satoshi px-4 ml-4 text-center text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+}
+
 .select-by {
-    @apply p-2.5 font-satoshi shadow-lg rounded-e-none rounded-md border border-gray-200 bg-white text-sm font-medium focus:border-black focus:outline-none focus:ring-0;
+    @apply block w-[100px] p-2.5 font-satoshi shadow-lg border border-gray-200 bg-white text-sm text-center font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
@@ -134,7 +138,7 @@
 
 /* ElementCard Component */
 .element_card {
-	@apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+	@apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/70 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] h-fit;
 }
 
 .flex-center {

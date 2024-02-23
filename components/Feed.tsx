@@ -19,6 +19,8 @@ const Feed = ( { elements, setElements, query }: Props) => {
 
 	// search
 	const [searchText, setSearchText] = useState(query);
+	const [startYear, setStartYear] = useState(query);
+	const [endYear, setEndYear] = useState(query);
 	const debouncedSearch = useDebounce(searchText, 500);
 	const { data: searchedResults } = useSWR(
 		() =>
@@ -43,6 +45,36 @@ const Feed = ( { elements, setElements, query }: Props) => {
 			searchParams.toString()
 		);
 		updatedSearchParams.set("query", query);
+        updatedSearchParams.delete("startYear");
+        updatedSearchParams.delete("endYear");
+
+		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
+	};
+
+    const handleSearchStartYear = (e) => {
+		const year = e.target.value;
+		setStartYear(year);
+
+		// Shallow search params update
+		const updatedSearchParams = new URLSearchParams(
+			searchParams.toString()
+		);
+		updatedSearchParams.set("startYear", year);
+        updatedSearchParams.delete("query");
+
+		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
+	};
+
+    const handleSearchEndYear = (e) => {
+		const year = e.target.value;
+		setEndYear(year);
+
+		// Shallow search params update
+		const updatedSearchParams = new URLSearchParams(
+			searchParams.toString()
+		);
+		updatedSearchParams.set("endYear", year);
+		updatedSearchParams.delete("query");
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -50,15 +82,19 @@ const Feed = ( { elements, setElements, query }: Props) => {
     const handleSortBy = (e) => {
 		setSortBy(e.target.value);
         setSearchText("");
+        setStartYear("");
+        setEndYear("");
     }
 
 	return (
 		<section className="feed">
 			<form className="relative w-full flex-center leading-5">
-				<div className="flex w-full max-w-xl">
+				<div
+					className={ sortBy != "searchYear" ? "flex w-full max-w-xl" : "flex w-full max-w-xl justify-center gap-4" }
+				>
 					<select
 						name="searchBy"
-						className="select-by"
+						className={ sortBy != "searchYear" ? "select-by rounded-md rounded-e-none" : "select-by rounded-md" }
 						value={sortBy}
 						onChange={handleSortBy}
 					>
@@ -66,14 +102,39 @@ const Feed = ( { elements, setElements, query }: Props) => {
 						<option value="searchTag">Tag</option>
 						<option value="searchYear">Year</option>
 					</select>
-					<input
-						type="text"
-						placeholder="Search for timeline elements"
-						value={searchText}
-						onChange={handleSearchChange}
-						required
-						className="search_input peer"
-					/>
+
+					{/* Search Text */}
+					{sortBy && sortBy != "searchYear" && (
+						<input
+							type="text"
+							placeholder="Search for timeline elements"
+							value={searchText}
+							onChange={handleSearchChange}
+							className="search_input"
+						/>
+					)}
+
+					{/* Search Star Year */}
+					{sortBy && sortBy == "searchYear" && (
+						<input
+							type="text"
+							placeholder="Start Year"
+							value={startYear}
+							onChange={handleSearchStartYear}
+							className="search_year"
+						/>
+					)}
+
+					{/* Search End Year */}
+					{sortBy && sortBy == "searchYear" && (
+						<input
+							type="text"
+							placeholder="End Year"
+							value={endYear}
+							onChange={handleSearchEndYear}
+							className={ startYear.length > 0 ? "search_year" : "search_year invisible" }
+						/>
+					)}
 				</div>
 			</form>
 			{elements && elements.length > 0 && (
