@@ -7,11 +7,16 @@ export async function GET(request) {
 
 		const searchParams = request.nextUrl.searchParams;
 		const query = searchParams.get("query");
+		let elements;
 
-		const regex = new RegExp(query, "i");
-		const elements = await Element.find({
-			headline_en: { $regex: regex },
-		});
+		if (query) {
+			const regex = new RegExp(query, "i");
+			elements = await Element.find({
+				headline_en: { $regex: regex },
+			});
+		} else {
+			elements = await Element.find({});
+		}
 
 		if (!elements) {
 			return new Response("Elements Not Found", {
