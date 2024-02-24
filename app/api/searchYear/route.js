@@ -6,25 +6,57 @@ export async function GET(request) {
 		await connectToDB();
 
 		const searchParams = request.nextUrl.searchParams;
-		const query = searchParams.get("query");
+		const qStart = searchParams.get("startYear");
+		const qEnd = searchParams.get("endYear");
         let elements;
 
-		if (query) { // startYear && no endYear
-            elements = await Element.find({
+		if (qStart && !qEnd) {
+			// only qStart
+			elements = await Element.find({
 				$or: [
 					{
-						// Option 1 - start_year = startYear
-						$and: [{ start_year: query }, { end_year: null }],
+						// Option 1 - start_year = qStart
+						$and: [{ start_year: qStart }, { end_year: null }],
 					},
 					{
-						// Option 2 - start_year <= startYear <= end_year
-						$and: [ { start_year: { $lte: query } }, { end_year: { $gte: query } }, ],
+						// Option 2 - start_year <= qStart <= end_year
+						$and: [
+							{ start_year: { $lte: qStart } },
+							{ end_year: { $gte: qStart } },
+						],
+					},
+				],
+			});
+		} else if (qStart && qEnd) {
+			// qStart && qEnd
+			elements = await Element.find({
+				$or: [
+					{
+						// Option 1 - qStart <= start_year <= qEnd
+						$and: [
+							{ start_year: { $gte: qStart } },
+							{ start_year: { $lte: qEnd } },
+						],
+					},
+					{
+						// Option 2 - qStart <= end_year <= qEnd
+						$and: [
+							{ end_year: { $gte: qStart } },
+							{ end_year: { $lte: qEnd } },
+						],
+					},
+					{
+						// Option 3 - start_year <= qStart && qEnd <= end_year
+						$and: [
+							{ start_year: { $lte: qStart } },
+							{ end_year: { $gte: qEnd } },
+						],
 					},
 				],
 			});
 		} else {
 			elements = await Element.find({});
-		}
+        }
 
 		if (!elements) {
 			return new Response("Elements Not Found", {

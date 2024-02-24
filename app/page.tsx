@@ -3,7 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import { title } from "@utilities/data";
+import { timelineTitle } from "@utilities/data";
 import { useEvents } from "@hooks/useEvents";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
@@ -18,8 +18,14 @@ const Home = () => {
 
 	// router
 	const searchParams = useSearchParams();
-	const queryParam = searchParams.get("query");
-	const query = queryParam ? queryParam : "";
+	const titleParam = searchParams.get("title");
+	const startYearParam = searchParams.get("startYear");
+	const endYearParam = searchParams.get("endYear");
+
+	const title = titleParam ? titleParam : "";
+	const startYear = startYearParam ? startYearParam : "";
+	const endYear = endYearParam ? endYearParam : "";
+    const sort = startYear ? "searchYear" : "searchTitle"; 
 
 	const handleAdd = () => {
 		updateEvents();
@@ -50,12 +56,19 @@ const Home = () => {
 							/>
 						}
 						events={events}
-						title={title}
+						title={timelineTitle}
 						options=""
 					/>
 				</div>
 			</section>
-			<Feed elements={elements} setElements={setElements} query={query} />
+			<Feed
+				elements={elements}
+				setElements={setElements}
+				title={title}
+				start={startYear}
+				end={endYear}
+				sort={sort}
+			/>
 			<Footer />
 		</>
 	);

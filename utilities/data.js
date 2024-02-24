@@ -1,4 +1,4 @@
-export const title = {
+export const timelineTitle = {
 	text: {
 		headline: "Timeline",
 		text: `Search, compare, visualize. Search for Biblical events and figures and visualize them on the timeline.`,

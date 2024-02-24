@@ -6,11 +6,11 @@ export async function GET(request) {
 		await connectToDB();
 
 		const searchParams = request.nextUrl.searchParams;
-		const query = searchParams.get("query");
+		const title = searchParams.get("title");
 		let elements;
 
-		if (query) {
-			const regex = new RegExp(query, "i");
+		if (title) {
+			const regex = new RegExp(title, "i");
 			elements = await Element.find({
 				headline_en: { $regex: regex },
 			});
