@@ -9,10 +9,25 @@ const Edit = () => {
 
 	// router
 	const searchParams = useSearchParams();
-	const queryParam = searchParams.get("query");
-	const query = queryParam ? queryParam : "";
+	const titleParam = searchParams.get("title");
+	const startYearParam = searchParams.get("startYear");
+	const endYearParam = searchParams.get("endYear");
 
-	return <Feed elements={elements} setElements={setElements} query={query} />;
+	const title = titleParam ? titleParam : "";
+	const startYear = startYearParam ? startYearParam : "";
+	const endYear = endYearParam ? endYearParam : "";
+	const sort = startYear ? "searchYear" : "searchTitle";
+
+	return (
+		<Feed
+			elements={elements}
+			setElements={setElements}
+			title={title}
+			start={startYear}
+			end={endYear}
+			sort={sort}
+		/>
+	);
 };
 
 export default Edit;
