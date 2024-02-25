@@ -42,6 +42,7 @@ const Form = ({
                                 placeholder='example: 2024'
                                 required
                                 className='form_input'
+                                name="start_year"
                             />
                         </label>
 
@@ -57,6 +58,7 @@ const Form = ({
                                 type='text'
                                 placeholder='1-12'
                                 className='form_input_small'
+                                name="start_month"
                             />
                         </label>
 
@@ -72,6 +74,7 @@ const Form = ({
                                 type='text'
                                 placeholder='1-31'
                                 className='form_input_small'
+                                name="start_day"
                             />
                         </label>
 
@@ -87,6 +90,7 @@ const Form = ({
                                 type='text'
                                 placeholder='0-23'
                                 className='form_input_small'
+                                name="start_hour"
                             />
                         </label>
                     </div>
@@ -104,6 +108,7 @@ const Form = ({
                                 type='text'
                                 placeholder='example: 2025'
                                 className='form_input'
+                                name="end_year"
                             />
                         </label>
 
@@ -119,6 +124,7 @@ const Form = ({
                                 type='text'
                                 placeholder='1-12'
                                 className='form_input_small'
+                                name="end_month"
                             />
                         </label>
 
@@ -134,6 +140,7 @@ const Form = ({
                                 type='text'
                                 placeholder='1-31'
                                 className='form_input_small'
+                                name="end_day"
                             />
                         </label>
 
@@ -149,6 +156,7 @@ const Form = ({
                                 type='text'
                                 placeholder='0-23'
                                 className='form_input_small'
+                                name="end_hour"
                             />
                         </label>
                     </div>
@@ -166,6 +174,7 @@ const Form = ({
                             type='text'
                             placeholder='example: "BCE 29, Spring"'
                             className='form_input'
+                            name="display_date_en"
                         />
                     </label>
 
@@ -180,6 +189,7 @@ const Form = ({
                             onChange={(e) => setElement({ ...element, display_date_bg: e.target.value })}
                             type='text'
                             className='form_input'
+                            name="display_date_bg"
                         />
                     </label>
                 </section>
@@ -205,6 +215,7 @@ const Form = ({
                             placeholder='example: "David", "David Becomes King"'
                             required
                             className='form_input'
+                            name="headline_en"
                         />
                     </label>
 
@@ -220,6 +231,7 @@ const Form = ({
                             type='text'
                             required
                             className='form_input'
+                            name="headline_bg"
                         />
                     </label>
 
@@ -234,6 +246,7 @@ const Form = ({
                             onChange={(e) => setElement({ ...element, text_en: e.target.value })}
                             placeholder='Text and HTML'
                             className='form_textarea'
+                            name="text_en"
                         />
                     </label>
 
@@ -247,6 +260,7 @@ const Form = ({
                             value={element.text_bg}
                             onChange={(e) => setElement({ ...element, text_bg: e.target.value })}
                             className='form_textarea'
+                            name="text_bg"
                         />
                     </label>
 
@@ -263,6 +277,7 @@ const Form = ({
                             type='text'
                             placeholder='person, king etc.'
                             className='form_input'
+                            name="tags"
                         />
                     </label>
                 </section>
@@ -286,6 +301,7 @@ const Form = ({
                             type='text'
                             placeholder='https://example.com'
                             className='form_input'
+                            name="background_url"
                         />
                     </label>
 
@@ -301,6 +317,7 @@ const Form = ({
                             type='text'
                             placeholder='example: #04AEEF'
                             className='form_input'
+                            name="background_color"
                         />
                     </label>
 
@@ -316,6 +333,7 @@ const Form = ({
                             type='text'
                             placeholder='https://example.com'
                             className='form_input'
+                            name="media_url"
                         />
                     </label>
 
@@ -332,6 +350,7 @@ const Form = ({
                             type='text'
                             placeholder='Text and HTML'
                             className='form_input'
+                            name="media_caption_en"
                         />
                     </label>
 
@@ -346,6 +365,7 @@ const Form = ({
                             onChange={(e) => setElement({ ...element, media_caption_bg: e.target.value })}
                             type='text'
                             className='form_input'
+                            name="media_caption_bg"
                         />
                     </label>
 
@@ -362,6 +382,7 @@ const Form = ({
                             type='text'
                             placeholder='Text and HTML'
                             className='form_input'
+                            name="media_credit"
                         />
                     </label>
 
@@ -378,6 +399,7 @@ const Form = ({
                             type='text'
                             placeholder='https://example.com/icon.svg'
                             className='form_input'
+                            name="media_thumbnail"
                         />
                     </label>
 

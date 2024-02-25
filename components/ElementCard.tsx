@@ -21,6 +21,7 @@ const ElementCard = ({ element, handleEdit, handleDelete }: Props) => {
 							src={element.media_url}
 							alt={element.headline_en}
 							className="rounded-[5px] object-cover relative border border-gray-300"
+							sizes="15vw"
 							fill
 						/>
 					</div>
