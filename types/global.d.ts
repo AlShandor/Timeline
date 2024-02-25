@@ -17,7 +17,7 @@ declare global {
 		headline_bg: string | null;
 		text_en: string | null;
 		text_bg: string | null;
-		group: string | null;
+		tags: Array<string> | null;
 		background_url: string | null;
 		background_color: string | null;
 		media_url: string | null;

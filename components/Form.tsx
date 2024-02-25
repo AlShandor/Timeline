@@ -36,7 +36,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.start_year}
+                                value={element.start_year || ""}
                                 onChange={(e) => setElement({ ...element, start_year: e.target.value })}
                                 type='text'
                                 placeholder='example: 2024'
@@ -52,7 +52,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.start_month}
+                                value={element.start_month || ""}
                                 onChange={(e) => setElement({ ...element, start_month: e.target.value })}
                                 type='text'
                                 placeholder='1-12'
@@ -67,7 +67,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.start_day}
+                                value={element.start_day || ""}
                                 onChange={(e) => setElement({ ...element, start_day: e.target.value })}
                                 type='text'
                                 placeholder='1-31'
@@ -82,7 +82,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.start_hour}
+                                value={element.start_hour || ""}
                                 onChange={(e) => setElement({ ...element, start_hour: e.target.value })}
                                 type='text'
                                 placeholder='0-23'
@@ -99,7 +99,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.end_year}
+                                value={element.end_year || ""}
                                 onChange={(e) => setElement({ ...element, end_year: e.target.value })}
                                 type='text'
                                 placeholder='example: 2025'
@@ -114,7 +114,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.end_month}
+                                value={element.end_month || ""}
                                 onChange={(e) => setElement({ ...element, end_month: e.target.value })}
                                 type='text'
                                 placeholder='1-12'
@@ -129,7 +129,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.end_day}
+                                value={element.end_day || ""}
                                 onChange={(e) => setElement({ ...element, end_day: e.target.value })}
                                 type='text'
                                 placeholder='1-31'
@@ -144,7 +144,7 @@ const Form = ({
                             </span>
 
                             <input
-                                value={element.end_hour}
+                                value={element.end_hour || ""}
                                 onChange={(e) => setElement({ ...element, end_hour: e.target.value })}
                                 type='text'
                                 placeholder='0-23'
@@ -250,16 +250,16 @@ const Form = ({
                         />
                     </label>
 
-                    {/* Group */}
+                    {/* Tags */}
                     <label>
                         <span className='create_section_input_title'>
-                            Group
+                            Tags
                         </span>
-                        <span className="small-label">If present, Timeline will organize events with the same value for group to be in the same row or adjacent rows, separate from events in other groups</span>
+                        <span className="small-label">Separate tags by commas.</span>
 
                         <input
-                            value={element.group}
-                            onChange={(e) => setElement({ ...element, group: e.target.value })}
+                            value={element.tags}
+                            onChange={(e) => setElement( { ...element, tags: e.target.value }) }
                             type='text'
                             placeholder='Text'
                             className='form_input'
@@ -382,7 +382,7 @@ const Form = ({
                     </label>
 
                     <div className='flex-end mx-3 my-[18px] gap-4'>
-                        <Link href='/' className='text-gray-500 text-sm'>
+                        <Link href='/edit-element' className='text-gray-500 text-sm'>
                             Cancel
                         </Link>
 

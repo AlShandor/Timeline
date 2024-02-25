@@ -32,7 +32,7 @@ export  async function PATCH(request, { params }) {
 		headline_bg,
 		text_en,
 		text_bg,
-		group,
+		tags,
 		background_url,
 		background_color,
 		media_url,
@@ -67,7 +67,7 @@ export  async function PATCH(request, { params }) {
 		existingElement.headline_bg = headline_bg;
 		existingElement.text_en = text_en;
 		existingElement.text_bg = text_bg;
-		existingElement.group = group;
+		existingElement.tags = tags;
 		existingElement.background_url = background_url;
 		existingElement.background_color = background_color;
 		existingElement.media_url = media_url;

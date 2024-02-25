@@ -57,9 +57,9 @@ const ElementSchema = new Schema({
 	text_bg: {
 		type: String,
 	},
-	group: {
+	tags: [{
 		type: String,
-	},
+	}],
 	background_url: {
 		type: String,
 	},
