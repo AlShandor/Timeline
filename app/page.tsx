@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 import { timelineTitle } from "@utilities/data";
 import { useEvents } from "@hooks/useEvents";
 import Feed from "@components/Feed";
@@ -15,17 +14,6 @@ const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const { events, updateEvents } = useEvents(elements);
-
-	// router
-	const searchParams = useSearchParams();
-	const titleParam = searchParams.get("title");
-	const startYearParam = searchParams.get("startYear");
-	const endYearParam = searchParams.get("endYear");
-
-	const title = titleParam ? titleParam : "";
-	const startYear = startYearParam ? startYearParam : "";
-	const endYear = endYearParam ? endYearParam : "";
-    const sort = startYear ? "searchYear" : "searchTitle"; 
 
 	const handleAdd = () => {
 		updateEvents();
@@ -64,10 +52,6 @@ const Home = () => {
 			<Feed
 				elements={elements}
 				setElements={setElements}
-				title={title}
-				start={startYear}
-				end={endYear}
-				sort={sort}
 			/>
 			<Footer />
 		</>

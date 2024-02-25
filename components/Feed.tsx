@@ -1,27 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import fetcher from "@utilities/fetcher";
 import { useDebounceSingle, useDebounceDouble } from "@hooks/useDebounce";
+import { useCustomParams } from "@hooks/useCustomParams";
 import ElementCardList from "@components/ElementCardList";
+import { useHandleSearch } from "@hooks/useHandleSearch";
 
 interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
-	title: string;
-	start: string;
-	end: string;
-    sort: string
 }
 
-const Feed = ({ elements, setElements, title, start, end, sort }: Props) => {
-	const searchParams = useSearchParams();
-	const [sortBy, setSortBy] = useState(sort);
+const Feed = ({ elements, setElements }: Props) => {
+    const { title, start, end, sort } = useCustomParams();
+	const [searchTitle, setSearchTitle] = useState(title);
+    const [startYear, setStartYear] = useState(start);
+	const [endYear, setEndYear] = useState(end);
+	const [sortBy, setSortBy] = useState(sort); 
+
+    /* Handle Functions */
+    const {
+		handleSearchTitle,
+		handleSearchStartYear,
+		handleSearchEndYear,
+		handleSortBy,
+	} = useHandleSearch(setSearchTitle, setStartYear, setEndYear, setSortBy);
 
 	/* Search Title */
-	const [searchTitle, setSearchTitle] = useState(title);
 	const debouncedTitle = useDebounceSingle(searchTitle, 700);
 	const { data: searchedResults } = useSWR(
 		() =>
@@ -36,8 +43,6 @@ const Feed = ({ elements, setElements, title, start, end, sort }: Props) => {
 	}, [searchedResults]);
 
 	/* Search Year */
-	const [startYear, setStartYear] = useState(start);
-	const [endYear, setEndYear] = useState(end);
 	const { debouncedStartYear, debouncedEndYear } = useDebounceDouble( startYear, endYear, 700 );
 	const { data: searchedResultsStartYear } = useSWR(
 		() =>
@@ -50,67 +55,6 @@ const Feed = ({ elements, setElements, title, start, end, sort }: Props) => {
 	useEffect(() => {
 		setElements(searchedResultsStartYear);
 	}, [searchedResultsStartYear]);
-
-	/* Handle Functions */
-	const handleSearchChange = (e) => {
-		const title = e.target.value;
-		setSearchTitle(title);
-
-		// Shallow search params update
-		const updatedSearchParams = new URLSearchParams(
-			searchParams.toString()
-		);
-		updatedSearchParams.set("title", title);
-		updatedSearchParams.delete("startYear");
-		updatedSearchParams.delete("endYear");
-
-		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
-	};
-
-	const handleSearchStartYear = (e) => {
-		const year = e.target.value;
-		setStartYear(year);
-
-		// Shallow search params update
-		const updatedSearchParams = new URLSearchParams(
-			searchParams.toString()
-		);
-		updatedSearchParams.set("startYear", year);
-		updatedSearchParams.delete("title");
-
-		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
-	};
-
-	const handleSearchEndYear = (e) => {
-		const year = e.target.value;
-		setEndYear(year);
-
-		// Shallow search params update
-		const updatedSearchParams = new URLSearchParams(
-			searchParams.toString()
-		);
-		updatedSearchParams.set("endYear", year);
-		updatedSearchParams.delete("title");
-
-		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
-	};
-
-	const handleSortBy = (e) => {
-		setSortBy(e.target.value);
-		setSearchTitle("");
-		setStartYear("");
-		setEndYear("");
-
-		// Shallow search params update
-		const updatedSearchParams = new URLSearchParams(
-			searchParams.toString()
-		);
-		updatedSearchParams.delete("title");
-		updatedSearchParams.delete("startYear");
-		updatedSearchParams.delete("endYear");
-
-		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
-	};
 
 	return (
 		<section className="feed">
@@ -137,18 +81,18 @@ const Feed = ({ elements, setElements, title, start, end, sort }: Props) => {
 						<option value="searchYear">Year</option>
 					</select>
 
-					{/* Search Text */}
+					{/* Search Title */}
 					{sortBy && sortBy != "searchYear" && (
 						<input
 							type="text"
 							placeholder="Search for timeline elements"
 							value={searchTitle}
-							onChange={handleSearchChange}
+							onChange={handleSearchTitle}
 							className="search_input"
 						/>
 					)}
 
-					{/* Search Star Year */}
+					{/* Search Start Year */}
 					{sortBy && sortBy == "searchYear" && (
 						<input
 							type="text"
