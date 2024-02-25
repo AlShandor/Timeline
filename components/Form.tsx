@@ -261,7 +261,7 @@ const Form = ({
                             value={element.tags}
                             onChange={(e) => setElement( { ...element, tags: e.target.value }) }
                             type='text'
-                            placeholder='Text'
+                            placeholder='person, king etc.'
                             className='form_input'
                         />
                     </label>

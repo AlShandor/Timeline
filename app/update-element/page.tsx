@@ -98,7 +98,7 @@ const EditElement = () => {
 					headline_bg: element.headline_bg,
 					text_en: element.text_en,
 					text_bg: element.text_bg,
-					tags: element.tags == "" ? [] : element.tags.split(","),
+					tags: element.tags == "" ? [] : element.tags.split(",").map((tag) => tag.trim()),
 					background_url: element.background_url,
 					background_color: element.background_color,
 					media_url: element.media_url,
