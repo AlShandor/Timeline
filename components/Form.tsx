@@ -3,6 +3,16 @@ import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 
 const Form = ({ type, element, setElement, submitting, handleSubmit }) => {
+    const inputProps = {
+		className: "tags_input",
+		placeholder: "Add a tag",
+	};
+
+    const tagProps = {
+		className: "tags_card",
+		classNameRemove: "tags_card_remove",
+	};
+
     return (
         <section className='w-full max-w-full flex-start flex-col'>
             <h1 className='head_text text-left cursor-default'>
@@ -266,7 +276,7 @@ const Form = ({ type, element, setElement, submitting, handleSubmit }) => {
                             Tags
                         </span>
 
-                        <TagsInput value={element.tags} onChange={(t) => setElement( { ...element, tags: t }) } />
+                        <TagsInput className="form_tags" focusedClassName="form_tags_focused" inputProps={inputProps} tagProps={tagProps} value={element.tags} onlyUnique="true" onChange={(t) => setElement( { ...element, tags: t }) } />
                     </label>
                 </section>
 

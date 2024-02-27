@@ -111,6 +111,26 @@
 	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-700 outline-gray-500 border-solid border border-gray-400;
 }
 
+.form_tags {
+	@apply w-full flex rounded-lg mt-2 pl-[5px] pt-[5px] bg-white text-sm text-gray-700 outline-gray-500 border-solid border border-gray-400;
+}
+
+.form_tags_focused {
+	@apply focus:border-black;
+}
+
+.tags_input {
+    @apply text-gray-700 bg-transparent outline-0 text-sm mb-1.5 mt-px p-[5px] w-[80px];
+}
+
+.tags_card {
+    @apply text-white bg-blue-400 rounded-sm border border-gray-800 inline-block text-sm mb-[5px] mr-[5px] p-[5px];
+}
+
+.tags_card_remove {
+    @apply cursor-pointer text-[#1b1b1b] after:content-['x'] after:pl-1.5 after:pb-3;
+}
+
 .form_input_small {
     @apply form_input max-w-[60px] text-center;
 }
