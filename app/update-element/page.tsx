@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 
-
 const EditElement = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -26,7 +25,7 @@ const EditElement = () => {
         headline_bg: "",
         text_en: "",
         text_bg: "",
-        tags: "",
+        tags: [],
         background_url: "",
         background_color: "",
         media_url: "",
@@ -56,7 +55,7 @@ const EditElement = () => {
 				headline_bg: data.headline_bg,
 				text_en: data.text_en,
 				text_bg: data.text_bg,
-				tags: data.tags.join(","),
+				tags: data.tags,
 				background_url: data.background_url,
 				background_color: data.background_color,
 				media_url: data.media_url,
@@ -98,7 +97,7 @@ const EditElement = () => {
 					headline_bg: element.headline_bg,
 					text_en: element.text_en,
 					text_bg: element.text_bg,
-					tags: element.tags == "" ? [] : element.tags.split(",").map((tag) => tag.trim()),
+					tags: element.tags,
 					background_url: element.background_url,
 					background_color: element.background_color,
 					media_url: element.media_url,

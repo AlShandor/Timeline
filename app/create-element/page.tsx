@@ -23,7 +23,7 @@ const CreateElement = () => {
         headline_bg: "",
         text_en: "",
         text_bg: "",
-        tags: "",
+        tags: [],
         background_url: "",
         background_color: "",
         media_url: "",
@@ -55,7 +55,7 @@ const CreateElement = () => {
 					headline_bg: element.headline_bg,
 					text_en: element.text_en,
 					text_bg: element.text_bg,
-					tags: element.tags == "" ? [] : element.tags.split(",").map((tag) => tag.trim()),
+					tags: element.tags,
 					background_url: element.background_url,
 					background_color: element.background_color,
 					media_url: element.media_url ? element.media_url : "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg",
@@ -77,13 +77,13 @@ const CreateElement = () => {
     }
 
     return (
-        <Form
-            type="Create"
-            element={element}
-            setElement={setElement}
-            submitting={submitting}
-            handleSubmit={createElement}
-        />
-    )
+		<Form
+			type="Create"
+			element={element}
+			setElement={setElement}
+			submitting={submitting}
+			handleSubmit={createElement}
+		/>
+	)
 }
 export default CreateElement;

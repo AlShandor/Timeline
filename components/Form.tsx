@@ -1,12 +1,8 @@
 import Link from "next/link";
+import TagsInput from "react-tagsinput";
+import "react-tagsinput/react-tagsinput.css";
 
-const Form = ({
-    type,
-    element,
-    setElement,
-    submitting,
-    handleSubmit
-}) => {
+const Form = ({ type, element, setElement, submitting, handleSubmit }) => {
     return (
         <section className='w-full max-w-full flex-start flex-col'>
             <h1 className='head_text text-left cursor-default'>
@@ -166,7 +162,7 @@ const Form = ({
                         <span className='create_section_input_title'>
                             Display Date EN
                         </span>
-                        <span className="small-label">String presenting the date</span>
+                        <span className="create_section_input_title_small">String presenting the date</span>
 
                         <input
                             value={element.display_date_en}
@@ -204,9 +200,9 @@ const Form = ({
                     {/* Headline EN*/}
                     <label>
                         <span className='create_section_input_title'>
-                            Headline EN<span className="required">*</span>
+                            Title EN<span className="required">*</span>
                         </span>
-                        <span className="small-label">Person or Event Description</span>
+                        <span className="create_section_input_title_small">Person or Event Description</span>
 
                         <input
                             value={element.headline_en}
@@ -222,7 +218,7 @@ const Form = ({
                     {/* Headline BG*/}
                     <label>
                         <span className='create_section_input_title'>
-                            Headline BG<span className="required">*</span>
+                            Title BG<span className="required">*</span>
                         </span>
 
                         <input
@@ -269,16 +265,8 @@ const Form = ({
                         <span className='create_section_input_title'>
                             Tags
                         </span>
-                        <span className="small-label">Separate tags by commas.</span>
 
-                        <input
-                            value={element.tags}
-                            onChange={(e) => setElement( { ...element, tags: e.target.value }) }
-                            type='text'
-                            placeholder='person, king etc.'
-                            className='form_input'
-                            name="tags"
-                        />
+                        <TagsInput value={element.tags} onChange={(t) => setElement( { ...element, tags: t }) } />
                     </label>
                 </section>
 
@@ -342,7 +330,7 @@ const Form = ({
                         <span className='create_section_input_title'>
                             Caption EN
                         </span>
-                        <span className="small-label">Description under image</span>
+                        <span className="create_section_input_title_small">Description under image</span>
 
                         <input
                             value={element.media_caption_en}
@@ -374,7 +362,7 @@ const Form = ({
                         <span className='create_section_input_title'>
                             Credit
                         </span>
-                        <span className="small-label">Image source under image (right corner)</span>
+                        <span className="create_section_input_title_small">Image source under image (right corner)</span>
 
                         <input
                             value={element.media_credit}
@@ -391,7 +379,7 @@ const Form = ({
                         <span className='create_section_input_title'>
                             Thumbnail
                         </span>
-                        <span className="small-label">A URL for an image (icon) to use in the timenav marker for this event</span>
+                        <span className="create_section_input_title_small">A URL for an image (icon) to use in the timenav marker for this event</span>
 
                         <input
                             value={element.media_thumbnail}

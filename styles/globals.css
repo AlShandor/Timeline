@@ -91,7 +91,7 @@
     @apply font-satoshi font-semibold text-base text-gray-700;
 }
 
-.create_section span {
+.create_section_input_title, .create_section_input_title_small {
 	@apply pl-1;
 }
 
@@ -115,7 +115,7 @@
     @apply form_input max-w-[60px] text-center;
 }
 
-.small-label {
+.create_section_input_title_small {
     @apply block text-xs;
 }
 
