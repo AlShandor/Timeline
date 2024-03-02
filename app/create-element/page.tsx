@@ -4,86 +4,56 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Form from "@components/Form";
 
+// Zod
+import * as z from "zod";
+import { elementDefaultValues, elementSchema } from "@utilities/validator";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type FormFields = z.infer<typeof elementSchema>;
 
 const CreateElement = () => {
     const router = useRouter();
-    const [submitting, setIsSubmitting] = useState<boolean>(false);
-    const [element, setElement] = useState({
-        start_year: "",
-        start_month: "",
-        start_day: "",
-        start_hour: "",
-        end_year: "",
-        end_month: "",
-        end_day: "",
-        end_hour: "",
-        display_date_en: "",
-        display_date_bg: "",
-        headline_en: "",
-        headline_bg: "",
-        text_en: "",
-        text_bg: "",
-        tags: [],
-        background_url: "",
-        background_color: "",
-        media_url: "",
-        media_caption_en: "",
-        media_caption_bg: "",
-        media_credit: "",
-        media_thumbnail: "",
-    });
+    const [tags, setTags] = useState([]);
 
-    const createElement = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isSubmitting },
+	} = useForm<FormFields>({
+		resolver: zodResolver(elementSchema),
+		defaultValues: elementDefaultValues,
+	});
 
-        try {
-            const response = await fetch("/api/element/new", {
+	const createElement: SubmitHandler<FormFields> = async (formData) => {
+		try {
+            formData.tags = tags;
+            formData.media_url = formData.media_url ? formData.media_url : "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg";
+
+			const response = await fetch("/api/element/new", {
 				method: "POST",
-				body: JSON.stringify({
-					start_year: element.start_year,
-					start_month: element.start_month,
-					start_day: element.start_day,
-					start_hour: element.start_hour,
-					end_year: element.end_year,
-					end_month: element.end_month,
-					end_day: element.end_day,
-					end_hour: element.end_hour,
-					display_date_en: element.display_date_en,
-					display_date_bg: element.display_date_bg,
-					headline_en: element.headline_en,
-					headline_bg: element.headline_bg,
-					text_en: element.text_en,
-					text_bg: element.text_bg,
-					tags: element.tags,
-					background_url: element.background_url,
-					background_color: element.background_color,
-					media_url: element.media_url ? element.media_url : "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg",
-					media_caption_en: element.media_caption_en,
-					media_caption_bg: element.media_caption_bg,
-					media_credit: element.media_credit,
-					media_thumbnail: element.media_thumbnail,
-				}),
+				body: JSON.stringify(formData),
 			});
 
-            if (response.ok) {
-                router.push("/");
-            }
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    }
+			if (response.ok) {
+				router.push("/");
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
     return (
 		<Form
 			type="Create"
-			element={element}
-			setElement={setElement}
-			submitting={submitting}
-			handleSubmit={createElement}
+			isSubmitting={isSubmitting}
+			onSubmit={createElement}
+			register={register}
+			handleSubmit={handleSubmit}
+			errors={errors}
+			tags={tags}
+			setTags={setTags}
 		/>
-	)
+	);
 }
 export default CreateElement;
