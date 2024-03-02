@@ -17,6 +17,9 @@ module.exports = {
 				"primary-green": "#04EFBB",
 				"primary-orange": "#EF4504",
 			},
+			backgroundImage: {
+				"arrow-svg": "url('/icons/arrow.svg')",
+			},
 		},
 	},
 	plugins: [],

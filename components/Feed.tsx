@@ -62,24 +62,27 @@ const Feed = ({ elements, setElements }: Props) => {
 				<div
 					className={
 						sortBy != "searchYear"
-							? "flex w-full max-w-xl"
-							: "flex w-full max-w-xl justify-center gap-4"
+							? "flex w-full max-w-xl relative"
+							: "flex w-full max-w-xl relative justify-center gap-4"
 					}
 				>
-					<select
-						name="searchBy"
-						className={
-							sortBy != "searchYear"
-								? "select-by rounded-md rounded-e-none"
-								: "select-by rounded-md"
-						}
-						value={sortBy}
-						onChange={handleSortBy}
-					>
-						<option value="searchTitle">Title</option>
-						<option value="searchTag">Tag</option>
-						<option value="searchYear">Year</option>
-					</select>
+					<div className="select_wrapper">
+						<span className="select_arrow"></span>
+						<select
+							name="searchBy"
+							className={
+								sortBy != "searchYear"
+									? "select-by rounded-md rounded-e-none"
+									: "select-by rounded-md"
+							}
+							value={sortBy}
+							onChange={handleSortBy}
+						>
+							<option className="select_option" value="searchTitle">Title</option>
+							<option className="select_option" value="searchTag">Tag</option>
+							<option className="select_option" value="searchYear">Year</option>
+						</select>
+					</div>
 
 					{/* Search Title */}
 					{sortBy && sortBy != "searchYear" && (
@@ -95,7 +98,7 @@ const Feed = ({ elements, setElements }: Props) => {
 					{/* Search Start Year */}
 					{sortBy && sortBy == "searchYear" && (
 						<input
-							type="text"
+							type="number"
 							placeholder="Start Year"
 							value={startYear}
 							onChange={handleSearchStartYear}
@@ -106,7 +109,7 @@ const Feed = ({ elements, setElements }: Props) => {
 					{/* Search End Year */}
 					{sortBy && sortBy == "searchYear" && (
 						<input
-							type="text"
+							type="number"
 							placeholder="End Year"
 							value={endYear}
 							onChange={handleSearchEndYear}

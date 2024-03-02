@@ -54,11 +54,23 @@
 }
 
 .search_year {
-	@apply w-[100px] rounded-md border border-gray-200 bg-white py-2.5 font-satoshi px-4 ml-4 text-center text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+	@apply w-[100px] rounded-md border border-gray-200 bg-white py-2.5 px-4 ml-4 text-center text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none;
+}
+
+.select_option {
+    @apply text-base font-medium;
+}
+
+.select_wrapper {
+    @apply min-w-[100px] relative;
+}
+
+.select_arrow {
+    @apply block absolute pointer-events-none left-16 top-[13px] before:w-4 before:h-4 before:block before:bg-arrow-svg before:bg-cover;
 }
 
 .select-by {
-    @apply block w-[100px] p-2.5 font-satoshi shadow-lg border border-gray-200 bg-white text-sm text-center font-medium focus:border-black focus:outline-none focus:ring-0;
+    @apply block w-full appearance-none py-2 px-5 shadow-lg border border-gray-200 bg-white text-base text-start font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
@@ -70,7 +82,7 @@
 }
 
 .prompt_layout {
-	@apply my-16 space-y-6 sm:columns-2 sm:gap-6 xl:columns-3;
+	@apply max-w-[360px] md:max-w-[745px] xl:max-w-[1130px] w-full my-16 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[25px];
 }
 
 /* Feed Component */
@@ -158,7 +170,7 @@
 
 /* ElementCard Component */
 .element_card {
-	@apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/70 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] h-fit;
+	@apply max-w-[360px] w-full h-fit break-inside-avoid rounded-lg border border-gray-300 bg-white/70 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter;
 }
 
 .flex-center {
