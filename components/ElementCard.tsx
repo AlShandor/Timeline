@@ -7,16 +7,17 @@ interface Props {
 	element: IElement;
 	handleEdit: Function;
 	handleDelete: Function;
+	handleTagClick: Function;
 }
 
-const ElementCard = ({ element, handleEdit, handleDelete }: Props) => {
+const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick }: Props) => {
 	const pathName = usePathname();
 
 	return (
 		<div className="element_card">
 			<div className="flex justify-between items-start gap-5">
 				<div className="flex-1 flex justify-start items-center gap-4">
-					<div className=" min-w-[90px] w-[90px] h-[90px] relative">
+					<div className="min-w-[90px] w-[90px] h-[90px] relative">
 						<Image
 							src={element.media_url}
 							alt={element.headline_en}
@@ -38,9 +39,24 @@ const ElementCard = ({ element, handleEdit, handleDelete }: Props) => {
 				</div>
 			</div>
 
-			<p className="line-clamp-3 my-4 h-[60px] font-satoshi text-sm text-gray-700">
+			<p className="line-clamp-3 mt-4 mb-2 h-[60px] font-satoshi text-sm text-gray-700">
 				{element.text_en}
 			</p>
+
+			{element.tags && (
+				<div className="flex gap-3">
+					{element.tags.map((tag) => (
+						<p
+							className="inline-block font-inter text-sm text-cyan-500 cursor-pointer"
+							onClick={() =>
+								handleTagClick && handleTagClick(tag)
+							}
+						>
+							#{tag}
+						</p>
+					))}
+				</div>
+			)}
 
 			{pathName === "/edit-element" && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">

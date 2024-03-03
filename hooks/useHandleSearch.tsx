@@ -1,7 +1,13 @@
 import { useSearchParams } from "next/navigation";
 
+const titleParam = "title";
+const tagParam = "tag";
+const startYearParam = "startYear";
+const endYearParam = "endYear";
+
 export const useHandleSearch = (
 	setSearchTitle,
+    setSearchTag,
 	setStartYear,
 	setEndYear,
 	setSortBy
@@ -16,9 +22,42 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set("title", title);
-		updatedSearchParams.delete("startYear");
-		updatedSearchParams.delete("endYear");
+		updatedSearchParams.set(titleParam, title);
+		updatedSearchParams.delete(tagParam);
+		updatedSearchParams.delete(startYearParam);
+		updatedSearchParams.delete(endYearParam);
+
+		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
+	};
+
+    const handleSearchTag = (e) => {
+		const tag = e.target.value;
+		setSearchTag(tag);
+
+		// Shallow search params update
+		const updatedSearchParams = new URLSearchParams(
+			searchParams.toString()
+		);
+		updatedSearchParams.set(tagParam, tag);
+		updatedSearchParams.delete(titleParam);
+		updatedSearchParams.delete(startYearParam);
+		updatedSearchParams.delete(endYearParam);
+
+		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
+	};
+
+    const handleTagClick = (tag) => {
+		setSearchTag(tag);
+        setSortBy("searchTag");
+
+		// Shallow search params update
+		const updatedSearchParams = new URLSearchParams(
+			searchParams.toString()
+		);
+		updatedSearchParams.set(tagParam, tag);
+		updatedSearchParams.delete(titleParam);
+		updatedSearchParams.delete(startYearParam);
+		updatedSearchParams.delete(endYearParam);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -31,8 +70,9 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set("startYear", year);
-		updatedSearchParams.delete("title");
+		updatedSearchParams.set(startYearParam, year);
+		updatedSearchParams.delete(titleParam);
+		updatedSearchParams.delete(tagParam);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -45,8 +85,9 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set("endYear", year);
-		updatedSearchParams.delete("title");
+		updatedSearchParams.set(endYearParam, year);
+		updatedSearchParams.delete(titleParam);
+		updatedSearchParams.delete(tagParam);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -54,6 +95,7 @@ export const useHandleSearch = (
 	const handleSortBy = (e) => {
 		setSortBy(e.target.value);
 		setSearchTitle("");
+        setSearchTag("");
 		setStartYear("");
 		setEndYear("");
 
@@ -61,15 +103,18 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.delete("title");
-		updatedSearchParams.delete("startYear");
-		updatedSearchParams.delete("endYear");
+		updatedSearchParams.delete(titleParam);
+		updatedSearchParams.delete(tagParam);
+		updatedSearchParams.delete(startYearParam);
+		updatedSearchParams.delete(endYearParam);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
 
 	return {
 		handleSearchTitle,
+        handleSearchTag, 
+        handleTagClick,
 		handleSearchStartYear,
 		handleSearchEndYear,
 		handleSortBy,

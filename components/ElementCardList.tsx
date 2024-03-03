@@ -4,9 +4,10 @@ import { useRouter } from "next/navigation";
 interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
+	handleTagClick: Function;
 }
 
-const ElementCardList = ({ elements, setElements }: Props) => {
+const ElementCardList = ({ elements, setElements, handleTagClick }: Props) => {
 	// router
 	const router = useRouter();
 
@@ -47,6 +48,7 @@ const ElementCardList = ({ elements, setElements }: Props) => {
 					element={el}
 					handleEdit={handleEdit}
 					handleDelete={handleDelete}
+					handleTagClick={handleTagClick}
 				/>
 			))}
 		</div>

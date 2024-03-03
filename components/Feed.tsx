@@ -14,23 +14,26 @@ interface Props {
 }
 
 const Feed = ({ elements, setElements }: Props) => {
-    const { title, start, end, sort } = useCustomParams();
+	const { title, start, end, tag, sort } = useCustomParams();
 	const [searchTitle, setSearchTitle] = useState(title);
-    const [startYear, setStartYear] = useState(start);
+	const [searchTag, setSearchTag] = useState(tag);
+	const [startYear, setStartYear] = useState(start);
 	const [endYear, setEndYear] = useState(end);
-	const [sortBy, setSortBy] = useState(sort); 
+	const [sortBy, setSortBy] = useState(sort);
 
-    /* Handle Functions */
-    const {
+	/* Handle Functions */
+	const {
 		handleSearchTitle,
+		handleSearchTag,
+        handleTagClick,
 		handleSearchStartYear,
 		handleSearchEndYear,
 		handleSortBy,
-	} = useHandleSearch(setSearchTitle, setStartYear, setEndYear, setSortBy);
+	} = useHandleSearch( setSearchTitle, setSearchTag, setStartYear, setEndYear, setSortBy );
 
 	/* Search Title */
 	const debouncedTitle = useDebounceSingle(searchTitle, 700);
-	const { data: searchedResults } = useSWR(
+	const { data: searchedTitleElements } = useSWR(
 		() =>
 			debouncedTitle
 				? `/api/${sortBy}?title=${debouncedTitle}`
@@ -39,12 +42,26 @@ const Feed = ({ elements, setElements }: Props) => {
 	);
 
 	useEffect(() => {
-		setElements(searchedResults);
-	}, [searchedResults]);
+		setElements(searchedTitleElements);
+	}, [searchedTitleElements]);
+
+	/* Search Tag */
+	const debouncedTag = useDebounceSingle(searchTag, 700);
+	const { data: searchedTagElements } = useSWR(
+		() =>
+			debouncedTag
+				? `/api/${sortBy}?tag=${debouncedTag}`
+				: `/api/${sortBy}`,
+		fetcher
+	);
+
+	useEffect(() => {
+		setElements(searchedTagElements);
+	}, [searchedTagElements]);
 
 	/* Search Year */
 	const { debouncedStartYear, debouncedEndYear } = useDebounceDouble( startYear, endYear, 700 );
-	const { data: searchedResultsStartYear } = useSWR(
+	const { data: searchedYearElements } = useSWR(
 		() =>
 			debouncedStartYear || debouncedEndYear
 				? `/api/${sortBy}?startYear=${debouncedStartYear}&endYear=${debouncedEndYear}`
@@ -53,8 +70,8 @@ const Feed = ({ elements, setElements }: Props) => {
 	);
 
 	useEffect(() => {
-		setElements(searchedResultsStartYear);
-	}, [searchedResultsStartYear]);
+		setElements(searchedYearElements);
+	}, [searchedYearElements]);
 
 	return (
 		<section className="feed">
@@ -85,12 +102,23 @@ const Feed = ({ elements, setElements }: Props) => {
 					</div>
 
 					{/* Search Title */}
-					{sortBy && sortBy != "searchYear" && (
+					{sortBy && sortBy == "searchTitle" && (
 						<input
 							type="text"
 							placeholder="Search for timeline elements"
 							value={searchTitle}
 							onChange={handleSearchTitle}
+							className="search_input"
+						/>
+					)}
+
+					{/* Search Tag */}
+					{sortBy && sortBy == "searchTag" && (
+						<input
+							type="text"
+							placeholder="Search for timeline elements"
+							value={searchTag}
+							onChange={handleSearchTag}
 							className="search_input"
 						/>
 					)}
@@ -126,6 +154,7 @@ const Feed = ({ elements, setElements }: Props) => {
 				<ElementCardList
 					elements={elements}
 					setElements={setElements}
+					handleTagClick={handleTagClick}
 				/>
 			)}
 		</section>
