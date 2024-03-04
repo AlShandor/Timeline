@@ -113,8 +113,8 @@ export const useHandleSearch = (
 
 	return {
 		handleSearchTitle,
-        handleSearchTag, 
-        handleTagClick,
+		handleSearchTag,
+		handleTagClick,
 		handleSearchStartYear,
 		handleSearchEndYear,
 		handleSortBy,

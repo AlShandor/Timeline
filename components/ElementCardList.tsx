@@ -5,10 +5,10 @@ interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
 	handleTagClick: Function;
+	handleSelectElement: Function;
 }
 
-const ElementCardList = ({ elements, setElements, handleTagClick }: Props) => {
-	// router
+const ElementCardList = ({ elements, setElements, handleTagClick, handleSelectElement }: Props) => {
 	const router = useRouter();
 
 	const handleEdit = (element) => {
@@ -49,6 +49,7 @@ const ElementCardList = ({ elements, setElements, handleTagClick }: Props) => {
 					handleEdit={handleEdit}
 					handleDelete={handleDelete}
 					handleTagClick={handleTagClick}
+					handleSelectElement={handleSelectElement}
 				/>
 			))}
 		</div>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { initialEvents } from "@utilities/data";
+import { initialEvents } from "@utilities/initialEvents";
 
-export const useEvents = (elements  : IElement[]) => {
+export const useEvents = () => {
 	const [events, setEvents] = useState<Array<IEvent>>([]);
+	const [selected, setSelected] = useState<Array<IElement>>([]);
 
-	const updateEvents = () => {
+	const updateEvents = (elements) => {
 		setEvents(
 			elements.map((el) =>
 				el.end_year
@@ -62,10 +63,14 @@ export const useEvents = (elements  : IElement[]) => {
 		);
 	};
 
+    useEffect(() => {
+		updateEvents(selected);
+	}, [selected]);
+
 	// set initial events
 	useEffect(() => {
 		setEvents(initialEvents);
 	}, []);
 
-	return { events, updateEvents };
+	return { events, setSelected };
 };

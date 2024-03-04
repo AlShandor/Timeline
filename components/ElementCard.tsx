@@ -8,9 +8,10 @@ interface Props {
 	handleEdit: Function;
 	handleDelete: Function;
 	handleTagClick: Function;
+	handleSelectElement: Function;
 }
 
-const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick }: Props) => {
+const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handleSelectElement }: Props) => {
 	const pathName = usePathname();
 
 	return (
@@ -47,6 +48,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick }: Prop
 				<div className="flex gap-3">
 					{element.tags.map((tag) => (
 						<p
+                            key={tag}
 							className="inline-block font-inter text-sm text-cyan-500 cursor-pointer"
 							onClick={() =>
 								handleTagClick && handleTagClick(tag)
@@ -57,6 +59,15 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick }: Prop
 					))}
 				</div>
 			)}
+
+            {pathName === "/" && (
+			<p
+				className="font-inter text-sm outline_btn cursor-pointer"
+				onClick={() => handleSelectElement && handleSelectElement(element)}
+			>
+				Select
+			</p>
+            )}
 
 			{pathName === "/edit-element" && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">

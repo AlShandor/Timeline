@@ -11,9 +11,10 @@ import { useHandleSearch } from "@hooks/useHandleSearch";
 interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
+	handleSelectElement: Function;
 }
 
-const Feed = ({ elements, setElements }: Props) => {
+const Feed = ({ elements, setElements, handleSelectElement }: Props) => {
 	const { title, start, end, tag, sort } = useCustomParams();
 	const [searchTitle, setSearchTitle] = useState(title);
 	const [searchTag, setSearchTag] = useState(tag);
@@ -155,6 +156,7 @@ const Feed = ({ elements, setElements }: Props) => {
 					elements={elements}
 					setElements={setElements}
 					handleTagClick={handleTagClick}
+					handleSelectElement={handleSelectElement}
 				/>
 			)}
 		</section>

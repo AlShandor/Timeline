@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { timelineTitle } from "@utilities/data";
+import { timelineTitle } from "@utilities/initialEvents";
 import { useEvents } from "@hooks/useEvents";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
@@ -13,10 +13,10 @@ const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 
 const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
-	const { events, updateEvents } = useEvents(elements);
+	const { events, setSelected } = useEvents();
 
-	const handleAdd = () => {
-		updateEvents();
+    const handleSelectElement = (newEl) => {
+        setSelected((selected) => [...selected, newEl]);
 	};
 
 	return (
@@ -52,6 +52,7 @@ const Home = () => {
 			<Feed
 				elements={elements}
 				setElements={setElements}
+				handleSelectElement={handleSelectElement}
 			/>
 			<Footer />
 		</>
