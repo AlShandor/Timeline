@@ -6,9 +6,11 @@ interface Props {
 	setElements: Function;
 	handleTagClick: Function;
 	handleSelectElement: Function;
+	isSelected: Function;
+	handleRemoveElement: Function;
 }
 
-const ElementCardList = ({ elements, setElements, handleTagClick, handleSelectElement }: Props) => {
+const ElementCardList = ({ elements, setElements, handleTagClick, handleSelectElement, handleRemoveElement, isSelected }: Props) => {
 	const router = useRouter();
 
 	const handleEdit = (element) => {
@@ -26,7 +28,6 @@ const ElementCardList = ({ elements, setElements, handleTagClick, handleSelectEl
 					method: "DELETE",
 				});
 
-				//TODO implement hard reload
 				const filteredElements = elements.filter(
 					(item) => item._id !== element._id
 				);
@@ -50,6 +51,8 @@ const ElementCardList = ({ elements, setElements, handleTagClick, handleSelectEl
 					handleDelete={handleDelete}
 					handleTagClick={handleTagClick}
 					handleSelectElement={handleSelectElement}
+					handleRemoveElement={handleRemoveElement}
+					isSelected={isSelected}
 				/>
 			))}
 		</div>

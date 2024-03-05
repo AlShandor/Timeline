@@ -64,7 +64,11 @@ export const useEvents = () => {
 	};
 
     useEffect(() => {
-		updateEvents(selected);
+        if (selected.length > 0) {
+            updateEvents(selected);
+		} else {
+		    setEvents(initialEvents);
+        }
 	}, [selected]);
 
 	// set initial events
@@ -72,5 +76,15 @@ export const useEvents = () => {
 		setEvents(initialEvents);
 	}, []);
 
-	return { events, setSelected };
+    const isSelected = (element) => {
+        console.log(selected);
+
+        if (selected.some((item) => element._id === item._id)) {
+			return true;
+		}
+
+        return false;
+    }
+
+	return { events, selected, isSelected, setSelected };
 };

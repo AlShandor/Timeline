@@ -9,13 +9,15 @@ interface Props {
 	handleDelete: Function;
 	handleTagClick: Function;
 	handleSelectElement: Function;
+	isSelected: Function;
+	handleRemoveElement: Function;
 }
 
-const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handleSelectElement }: Props) => {
+const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handleSelectElement, handleRemoveElement, isSelected }: Props) => {
 	const pathName = usePathname();
 
 	return (
-		<div className="element_card">
+		<div className={ isSelected(element) ? "element_card bg-selected-green" : "element_card bg-white/70" } >
 			<div className="flex justify-between items-start gap-5">
 				<div className="flex-1 flex justify-start items-center gap-4">
 					<div className="min-w-[90px] w-[90px] h-[90px] relative">
@@ -44,11 +46,12 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 				{element.text_en}
 			</p>
 
+            {/* Tags */}
 			{element.tags && (
-				<div className="flex gap-3">
+				<div className="flex gap-3 mb-4">
 					{element.tags.map((tag) => (
 						<p
-                            key={tag}
+							key={tag}
 							className="inline-block font-inter text-sm text-cyan-500 cursor-pointer"
 							onClick={() =>
 								handleTagClick && handleTagClick(tag)
@@ -60,15 +63,31 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 				</div>
 			)}
 
-            {pathName === "/" && (
-			<p
-				className="font-inter text-sm outline_btn cursor-pointer"
-				onClick={() => handleSelectElement && handleSelectElement(element)}
-			>
-				Select
-			</p>
-            )}
+            {/* Select button */}
+			{pathName === "/" && !isSelected(element) && (
+				<p
+					className="font-inter text-sm select_btn bg-primary-green cursor-pointer"
+					onClick={() =>
+						handleSelectElement && handleSelectElement(element)
+					}
+				>
+					Select
+				</p>
+			)}
 
+            {/* Remove button */}
+			{pathName === "/" && isSelected(element) && (
+				<p
+					className="font-inter text-sm select_btn bg-remove-red cursor-pointer"
+					onClick={() =>
+						handleRemoveElement && handleRemoveElement(element)
+					}
+				>
+					Remove
+				</p>
+			)}
+
+            {/* Edit/Delete buttons */}
 			{pathName === "/edit-element" && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
 					<p

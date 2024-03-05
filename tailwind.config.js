@@ -14,8 +14,11 @@ module.exports = {
 			},
 			colors: {
 				"primary-blue": "#04AEEF",
-				"primary-green": "#04EFBB",
+				"primary-green": "#18C964",
+				"selected-green": "#E1F6DD",
 				"primary-orange": "#EF4504",
+				"primary-purple": "#9455D3",
+				"remove-red": "#CC0001",
 			},
 			backgroundImage: {
 				"arrow-svg": "url('/icons/arrow.svg')",

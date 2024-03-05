@@ -13,11 +13,16 @@ const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 
 const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
-	const { events, setSelected } = useEvents();
+	const { events, selected, setSelected, isSelected } = useEvents();
 
     const handleSelectElement = (newEl) => {
         setSelected((selected) => [...selected, newEl]);
 	};
+
+    const handleRemoveElement = (el) => {
+        const filteredElements = selected.filter((item) => item._id !== el._id);
+        setSelected(filteredElements);
+    };
 
 	return (
 		<>
@@ -53,6 +58,8 @@ const Home = () => {
 				elements={elements}
 				setElements={setElements}
 				handleSelectElement={handleSelectElement}
+				handleRemoveElement={handleRemoveElement}
+				isSelected={isSelected}
 			/>
 			<Footer />
 		</>

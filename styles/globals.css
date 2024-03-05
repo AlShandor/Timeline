@@ -170,7 +170,11 @@
 
 /* ElementCard Component */
 .element_card {
-	@apply max-w-[360px] w-full h-fit break-inside-avoid rounded-lg border border-gray-300 bg-white/70 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter;
+	@apply max-w-[360px] w-full h-fit break-inside-avoid rounded-lg border border-gray-300 transition-all duration-200 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter;
+}
+
+.select_btn {
+    @apply w-[100px] rounded-lg border border-gray-300 py-1.5 px-5 ml-auto text-white transition-all duration-200 hover:opacity-90 hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .flex-center {

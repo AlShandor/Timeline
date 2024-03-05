@@ -12,9 +12,11 @@ interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
 	handleSelectElement: Function;
+	isSelected: Function;
+	handleRemoveElement: Function;
 }
 
-const Feed = ({ elements, setElements, handleSelectElement }: Props) => {
+const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, isSelected }: Props) => {
 	const { title, start, end, tag, sort } = useCustomParams();
 	const [searchTitle, setSearchTitle] = useState(title);
 	const [searchTag, setSearchTag] = useState(tag);
@@ -26,7 +28,7 @@ const Feed = ({ elements, setElements, handleSelectElement }: Props) => {
 	const {
 		handleSearchTitle,
 		handleSearchTag,
-        handleTagClick,
+		handleTagClick,
 		handleSearchStartYear,
 		handleSearchEndYear,
 		handleSortBy,
@@ -157,6 +159,8 @@ const Feed = ({ elements, setElements, handleSelectElement }: Props) => {
 					setElements={setElements}
 					handleTagClick={handleTagClick}
 					handleSelectElement={handleSelectElement}
+					handleRemoveElement={handleRemoveElement}
+					isSelected={isSelected}
 				/>
 			)}
 		</section>
