@@ -46,7 +46,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 				{element.text_en}
 			</p>
 
-            {/* Tags */}
+			{/* Tags */}
 			{element.tags && (
 				<div className="flex gap-3 mb-4">
 					{element.tags.map((tag) => (
@@ -63,35 +63,39 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 				</div>
 			)}
 
-            {/* Select button */}
-			{pathName === "/" && !isSelected(element) && (
-				<p
-					className="font-inter text-sm select_btn bg-primary-green cursor-pointer"
-					onClick={() =>
-						handleSelectElement && handleSelectElement(element)
-					}
-				>
-					Select
-				</p>
-			)}
+			{/* Select/Remove buttons */}
+			{pathName === "/" &&
+				(!isSelected(element) ? (
+					<div className="border-t border-gray-300 pt-3">
+						<p
+							className="font-inter text-sm select_btn bg-primary-green cursor-pointer"
+							onClick={() =>
+								handleSelectElement &&
+								handleSelectElement(element)
+							}
+						>
+							Select
+						</p>
+					</div>
+				) : (
+					<div className="border-t border-gray-300 pt-3">
+						<p
+							className="font-inter text-sm select_btn bg-remove-red cursor-pointer"
+							onClick={() =>
+								handleRemoveElement &&
+								handleRemoveElement(element)
+							}
+						>
+							Remove
+						</p>
+					</div>
+				))}
 
-            {/* Remove button */}
-			{pathName === "/" && isSelected(element) && (
-				<p
-					className="font-inter text-sm select_btn bg-remove-red cursor-pointer"
-					onClick={() =>
-						handleRemoveElement && handleRemoveElement(element)
-					}
-				>
-					Remove
-				</p>
-			)}
-
-            {/* Edit/Delete buttons */}
+			{/* Edit/Delete buttons */}
 			{pathName === "/edit-element" && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
 					<p
-						className="font-inter text-sm outline_btn cursor-pointer"
+						className="font-inter yellow_btn cursor-pointer"
 						onClick={() => handleEdit(element)}
 					>
 						Edit

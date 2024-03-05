@@ -77,8 +77,6 @@ export const useEvents = () => {
 	}, []);
 
     const isSelected = (element) => {
-        console.log(selected);
-
         if (selected.some((item) => element._id === item._id)) {
 			return true;
 		}
