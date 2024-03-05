@@ -6,17 +6,19 @@ import fetcher from "@utilities/fetcher";
 import { useDebounceSingle, useDebounceDouble } from "@hooks/useDebounce";
 import { useCustomParams } from "@hooks/useCustomParams";
 import ElementCardList from "@components/ElementCardList";
+import ElementChip from "@components/ElementChip";
 import { useHandleSearch } from "@hooks/useHandleSearch";
 
 interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
 	handleSelectElement: Function;
-	isSelected: Function;
 	handleRemoveElement: Function;
+	selected: Array<IElement>;
+	isSelected: Function;
 }
 
-const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, isSelected }: Props) => {
+const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, selected, isSelected }: Props) => {
 	const { title, start, end, tag, sort } = useCustomParams();
 	const [searchTitle, setSearchTitle] = useState(title);
 	const [searchTag, setSearchTag] = useState(tag);
@@ -153,16 +155,34 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 					)}
 				</div>
 			</form>
-			{elements && elements.length > 0 && (
-				<ElementCardList
-					elements={elements}
-					setElements={setElements}
-					handleTagClick={handleTagClick}
-					handleSelectElement={handleSelectElement}
-					handleRemoveElement={handleRemoveElement}
-					isSelected={isSelected}
-				/>
-			)}
+			<div className="flex flex-row">
+				{elements && elements.length > 0 && (
+					<ElementCardList
+						elements={elements}
+						setElements={setElements}
+						handleTagClick={handleTagClick}
+						handleSelectElement={handleSelectElement}
+						handleRemoveElement={handleRemoveElement}
+						isSelected={isSelected}
+					/>
+				)}
+				<div className="my-16 mx-auto ml-4 h-auto w-[200px] flex flex-col">
+					<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
+						Selected Elements
+					</p>
+					{selected &&
+						selected.length > 0 &&
+						selected
+							.sort((a, b) => a.start_year - b.start_year)
+							.map((el) => (
+								<ElementChip
+									key={el._id}
+									element={el}
+									handleRemoveElement={handleRemoveElement}
+								/>
+							))}
+				</div>
+			</div>
 		</section>
 	);
 };

@@ -59,6 +59,7 @@ const Home = () => {
 				setElements={setElements}
 				handleSelectElement={handleSelectElement}
 				handleRemoveElement={handleRemoveElement}
+                selected={selected}
 				isSelected={isSelected}
 			/>
 			<Footer />
