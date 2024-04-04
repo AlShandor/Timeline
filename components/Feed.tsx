@@ -16,6 +16,7 @@ interface Props {
 	elements: Array<IElement>;
 	setElements: Function;
 	handleSelectElement: Function;
+	handleSelectAllElements: Function;
 	handleRemoveElement: Function;
 	handleRemoveAllElements: Function;
 	selected: Array<IElement>;
@@ -24,7 +25,7 @@ interface Props {
 
 const PAGE_SIZE = 9;
 
-const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, handleRemoveAllElements, selected, isSelected }: Props) => {
+const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllElements, handleRemoveElement, handleRemoveAllElements, selected, isSelected }: Props) => {
     const pathName = usePathname();
 	const { title, start, end, tag, sort } = useCustomParams();
     const { ref, inView } = useInView();
@@ -181,6 +182,16 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 					)}
 				</div>
 			</form>
+
+			{pathName === "/" && (
+				<p
+					className="font-inter text-sm select_btn bg-primary-green cursor-pointer !w-[115px] mx-auto mb-4 mt-16"
+					onClick={() => handleSelectAllElements()}
+				>
+					Select All
+				</p>
+			)}
+
 			<div className="flex flex-row">
 				{elements && elements.length > 0 ? (
 					<ElementCardList
@@ -195,7 +206,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 					<div className="w-[1130px]"></div>
 				)}
 				{pathName === "/" && (
-					<div className="my-16 mx-auto ml-4 h-auto w-[200px] flex flex-col">
+					<div className="mx-auto ml-4 h-auto w-[200px] flex flex-col">
 						<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
 							Selected Elements
 						</p>

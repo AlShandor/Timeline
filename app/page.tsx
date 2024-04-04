@@ -19,6 +19,10 @@ const Home = () => {
         setSelected((selected) => [...selected, newEl]);
 	};
 
+    const handleSelectAllElements = () => {
+		setSelected(elements);
+	};
+
     const handleRemoveElement = (el) => {
         const filteredElements = selected.filter((item) => item._id !== el._id);
         setSelected(filteredElements);
@@ -62,6 +66,7 @@ const Home = () => {
 				elements={elements}
 				setElements={setElements}
 				handleSelectElement={handleSelectElement}
+				handleSelectAllElements={handleSelectAllElements}
 				handleRemoveElement={handleRemoveElement}
 				handleRemoveAllElements={handleRemoveAllElements}
 				selected={selected}

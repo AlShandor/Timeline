@@ -82,7 +82,7 @@
 }
 
 .prompt_layout {
-	@apply max-w-[360px] md:max-w-[745px] xl:max-w-[1130px] border-r border-r-gray-300 pr-4 w-full my-16 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[25px];
+	@apply max-w-[360px] md:max-w-[745px] xl:max-w-[1130px] border-r border-r-gray-300 pr-4 w-full mb-16 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[25px];
 }
 
 /* Feed Component */
