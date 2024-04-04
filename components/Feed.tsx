@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import useSWRInfinite from "swr/infinite";
 import fetcher from "@utilities/fetcher";
 import { useInView } from "react-intersection-observer";
@@ -23,6 +24,7 @@ interface Props {
 const PAGE_SIZE = 9;
 
 const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, selected, isSelected }: Props) => {
+    const pathName = usePathname();
 	const { title, start, end, tag, sort } = useCustomParams();
     const { ref, inView } = useInView();
 
@@ -179,22 +181,26 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 				) : (
 					<div className="w-[1130px]"></div>
 				)}
-				<div className="my-16 mx-auto ml-4 h-auto w-[200px] flex flex-col">
-					<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
-						Selected Elements
-					</p>
-					{selected &&
-						selected.length > 0 &&
-						selected
-							.sort((a, b) => a.start_year - b.start_year)
-							.map((el) => (
-								<ElementChip
-									key={el._id}
-									element={el}
-									handleRemoveElement={handleRemoveElement}
-								/>
-							))}
-				</div>
+				{pathName === "/" && (
+					<div className="my-16 mx-auto ml-4 h-auto w-[200px] flex flex-col">
+						<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
+							Selected Elements
+						</p>
+						{selected &&
+							selected.length > 0 &&
+							selected
+								.sort((a, b) => a.start_year - b.start_year)
+								.map((el) => (
+									<ElementChip
+										key={el._id}
+										element={el}
+										handleRemoveElement={
+											handleRemoveElement
+										}
+									/>
+								))}
+					</div>
+				)}
 			</div>
 
 			{!isReachingEnd ? (
@@ -202,7 +208,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 					<Loader />
 				</div>
 			) : (
-				<div className="font-satoshi font-medium text-gray-900 my-8">
+				<div className="font-satoshi font-medium text-gray-900 my-8 mx-auto">
 					No more results
 				</div>
 			)}
