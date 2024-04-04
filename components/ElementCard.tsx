@@ -48,11 +48,11 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 
 			{/* Tags */}
 			{element.tags && (
-				<div className="flex gap-3 mb-4">
+				<div className="flex gap-1 mb-4">
 					{element.tags.map((tag) => (
 						<p
 							key={tag}
-							className="inline-block font-inter text-sm text-cyan-500 cursor-pointer"
+							className="inline-block font-inter p-1 text-sm text-cyan-500 cursor-pointer"
 							onClick={() =>
 								handleTagClick && handleTagClick(tag)
 							}

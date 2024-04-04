@@ -185,7 +185,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 
 			{pathName === "/" && (
 				<p
-					className="font-inter text-sm select_btn bg-primary-green cursor-pointer !w-[115px] mx-auto mb-4 mt-16"
+					className="font-inter text-sm select_btn bg-primary-green cursor-pointer mx-auto mb-4 mt-16"
 					onClick={() => handleSelectAllElements()}
 				>
 					Select All
@@ -212,7 +212,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 						</p>
 						{selected && selected.length > 0 && (
 							<p
-								className="font-inter text-sm !w-[115px] select_btn bg-remove-red cursor-pointer mx-auto mb-4"
+								className="font-inter text-sm select_btn bg-remove-red cursor-pointer mx-auto mb-4"
 								onClick={() => handleRemoveAllElements()}
 							>
 								Remove All
