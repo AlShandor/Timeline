@@ -24,6 +24,10 @@ const Home = () => {
         setSelected(filteredElements);
     };
 
+    const handleRemoveAllElements = () => {
+		setSelected([]);
+	};
+
 	return (
 		<>
 			<section className="w-full mb-12 flex-center flex-col">
@@ -59,7 +63,8 @@ const Home = () => {
 				setElements={setElements}
 				handleSelectElement={handleSelectElement}
 				handleRemoveElement={handleRemoveElement}
-                selected={selected}
+				handleRemoveAllElements={handleRemoveAllElements}
+				selected={selected}
 				isSelected={isSelected}
 			/>
 			<Footer />

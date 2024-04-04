@@ -11,6 +11,7 @@ const Edit = () => {
     const selected = [];
 	const handleSelectElement = () => {};
     const handleRemoveElement = () => {};
+    const handleRemoveAllElements = () => {};
 
 	return (
 		<>
@@ -19,6 +20,7 @@ const Edit = () => {
 				setElements={setElements}
 				handleSelectElement={handleSelectElement}
 				handleRemoveElement={handleRemoveElement}
+				handleRemoveAllElements={handleRemoveAllElements}
 				selected={selected}
 				isSelected={isSelected}
 			/>

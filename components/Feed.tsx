@@ -17,13 +17,14 @@ interface Props {
 	setElements: Function;
 	handleSelectElement: Function;
 	handleRemoveElement: Function;
+	handleRemoveAllElements: Function;
 	selected: Array<IElement>;
 	isSelected: Function;
 }
 
 const PAGE_SIZE = 9;
 
-const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, selected, isSelected }: Props) => {
+const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, handleRemoveAllElements, selected, isSelected }: Props) => {
     const pathName = usePathname();
 	const { title, start, end, tag, sort } = useCustomParams();
     const { ref, inView } = useInView();
@@ -113,9 +114,21 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 							value={sortBy}
 							onChange={handleSortBy}
 						>
-							<option className="select_option" value="searchTitle">Title</option>
-							<option className="select_option" value="searchTag">Tag</option>
-							<option className="select_option" value="searchYear">Year</option>
+							<option
+								className="select_option"
+								value="searchTitle"
+							>
+								Title
+							</option>
+							<option className="select_option" value="searchTag">
+								Tag
+							</option>
+							<option
+								className="select_option"
+								value="searchYear"
+							>
+								Year
+							</option>
 						</select>
 					</div>
 
@@ -186,6 +199,14 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 						<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
 							Selected Elements
 						</p>
+						{selected && selected.length > 0 && (
+							<p
+								className="font-inter text-sm !w-[115px] select_btn bg-remove-red cursor-pointer mx-auto mb-4"
+								onClick={() => handleRemoveAllElements()}
+							>
+								Remove All
+							</p>
+						)}
 						{selected &&
 							selected.length > 0 &&
 							selected
