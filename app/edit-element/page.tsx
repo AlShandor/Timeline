@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Feed from "@components/Feed";
+import Footer from "@components/Footer";
 
 const Edit = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
@@ -10,13 +11,16 @@ const Edit = () => {
     const handleRemoveElement = () => {};
 
 	return (
-		<Feed
-			elements={elements}
-			setElements={setElements}
-			handleSelectElement={handleSelectElement}
-			handleRemoveElement={handleRemoveElement}
-			isSelected={isSelected}
-		/>
+		<>
+			<Feed
+				elements={elements}
+				setElements={setElements}
+				handleSelectElement={handleSelectElement}
+				handleRemoveElement={handleRemoveElement}
+				isSelected={isSelected}
+			/>
+			<Footer />
+		</>
 	);
 };
 

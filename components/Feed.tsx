@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useSWR from "swr";
+import useSWRInfinite from "swr/infinite";
 import fetcher from "@utilities/fetcher";
+import { useInView } from "react-intersection-observer";
 import { useDebounceSingle, useDebounceDouble } from "@hooks/useDebounce";
 import { useCustomParams } from "@hooks/useCustomParams";
+import { useHandleSearch } from "@hooks/useHandleSearch";
 import ElementCardList from "@components/ElementCardList";
 import ElementChip from "@components/ElementChip";
-import { useHandleSearch } from "@hooks/useHandleSearch";
+import Loader from "./Loader";
 
 interface Props {
 	elements: Array<IElement>;
@@ -18,8 +20,12 @@ interface Props {
 	isSelected: Function;
 }
 
+const PAGE_SIZE = 9;
+
 const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement, selected, isSelected }: Props) => {
 	const { title, start, end, tag, sort } = useCustomParams();
+    const { ref, inView } = useInView();
+
 	const [searchTitle, setSearchTitle] = useState(title);
 	const [searchTag, setSearchTag] = useState(tag);
 	const [startYear, setStartYear] = useState(start);
@@ -36,47 +42,52 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 		handleSortBy,
 	} = useHandleSearch( setSearchTitle, setSearchTag, setStartYear, setEndYear, setSortBy );
 
-	/* Search Title */
 	const debouncedTitle = useDebounceSingle(searchTitle, 700);
-	const { data: searchedTitleElements } = useSWR(
-		() =>
-			debouncedTitle
-				? `/api/${sortBy}?title=${debouncedTitle}`
-				: `/api/${sortBy}`,
-		fetcher
-	);
-
-	useEffect(() => {
-		setElements(searchedTitleElements);
-	}, [searchedTitleElements]);
-
-	/* Search Tag */
 	const debouncedTag = useDebounceSingle(searchTag, 700);
-	const { data: searchedTagElements } = useSWR(
-		() =>
-			debouncedTag
-				? `/api/${sortBy}?tag=${debouncedTag}`
-				: `/api/${sortBy}`,
-		fetcher
-	);
-
-	useEffect(() => {
-		setElements(searchedTagElements);
-	}, [searchedTagElements]);
-
-	/* Search Year */
 	const { debouncedStartYear, debouncedEndYear } = useDebounceDouble( startYear, endYear, 700 );
-	const { data: searchedYearElements } = useSWR(
-		() =>
-			debouncedStartYear || debouncedEndYear
-				? `/api/${sortBy}?startYear=${debouncedStartYear}&endYear=${debouncedEndYear}`
-				: `/api/${sortBy}`,
+
+    // Infinite scroll
+	const { data: searchedElements, size, setSize, isLoading } = useSWRInfinite(
+		(index) => {
+            // Search Title
+            if (sortBy == "searchTitle" && debouncedTitle) {
+				return `/api/${sortBy}?title=${debouncedTitle}&page=${index + 1}&size=${PAGE_SIZE}`;
+			}
+
+            // Search Tag
+            if (sortBy == "searchTag" && debouncedTag) {
+				return `/api/${sortBy}?tag=${debouncedTag}&page=${index + 1}&size=${PAGE_SIZE}`;
+			}
+
+            // Search Year
+            if (sortBy == "searchYear" && debouncedStartYear && debouncedEndYear) {
+				return `/api/${sortBy}?startYear=${debouncedStartYear}&endYear=${debouncedEndYear}&page=${index + 1}&size=${PAGE_SIZE}`;
+			}
+
+            if ( sortBy == "searchYear" && debouncedStartYear ) {
+				return `/api/${sortBy}?startYear=${debouncedStartYear}&page=${index + 1}&size=${PAGE_SIZE}`;
+			}
+
+            return `/api/${sortBy}?page=${index + 1}&size=${PAGE_SIZE}`
+        },
 		fetcher
 	);
 
+	const isEmpty = searchedElements?.[0]?.length === 0;
+	const isReachingEnd = isEmpty || (searchedElements && searchedElements[searchedElements.length - 1]?.length < PAGE_SIZE);
+
+    // activate infinite scroll when Loader is in view
+    useEffect(() => {
+		if (inView && !isLoading) {
+			setSize(size + 1);
+		}
+	}, [inView]);
+
+    // infinite scroll adds new batch of elements 
 	useEffect(() => {
-		setElements(searchedYearElements);
-	}, [searchedYearElements]);
+        const allElements = searchedElements ? [].concat(...searchedElements) : [];
+		setElements(allElements);
+	}, [searchedElements]);
 
 	return (
 		<section className="feed">
@@ -156,7 +167,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 				</div>
 			</form>
 			<div className="flex flex-row">
-				{elements && elements.length > 0 && (
+				{elements && elements.length > 0 ? (
 					<ElementCardList
 						elements={elements}
 						setElements={setElements}
@@ -165,6 +176,8 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 						handleRemoveElement={handleRemoveElement}
 						isSelected={isSelected}
 					/>
+				) : (
+					<div className="w-[1130px]"></div>
 				)}
 				<div className="my-16 mx-auto ml-4 h-auto w-[200px] flex flex-col">
 					<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
@@ -183,6 +196,16 @@ const Feed = ({ elements, setElements, handleSelectElement, handleRemoveElement,
 							))}
 				</div>
 			</div>
+
+			{!isReachingEnd ? (
+				<div ref={ref} className="mt-10">
+					<Loader />
+				</div>
+			) : (
+				<div className="font-satoshi font-medium text-gray-900 my-8">
+					No more results
+				</div>
+			)}
 		</section>
 	);
 };

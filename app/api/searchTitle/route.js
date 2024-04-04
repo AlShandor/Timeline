@@ -6,16 +6,23 @@ export async function GET(request) {
 		await connectToDB();
 
 		const searchParams = request.nextUrl.searchParams;
+        const page = searchParams.get("page") ? Number(searchParams.get("page")) : 0;
+        const pageSize = searchParams.get("size") ? Number(searchParams.get("size")) : 4;
 		const title = searchParams.get("title");
-		let elements;
 
+		let elements;
 		if (title) {
 			const regex = new RegExp(title, "i");
-			elements = await Element.find({
-				headline_en: { $regex: regex },
-			});
+			elements = await Element.find(
+				{ headline_en: { $regex: regex } },
+				undefined,
+				{ skip: (page - 1) * pageSize, limit: pageSize }
+			);
 		} else {
-			elements = await Element.find({});
+			elements = await Element.find({},
+                undefined,
+                { skip: (page - 1) * pageSize, limit: pageSize, }
+            );
 		}
 
 		if (!elements) {
