@@ -1,9 +1,9 @@
 import { useSearchParams } from "next/navigation";
 
-const titleParam = "title";
-const tagParam = "tag";
-const startYearParam = "startYear";
-const endYearParam = "endYear";
+const TITLE_PARAM = "title";
+const TAG_PARAM = "tag";
+const START_YEAR_PARAM = "startYear";
+const END_YEAR_PARAM = "endYear";
 
 export const useHandleSearch = (
 	setSearchTitle,
@@ -22,10 +22,10 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set(titleParam, title);
-		updatedSearchParams.delete(tagParam);
-		updatedSearchParams.delete(startYearParam);
-		updatedSearchParams.delete(endYearParam);
+		updatedSearchParams.set(TITLE_PARAM, title);
+		updatedSearchParams.delete(TAG_PARAM);
+		updatedSearchParams.delete(START_YEAR_PARAM);
+		updatedSearchParams.delete(END_YEAR_PARAM);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -38,10 +38,10 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set(tagParam, tag);
-		updatedSearchParams.delete(titleParam);
-		updatedSearchParams.delete(startYearParam);
-		updatedSearchParams.delete(endYearParam);
+		updatedSearchParams.set(TAG_PARAM, tag);
+		updatedSearchParams.delete(TITLE_PARAM);
+		updatedSearchParams.delete(START_YEAR_PARAM);
+		updatedSearchParams.delete(END_YEAR_PARAM);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -54,10 +54,10 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set(tagParam, tag);
-		updatedSearchParams.delete(titleParam);
-		updatedSearchParams.delete(startYearParam);
-		updatedSearchParams.delete(endYearParam);
+		updatedSearchParams.set(TAG_PARAM, tag);
+		updatedSearchParams.delete(TITLE_PARAM);
+		updatedSearchParams.delete(START_YEAR_PARAM);
+		updatedSearchParams.delete(END_YEAR_PARAM);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -70,9 +70,9 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set(startYearParam, year);
-		updatedSearchParams.delete(titleParam);
-		updatedSearchParams.delete(tagParam);
+		updatedSearchParams.set(START_YEAR_PARAM, year);
+		updatedSearchParams.delete(TITLE_PARAM);
+		updatedSearchParams.delete(TAG_PARAM);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -85,9 +85,9 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.set(endYearParam, year);
-		updatedSearchParams.delete(titleParam);
-		updatedSearchParams.delete(tagParam);
+		updatedSearchParams.set(END_YEAR_PARAM, year);
+		updatedSearchParams.delete(TITLE_PARAM);
+		updatedSearchParams.delete(TAG_PARAM);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
@@ -103,10 +103,10 @@ export const useHandleSearch = (
 		const updatedSearchParams = new URLSearchParams(
 			searchParams.toString()
 		);
-		updatedSearchParams.delete(titleParam);
-		updatedSearchParams.delete(tagParam);
-		updatedSearchParams.delete(startYearParam);
-		updatedSearchParams.delete(endYearParam);
+		updatedSearchParams.delete(TITLE_PARAM);
+		updatedSearchParams.delete(TAG_PARAM);
+		updatedSearchParams.delete(START_YEAR_PARAM);
+		updatedSearchParams.delete(END_YEAR_PARAM);
 
 		window.history.pushState( null, "", "?" + updatedSearchParams.toString() );
 	};
