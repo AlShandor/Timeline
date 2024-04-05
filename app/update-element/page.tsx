@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Form from "@components/Form";
+import FormElement from "@components/FormElement";
 
 // Zod
 import * as z from "zod";
@@ -61,7 +61,7 @@ const EditElement = () => {
 	};
 
     return (
-		<Form
+		<FormElement
 			type="Edit"
 			isSubmitting={isSubmitting}
 			onSubmit={updateElement}

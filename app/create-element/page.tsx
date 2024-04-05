@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Form from "@components/Form";
+import FormElement from "@components/FormElement";
 
 // Zod
 import * as z from "zod";
@@ -44,7 +44,7 @@ const CreateElement = () => {
 	};
 
     return (
-		<Form
+		<FormElement
 			type="Create"
 			isSubmitting={isSubmitting}
 			onSubmit={createElement}

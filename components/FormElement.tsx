@@ -2,7 +2,7 @@ import Link from "next/link";
 import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
 
-const Form = ({
+const FormCollection = ({
     type,
     isSubmitting,
     onSubmit,
@@ -568,4 +568,4 @@ const Form = ({
 		</section>
 	);
 };
-export default Form;
+export default FormCollection;

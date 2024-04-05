@@ -90,7 +90,7 @@
 	@apply mt-16 mx-auto w-full min-h-[1000px] flex justify-start items-center flex-col gap-2;
 }
 
-/* Form Component */
+/* Form Element Component */
 .create_section {
 	@apply mb-12 flex flex-col gap-7 glassmorphism max-w-[520px] w-full h-fit;
 }
