@@ -64,7 +64,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 			)}
 
 			{/* Select/Remove buttons */}
-			{pathName === "/" &&
+			{pathName !== "/edit-element" &&
 				(!isSelected(element) ? (
 					<div className="border-t border-gray-300 pt-3">
 						<p

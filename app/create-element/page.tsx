@@ -11,6 +11,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof elementSchema>;
+const DEFAULT_IMG_URL = "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg"
+
+
 
 const CreateElement = () => {
     const router = useRouter();
@@ -28,7 +31,7 @@ const CreateElement = () => {
 	const createElement: SubmitHandler<FormFields> = async (formData) => {
 		try {
             formData.tags = tags;
-            formData.media_url = formData.media_url ? formData.media_url : "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg";
+            formData.media_url = formData.media_url ? formData.media_url : DEFAULT_IMG_URL;
 
 			const response = await fetch("/api/element/new", {
 				method: "POST",

@@ -183,7 +183,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 				</div>
 			</form>
 
-			{pathName === "/" && (
+			{pathName !== "/edit-element" && (
 				<p
 					className="font-inter text-sm select_btn bg-primary-green cursor-pointer mx-auto mb-4 mt-16"
 					onClick={() => handleSelectAllElements()}
@@ -205,7 +205,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 				) : (
 					<div className="w-[1130px]"></div>
 				)}
-				{pathName === "/" && (
+				{pathName !== "/edit-element" && (
 					<div className="mx-auto ml-4 h-auto w-[200px] flex flex-col">
 						<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
 							Selected Elements

@@ -111,7 +111,7 @@
     @apply pl-0;
 }
 
-.create_section .required {
+.required {
 	@apply text-red-500;
 }
 

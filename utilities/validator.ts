@@ -95,3 +95,17 @@ export const elementDefaultValues = {
 	media_credit: "",
 	media_thumbnail: "",
 };
+
+export const elementCollectionSchema = z.object({
+	title_en: z.string().min(1, { message: title }),
+	title_bg: z.string().min(1, { message: title }),
+	img_url: z.union([z.literal(""), z.string().trim().url({ message: url })]),
+    elements: z.any().array()
+});
+
+export const elementCollectionDefaultValues = {
+	title_en: "",
+    title_bg: "",
+    img_url: "",
+    elements: []
+};

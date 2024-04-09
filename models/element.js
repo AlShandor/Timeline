@@ -1,4 +1,5 @@
 import { Schema, model, models } from "mongoose";
+import ElementCollection from "@models/elementCollection";
 
 const ElementSchema = new Schema({
 	start_year: {
@@ -57,9 +58,11 @@ const ElementSchema = new Schema({
 	text_bg: {
 		type: String,
 	},
-	tags: [{
-		type: String,
-	}],
+	tags: [
+		{
+			type: String,
+		},
+	],
 	background_url: {
 		type: String,
 	},
@@ -81,7 +84,29 @@ const ElementSchema = new Schema({
 	media_thumbnail: {
 		type: String,
 	},
+	element_collections: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "ElementCollection",
+		},
+	],
 });
+
+ElementSchema.pre( "deleteOne", { document: false, query: true }, async function (next) {
+		try {
+			const elementId = this.getQuery()._id;
+
+			// Update all ElementCollections that reference the element to be deleted
+			await ElementCollection.updateMany(
+				{ elements: elementId },
+				{ $pull: { elements: elementId } }
+			);
+			next();
+		} catch (error) {
+			next(error);
+		}
+	}
+);
 
 const Element = models.Element || model("Element", ElementSchema);
 

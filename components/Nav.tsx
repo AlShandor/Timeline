@@ -15,10 +15,13 @@ const Nav = () => {
 
 				<div className="flex gap-1">
 					<Link href="/create-element" className="inline-block">
-						<p className="nav_btn">Create</p>
+						<p className="nav_btn">Create Element</p>
 					</Link>
 					<Link href="/edit-element" className="inline-block">
-						<p className="nav_btn">Edit</p>
+						<p className="nav_btn">Edit Element</p>
+					</Link>
+					<Link href="/create-elementCollection" className="inline-block">
+						<p className="nav_btn">Create Collection</p>
 					</Link>
 				</div>
 			</header>
