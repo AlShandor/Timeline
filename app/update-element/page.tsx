@@ -12,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof elementSchema>;
 
-const EditElement = () => {
+const UpdateElement = () => {
     const router = useRouter();
     const [tags, setTags] = useState([]);
     const searchParams = useSearchParams();
@@ -73,4 +73,4 @@ const EditElement = () => {
 		/>
 	);
 }
-export default EditElement;
+export default UpdateElement;

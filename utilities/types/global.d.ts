@@ -25,6 +25,7 @@ declare global {
 		media_caption_bg: string | null;
 		media_credit: string | null;
 		media_thumbnail: string | null;
+		element_collections: Array<any> | null;
 	}
 
     interface IEvent {
@@ -53,5 +54,13 @@ declare global {
 			caption: string | null;
 			credit: string | null;
 		};
+	}
+
+    interface IElementCollection {
+		_id: string;
+		title_en: string | null;
+		title_bg: string | null;
+		img_url: string | null;
+		elements: Array<any> | null;
 	}
 }

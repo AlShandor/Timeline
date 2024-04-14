@@ -23,6 +23,9 @@ const Nav = () => {
 					<Link href="/create-elementCollection" className="inline-block">
 						<p className="nav_btn">Create Collection</p>
 					</Link>
+                    <Link href="/edit-elementCollection" className="inline-block">
+						<p className="nav_btn">Edit Collection</p>
+					</Link>
 				</div>
 			</header>
 		</nav>

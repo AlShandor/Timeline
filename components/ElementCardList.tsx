@@ -19,7 +19,7 @@ const ElementCardList = ({ elements, setElements, handleTagClick, handleSelectEl
 
 	const handleDelete = async (element) => {
 		const hasConfirmed = confirm(
-			"Are you sure you want to delete this prompt?"
+			"Are you sure you want to delete this element?"
 		);
 
 		if (hasConfirmed) {

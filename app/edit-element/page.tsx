@@ -4,7 +4,7 @@ import { useState } from "react";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 
-const Edit = () => {
+const EditElement = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 
     const isSelected = () => {};
@@ -31,4 +31,4 @@ const Edit = () => {
 	);
 };
 
-export default Edit;
+export default EditElement;
