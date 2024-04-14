@@ -31,7 +31,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 					</div>
 
 					<div className="flex flex-col">
-						<h3 className="font-satoshi font-semibold text-gray-900 break-all line-clamp-3 leading-[22px]">
+						<h3 className="font-noto font-semibold text-gray-900 break-all line-clamp-3 leading-[22px]">
 							{element.headline_en}
 						</h3>
 						<p className="font-noto text-sm text-gray-500">
@@ -42,7 +42,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 				</div>
 			</div>
 
-			<p className="line-clamp-3 mt-4 mb-2 h-[60px] font-satoshi text-sm text-gray-700">
+			<p className="line-clamp-3 mt-4 mb-2 h-[60px] font-noto text-sm text-gray-700">
 				{element.text_en}
 			</p>
 

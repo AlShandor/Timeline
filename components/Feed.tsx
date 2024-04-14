@@ -95,7 +95,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 
 	return (
 		<section className="feed">
-			<form className="relative w-full flex-center leading-5">
+			<form className="relative w-full flex-center leading-5 mb-16">
 				<div
 					className={
 						sortBy != "searchYear"
@@ -185,7 +185,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 
 			{pathName !== "/edit-element" && (
 				<p
-					className="font-inter text-sm select_btn bg-primary-green cursor-pointer mx-auto mb-4 mt-16"
+					className="font-inter text-sm select_btn bg-primary-green cursor-pointer mx-auto mb-4"
 					onClick={() => handleSelectAllElements()}
 				>
 					Select All
@@ -207,7 +207,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 				)}
 				{pathName !== "/edit-element" && (
 					<div className="mx-auto ml-4 h-auto w-[200px] flex flex-col">
-						<p className="font-satoshi text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
+						<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
 							Selected Elements
 						</p>
 						{selected && selected.length > 0 && (
@@ -240,7 +240,7 @@ const Feed = ({ elements, setElements, handleSelectElement, handleSelectAllEleme
 					<Loader />
 				</div>
 			) : (
-				<div className="font-satoshi font-medium text-gray-900 my-8 mx-auto">
+				<div className="font-noto font-medium text-gray-900 my-8 mx-auto">
 					No more results
 				</div>
 			)}

@@ -100,7 +100,7 @@
 }
 
 .create_section_input_title {
-    @apply font-satoshi font-semibold text-base text-gray-700;
+    @apply font-noto font-semibold text-base text-gray-700;
 }
 
 .create_section_input_title, .create_section_input_title_small {
@@ -149,6 +149,11 @@
 
 .create_section_input_title_small {
     @apply block text-xs;
+}
+
+/* Element Collection Card */
+.collection-line {
+    @apply before:content-[''] before:bg-gray-500 before:inline-block before:w-[50%] before:h-[1px] before:relative before:align-middle before:right-2 before:ml-[-50%] after:content-[''] after:bg-gray-500 after:inline-block after:w-[50%] after:h-[1px] after:relative after:align-middle after:left-2 after:mr-[-50%];
 }
 
 /* Nav Component */

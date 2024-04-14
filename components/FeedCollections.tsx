@@ -55,7 +55,7 @@ const FeedCollections = ({ elementCollections, setElementCollections }) => {
 
 	return (
 		<section className="feed">
-			<form className="relative w-full flex-center leading-5">
+			<form className="relative w-full flex-center leading-5 mb-16">
 				<div className="w-full max-w-xl relative">
 					<input
 						type="text"
@@ -78,7 +78,7 @@ const FeedCollections = ({ elementCollections, setElementCollections }) => {
 					<Loader />
 				</div>
 			) : (
-				<div className="font-satoshi font-medium text-gray-900 my-8 mx-auto">No more results</div>
+				<div className="font-noto font-medium text-gray-900 my-8 mx-auto">No more results</div>
 			)}
 		</section>
 	);

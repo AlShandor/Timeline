@@ -3,6 +3,10 @@
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
+import localFont from "next/font/local";
+
+const myFont = localFont({ src: "../public/fonts/Handlee-Regular.ttf" });
+
 interface Props {
 	collection: IElementCollection;
 	handleEdit: Function;
@@ -10,10 +14,15 @@ interface Props {
 }
 
 const ElementCollectionCard = ({ collection, handleEdit, handleDelete }: Props) => {
-    const pathName = usePathname();
+	const pathName = usePathname();
 
 	return (
 		<div className="element_card bg-white/70">
+			<h2
+				className={`${myFont.className} collection-line text-gray-500 text-2xl text-center w-full mt-2.5 mb-5 overflow-hidden`}
+			>
+				Collection
+			</h2>
 			<div className="flex justify-between items-start gap-5">
 				<div className="flex-1 flex justify-start items-center gap-4">
 					<div className="min-w-[90px] w-[90px] h-[90px] relative">
@@ -26,14 +35,15 @@ const ElementCollectionCard = ({ collection, handleEdit, handleDelete }: Props) 
 						/>
 					</div>
 
-					<div className="flex flex-col">
-						<h3 className="font-satoshi font-semibold text-gray-900 break-all line-clamp-3 leading-[22px]">
+					<div className="w-full flex flex-col">
+						<h3
+							className="font-noto font-semibold text-center text-gray-900 break-all line-clamp-3 leading-[22px]"
+						>
 							{collection.title_en}
 						</h3>
 					</div>
 				</div>
 			</div>
-
 			{/* Edit/Delete buttons */}
 			{pathName === "/edit-elementCollection" && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
