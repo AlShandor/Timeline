@@ -1,6 +1,8 @@
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export const useCustomParams = () => {
+	const pathName = usePathname();
+
 	// router
 	const searchParams = useSearchParams();
 	const titleParam = searchParams.get("title");
@@ -14,15 +16,17 @@ export const useCustomParams = () => {
 	const end = endYearParam ? endYearParam : "";
 
     let sort;
-    if (title) {
-        sort = "searchTitle";
+    if (!title && pathName == ("/edit-elementCollection")) {
+		sort = "searchCollection";
+    } else if (title) {
+		sort = "searchTitle";
 	} else if (tag) {
-        sort = "searchTag";
-    } else if (start) {
-        sort = "searchYear";
+		sort = "searchTag";
+	} else if (start) {
+		sort = "searchYear";
 	} else {
-        sort = "searchTitle";
-    }
+		sort = "searchTitle";
+	}
 
 	return { title, start, end, tag, sort };
 };

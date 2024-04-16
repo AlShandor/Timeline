@@ -5,6 +5,8 @@ const FormElementCollection = ({
 	type,
 	elements,
 	setElements,
+    elementCollections,
+    setElementCollections,
 	handleSelectElement,
 	handleSelectAllElements,
 	handleRemoveElement,
@@ -69,6 +71,8 @@ const FormElementCollection = ({
 			<Feed
 				elements={elements}
 				setElements={setElements}
+				elementCollections={elementCollections}
+				setElementCollections={setElementCollections}
 				handleSelectElement={handleSelectElement}
 				handleSelectAllElements={handleSelectAllElements}
 				handleRemoveElement={handleRemoveElement}

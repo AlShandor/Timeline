@@ -13,6 +13,7 @@ const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
 
 const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
+	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const { events, selected, setSelected, isSelected } = useEvents();
 
     const handleSelectElement = (newEl) => {
@@ -38,24 +39,16 @@ const Home = () => {
 				<h1 className="head_text text-center">
 					Discover & Share
 					<br className="max-md:hidden" />
-					<span className="blue_gradient text-center">
-						Historical Figures and Events
-					</span>
+					<span className="blue_gradient text-center">Historical Figures and Events</span>
 				</h1>
 				<p className="desc text-center">
-					Timeline is an online tool that helps you study and
-					visualize historical figures and events.
+					Timeline is an online tool that helps you study and visualize historical figures and events.
 				</p>
 			</section>
 			<section>
 				<div className="container w-[1600px] max-w-[1600px]">
 					<DynamicTimeline
-						target={
-							<div
-								className="timeline"
-								style={{ width: "100%", height: 500 }}
-							/>
-						}
+						target={<div className="timeline" style={{ width: "100%", height: 500 }} />}
 						events={events}
 						title={timelineTitle}
 						options=""
@@ -65,6 +58,8 @@ const Home = () => {
 			<Feed
 				elements={elements}
 				setElements={setElements}
+				elementCollections={elementCollections}
+				setElementCollections={setElementCollections}
 				handleSelectElement={handleSelectElement}
 				handleSelectAllElements={handleSelectAllElements}
 				handleRemoveElement={handleRemoveElement}
