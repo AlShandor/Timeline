@@ -6,6 +6,7 @@ import Footer from "@components/Footer";
 
 const EditElement = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
+	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 
     const isSelected = () => {};
     const selected = [];
@@ -19,6 +20,8 @@ const EditElement = () => {
 			<Feed
 				elements={elements}
 				setElements={setElements}
+				elementCollections={elementCollections}
+				setElementCollections={setElementCollections}
 				handleSelectElement={handleSelectElement}
 				handleSelectAllElements={handleSelectAllElements}
 				handleRemoveElement={handleRemoveElement}

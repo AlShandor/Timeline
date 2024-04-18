@@ -1,15 +1,46 @@
 "use client";
 
-import FeedCollections from "@components/FeedCollections";
+import Feed from "@components/Feed";
 import Footer from "@components/Footer";
+import { useEvents } from "@hooks/useEvents";
 import { useState } from "react";
 
 const EditElementCollection = () => {
+	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
+	const { selected, setSelected, isSelected } = useEvents();
+
+	const handleSelectElement = (newEl) => {
+		setSelected((selected) => [...selected, newEl]);
+	};
+
+	const handleSelectAllElements = () => {
+		setSelected(elements);
+	};
+
+	const handleRemoveElement = (el) => {
+		const filteredElements = selected.filter((item) => item._id !== el._id);
+		setSelected(filteredElements);
+	};
+
+	const handleRemoveAllElements = () => {
+		setSelected([]);
+	};
 
 	return (
 		<>
-			<FeedCollections elementCollections={elementCollections} setElementCollections={setElementCollections} />
+			<Feed
+				elements={elements}
+				setElements={setElements}
+				elementCollections={elementCollections}
+				setElementCollections={setElementCollections}
+				handleSelectElement={handleSelectElement}
+				handleSelectAllElements={handleSelectAllElements}
+				handleRemoveElement={handleRemoveElement}
+				handleRemoveAllElements={handleRemoveAllElements}
+				selected={selected}
+				isSelected={isSelected}
+			/>
 			<Footer />
 		</>
 	);

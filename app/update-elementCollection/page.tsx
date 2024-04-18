@@ -16,6 +16,7 @@ type FormFields = z.infer<typeof elementCollectionSchema>;
 const UpdateElementCollection = () => {
 	const router = useRouter();
 	const [elements, setElements] = useState<Array<IElement>>([]);
+	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const { selected, setSelected, isSelected } = useEvents();
 	const searchParams = useSearchParams();
 	const collectionId = searchParams.get("id");
@@ -84,6 +85,8 @@ const UpdateElementCollection = () => {
 			type="Edit"
 			elements={elements}
 			setElements={setElements}
+			elementCollections={elementCollections}
+			setElementCollections={setElementCollections}
 			handleSelectElement={handleSelectElement}
 			handleSelectAllElements={handleSelectAllElements}
 			handleRemoveElement={handleRemoveElement}

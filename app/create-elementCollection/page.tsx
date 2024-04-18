@@ -19,6 +19,7 @@ const DEFAULT_IMG_URL = "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1
 const CreateElementCollection = () => {
     const router = useRouter();
     const [elements, setElements] = useState<Array<IElement>>([]);
+    const [elementCollections, setElementCollections] = useState<Array<IElement>>([]);
 	const { selected, setSelected, isSelected } = useEvents();
 
 	const handleSelectElement = (newEl) => {
@@ -70,6 +71,8 @@ const CreateElementCollection = () => {
 			type="Create"
 			elements={elements}
 			setElements={setElements}
+			elementCollections={elementCollections}
+			setElementCollections={setElementCollections}
 			handleSelectElement={handleSelectElement}
 			handleSelectAllElements={handleSelectAllElements}
 			handleRemoveElement={handleRemoveElement}
@@ -80,7 +83,7 @@ const CreateElementCollection = () => {
 			isSubmitting={isSubmitting}
 			handleSubmit={handleSubmit}
 			register={register}
-            errors={errors}
+			errors={errors}
 		/>
 	);
 };
