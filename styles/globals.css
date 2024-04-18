@@ -160,6 +160,10 @@
     @apply before:content-[''] before:bg-gray-500 before:inline-block before:w-[50%] before:h-[1px] before:relative before:align-middle before:right-2 before:ml-[-50%] after:content-[''] after:bg-gray-500 after:inline-block after:w-[50%] after:h-[1px] after:relative after:align-middle after:left-2 after:mr-[-50%];
 }
 
+.collection-header {
+    @apply collection-line text-gray-500 text-2xl text-center w-full mt-2.5 mb-5 overflow-hidden;
+}
+
 /* Nav Component */
 .logo_text {
 	@apply font-normal text-4xl blue_gradient p-1 tracking-wide;

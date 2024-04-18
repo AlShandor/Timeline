@@ -4,16 +4,17 @@ import ElementCollectionCard from "./ElementCollectionCard";
 interface Props {
 	elementCollections: Array<IElementCollection>;
 	setElementCollections: Function;
+	handleView: Function;
 }
 
-const CollectionCardList = ({ elementCollections, setElementCollections } : Props) => {
+const CollectionCardList = ({ elementCollections, setElementCollections, handleView }: Props) => {
 	const router = useRouter();
 
-    const handleEdit = (collection) => {
+	const handleEdit = (collection) => {
 		router.push(`/update-elementCollection?id=${collection._id}`);
 	};
 
-    const handleDelete = async (collection) => {
+	const handleDelete = async (collection) => {
 		const hasConfirmed = confirm("Are you sure you want to delete this collection?");
 
 		if (hasConfirmed) {
@@ -33,7 +34,7 @@ const CollectionCardList = ({ elementCollections, setElementCollections } : Prop
 		}
 	};
 
-    return (
+	return (
 		<div className="prompt_layout">
 			{elementCollections.map((collection) => (
 				<ElementCollectionCard
@@ -41,6 +42,7 @@ const CollectionCardList = ({ elementCollections, setElementCollections } : Prop
 					collection={collection}
 					handleEdit={handleEdit}
 					handleDelete={handleDelete}
+					handleView={handleView}
 				/>
 			))}
 		</div>

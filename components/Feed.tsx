@@ -13,6 +13,9 @@ import CollectionCardList from "./CollectionCardList";
 import ElementChip from "@components/ElementChip";
 import Loader from "./Loader";
 import { useHandleSearchCollection } from "@hooks/useHandleSearchCollection";
+import localFont from "next/font/local";
+
+const myFont = localFont({ src: "../public/fonts/Handlee-Regular.ttf" });
 
 interface Props {
 	elements;
@@ -53,10 +56,13 @@ const Feed = ({
 	const [endYear, setEndYear] = useState(end);
 	const [sortBy, setSortBy] = useState(sort);
 
+	const [isCollection, setIsCollection] = useState(false);
+	const [selectedCollectionTitle, setSelectedCollectionTitle] = useState("");
+
 	/* Handle Functions */
 	const { handleSearchCollectionTitle } = useHandleSearchCollection(setSearchCollectionTitle);
 	const { handleSearchTitle, handleSearchTag, handleTagClick, handleSearchStartYear, handleSearchEndYear, handleSortBy } =
-		useHandleSearch(setSearchTitle, setSearchTag, setStartYear, setEndYear, setSortBy);
+		useHandleSearch(setSearchTitle, setSearchTag, setStartYear, setEndYear, setSortBy, setIsCollection);
 
 	const debouncedTitle = useDebounceSingle(searchTitle, 700);
 	const debouncedTag = useDebounceSingle(searchTag, 700);
@@ -109,6 +115,22 @@ const Feed = ({
 		(sortBy === "searchCollection" &&
 			searchedElements &&
 			searchedElements[searchedElements.length - 1]?.length < PAGE_SIZE_COLLECTION);
+
+    const handleView = async (collection) => {     
+        try {
+            fetch(`/api/element-collection/${collection._id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setElements(data.elements);
+                setSelectedCollectionTitle(data.title_en);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        
+        setIsCollection(true);
+        setSortBy("searchTitle");
+	};
 
 	// activate infinite scroll when Loader is in view
 	useEffect(() => {
@@ -234,12 +256,20 @@ const Feed = ({
 				</p>
 			)}
 
+			{isCollection && (
+				<div className="flex flex-col min-w-[300px]">
+					<h2 className={`${myFont.className} collection-header max-w-[300px] mx-auto`}>Collection</h2>
+					<p className="text-xl font-semibold mb-5 leading-[1.15] text-[#1b1b1b] text-center">{selectedCollectionTitle}</p>
+				</div>
+			)}
+
 			<div className="flex flex-row">
 				{sortBy == "searchCollection" ? (
 					elementCollections && elementCollections.length > 0 ? (
 						<CollectionCardList
 							elementCollections={elementCollections}
 							setElementCollections={setElementCollections}
+							handleView={handleView}
 						/>
 					) : (
 						<div className="w-[1130px]"></div>
