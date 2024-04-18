@@ -123,13 +123,13 @@ const Feed = ({
             .then((data) => {
                 setElements(data.elements);
                 setSelectedCollectionTitle(data.title_en);
+            }).finally(() => {
+                setIsCollection(true);
+                setSortBy("searchTitle");
             });
         } catch (error) {
             console.log(error);
         }
-        
-        setIsCollection(true);
-        setSortBy("searchTitle");
 	};
 
 	// activate infinite scroll when Loader is in view
