@@ -1,7 +1,16 @@
 import Element from "@models/element";
 import { connectToDB } from "@utilities/database";
+import { auth } from "@clerk/nextjs/server";
 
 export  async function POST(request) {
+	// check if admin
+	const { has } = auth();
+	if (!has({ role: "org:admin" })) {
+		return new Response("You do not have rights", {
+			status: 401,
+		});
+	}
+
 	const {
 		start_year,
 		start_month,

@@ -1,5 +1,6 @@
 import Element from "@models/element";
 import { connectToDB } from "@utilities/database";
+import { auth } from "@clerk/nextjs/server";
 
 export async function GET(request, { params }){
 	try {
@@ -17,6 +18,14 @@ export async function GET(request, { params }){
 };
 
 export async function PATCH(request, { params }) {
+	// check if admin
+	const { has } = auth();
+	if (!has({ role: "org:admin" })) {
+		return new Response("You do not have rights", {
+			status: 401,
+		});
+	}
+
 	const {
 		start_year,
 		start_month,
@@ -76,7 +85,7 @@ export async function PATCH(request, { params }) {
 		existingElement.media_caption_bg = media_caption_bg;
 		existingElement.media_credit = media_credit;
 		existingElement.media_thumbnail = media_thumbnail;
-        existingElement.element_collections = element_collections;
+		existingElement.element_collections = element_collections;
 
 		await existingElement.save();
 
@@ -90,6 +99,14 @@ export async function PATCH(request, { params }) {
 
 export async function DELETE(request, { params }) {
 	try {
+        // check if admin
+        const { has } = auth();
+		if (!has({ role: "org:admin" })) {
+			return new Response("You do not have rights", {
+				status: 401,
+			});
+		}
+
 		await connectToDB();
 
 		await Element.deleteOne({ _id: params.id });

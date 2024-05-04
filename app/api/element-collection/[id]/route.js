@@ -1,6 +1,7 @@
 import ElementCollection from "@models/elementCollection";
 import Element from "@models/element";
 import { connectToDB } from "@utilities/database";
+import { auth } from "@clerk/nextjs/server";
 
 export async function GET(request, { params }) {
 	try {
@@ -18,6 +19,15 @@ export async function GET(request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
+	// check if admin
+	const { has } = auth();
+	if (!has({ role: "org:admin" })) {
+		return new Response("You do not have rights", {
+			status: 401,
+		});
+	}
+
+
 	const { title_en, title_bg, img_url, elements } = await request.json();
 
 	try {
@@ -68,6 +78,14 @@ export async function PATCH(request, { params }) {
 
 export async function DELETE(request, { params }) {
 	try {
+		// check if admin
+		const { has } = auth();
+		if (!has({ role: "org:admin" })) {
+			return new Response("You do not have rights", {
+				status: 401,
+			});
+		}
+
 		await connectToDB();
 
 		await ElementCollection.deleteOne({ _id: params.id });
