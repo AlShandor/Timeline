@@ -38,7 +38,7 @@ const ElementCollectionCard = ({ collection, handleEdit, handleDelete, handleVie
 				</div>
 			</div>
 			{/* Edit/Delete buttons */}
-			{pathName === "/edit-elementCollection" && (
+			{pathName.includes("/edit-elementCollection") && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
 					<p className="font-inter yellow_btn cursor-pointer" onClick={() => handleEdit(collection)}>
 						Edit
@@ -48,7 +48,7 @@ const ElementCollectionCard = ({ collection, handleEdit, handleDelete, handleVie
 					</p>
 				</div>
 			)}
-			{pathName !== "/edit-elementCollection" && (
+			{!pathName.includes("/edit-elementCollection") && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
 					<p
 						className="font-inter text-sm select_btn bg-primary-green cursor-pointer"

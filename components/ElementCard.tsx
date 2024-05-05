@@ -15,7 +15,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 	const pathName = usePathname();
 
 	return (
-		<div className={ isSelected(element) ? "element_card bg-selected-green" : "element_card bg-white/70" } >
+		<div className={isSelected(element) ? "element_card bg-selected-green" : "element_card bg-white/70"}>
 			<div className="flex justify-between items-start gap-5">
 				<div className="flex-1 flex justify-start items-center gap-4">
 					<div className="min-w-[90px] w-[90px] h-[90px] relative">
@@ -34,15 +34,15 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 						</h3>
 						<p className="font-noto text-sm text-gray-500">
 							{element.start_year < 0 ? Math.abs(element.start_year) + " BCE" : element.start_year + " CE"}{" "}
-							{element.end_year ? " - " + (element.end_year < 0 ? Math.abs(element.end_year) + " BCE" : element.end_year + " CE") : ""}
+							{element.end_year
+								? " - " + (element.end_year < 0 ? Math.abs(element.end_year) + " BCE" : element.end_year + " CE")
+								: ""}
 						</p>
 					</div>
 				</div>
 			</div>
 
-			<p className="line-clamp-3 mt-4 mb-2 h-[60px] font-noto text-sm text-gray-700">
-				{element.text_en}
-			</p>
+			<p className="line-clamp-3 mt-4 mb-2 h-[60px] font-noto text-sm text-gray-700">{element.text_en}</p>
 
 			{/* Tags */}
 			{element.tags && (
@@ -51,9 +51,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 						<p
 							key={tag}
 							className="inline-block font-inter p-1 text-sm text-cyan-500 cursor-pointer"
-							onClick={() =>
-								handleTagClick && handleTagClick(tag)
-							}
+							onClick={() => handleTagClick && handleTagClick(tag)}
 						>
 							#{tag}
 						</p>
@@ -62,15 +60,12 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 			)}
 
 			{/* Select/Remove buttons */}
-			{pathName !== "/edit-element" &&
+			{!pathName.includes("/edit-element") &&
 				(!isSelected(element) ? (
 					<div className="border-t border-gray-300 pt-3">
 						<p
 							className="font-inter text-sm select_btn bg-primary-green cursor-pointer"
-							onClick={() =>
-								handleSelectElement &&
-								handleSelectElement(element)
-							}
+							onClick={() => handleSelectElement && handleSelectElement(element)}
 						>
 							Select
 						</p>
@@ -79,10 +74,7 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 					<div className="border-t border-gray-300 pt-3">
 						<p
 							className="font-inter text-sm select_btn bg-remove-red cursor-pointer"
-							onClick={() =>
-								handleRemoveElement &&
-								handleRemoveElement(element)
-							}
+							onClick={() => handleRemoveElement && handleRemoveElement(element)}
 						>
 							Remove
 						</p>
@@ -90,18 +82,12 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 				))}
 
 			{/* Edit/Delete buttons */}
-			{pathName === "/edit-element" && (
+			{pathName.includes("/edit-element") && (
 				<div className="mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
-					<p
-						className="font-inter yellow_btn cursor-pointer"
-						onClick={() => handleEdit(element)}
-					>
+					<p className="font-inter yellow_btn cursor-pointer" onClick={() => handleEdit(element)}>
 						Edit
 					</p>
-					<p
-						className="font-inter text-sm text-red-500 cursor-pointer"
-						onClick={() => handleDelete(element)}
-					>
+					<p className="font-inter text-sm text-red-500 cursor-pointer" onClick={() => handleDelete(element)}>
 						Delete
 					</p>
 				</div>

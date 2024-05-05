@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Feed from "./Feed";
+import { useLocale } from "next-intl";
 
 const FormElementCollection = ({
 	type,
@@ -19,6 +20,8 @@ const FormElementCollection = ({
     register,
     errors,
 }) => {
+    const locale = useLocale();
+
 	return (
 		<section className="w-full max-w-full flex-start flex-col">
 			<h1 className="head_text text-left cursor-default">
@@ -62,7 +65,7 @@ const FormElementCollection = ({
 						{isSubmitting ? `${type}ing...` : type}
 					</button>
 
-					<Link href="/edit-elementCollection" className="text-gray-500 text-sm my-auto">
+					<Link href="/edit-elementCollection" locale={locale} className="text-gray-500 text-sm my-auto">
 						Cancel
 					</Link>
 				</div>

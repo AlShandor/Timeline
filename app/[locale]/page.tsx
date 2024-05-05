@@ -7,7 +7,7 @@ import { useEvents } from "@hooks/useEvents";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 
-const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
+const DynamicTimeline = dynamic(() => import("@/components/Timeline"), {
 	ssr: false,
 });
 
@@ -16,20 +16,20 @@ const Home = () => {
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const { events, selected, setSelected, isSelected } = useEvents();
 
-    const handleSelectElement = (newEl) => {
-        setSelected((selected) => [...selected, newEl]);
+	const handleSelectElement = (newEl) => {
+		setSelected((selected) => [...selected, newEl]);
 	};
 
-    const handleSelectAllElements = () => {
+	const handleSelectAllElements = () => {
 		setSelected(elements);
 	};
 
-    const handleRemoveElement = (el) => {
-        const filteredElements = selected.filter((item) => item._id !== el._id);
-        setSelected(filteredElements);
-    };
+	const handleRemoveElement = (el) => {
+		const filteredElements = selected.filter((item) => item._id !== el._id);
+		setSelected(filteredElements);
+	};
 
-    const handleRemoveAllElements = () => {
+	const handleRemoveAllElements = () => {
 		setSelected([]);
 	};
 
@@ -37,7 +37,7 @@ const Home = () => {
 		<>
 			<section className="w-full mb-12 flex-center flex-col">
 				<h1 className="head_text text-center">
-					Discover & Share
+					Share & Discover
 					<br className="max-md:hidden" />
 					<span className="blue_gradient text-center">Historical Figures and Events</span>
 				</h1>

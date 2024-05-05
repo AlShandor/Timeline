@@ -167,7 +167,7 @@ const Feed = ({
 							value={sortBy}
 							onChange={handleSortBy}
 						>
-							{pathName == "/edit-elementCollection" ? (
+							{pathName.includes("/edit-elementCollection") ? (
 								<option className="select_option" value="searchCollection">
 									Collection
 								</option>
@@ -247,7 +247,7 @@ const Feed = ({
 				</div>
 			</form>
 
-			{pathName !== "/edit-element" && (
+			{!pathName.includes("/edit-element") && (
 				<p
 					className="font-inter text-sm select_btn bg-primary-green cursor-pointer mx-auto mb-4"
 					onClick={() => handleSelectAllElements()}
@@ -259,7 +259,9 @@ const Feed = ({
 			{isCollection && (
 				<div className="flex flex-col min-w-[300px]">
 					<h2 className={`${myFont.className} collection-header max-w-[300px] mx-auto`}>Collection</h2>
-					<p className="text-xl font-semibold mb-5 leading-[1.15] text-[#1b1b1b] text-center">{selectedCollectionTitle}</p>
+					<p className="text-xl font-semibold mb-5 leading-[1.15] text-[#1b1b1b] text-center">
+						{selectedCollectionTitle}
+					</p>
 				</div>
 			)}
 
@@ -287,7 +289,7 @@ const Feed = ({
 					<div className="w-[1130px]"></div>
 				)}
 
-				{pathName !== "/edit-element" && pathName !== "/edit-elementCollection" && (
+				{!pathName.includes("/edit-element") && !pathName.includes("/edit-elementCollection") && (
 					<div className="mx-auto ml-4 h-auto w-[200px] flex flex-col">
 						<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
 							Selected Elements
