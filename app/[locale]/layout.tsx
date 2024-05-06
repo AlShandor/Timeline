@@ -1,6 +1,7 @@
 import "@styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Locale, i18n } from "@/i18n.config";
+import { locales } from "@/localization.config";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 import Nav from "@components/Nav";
 
 export const metadata = {
@@ -9,17 +10,20 @@ export const metadata = {
 };
 
 export async function generateStaticParams() {
-	return i18n.locales.map((locale) => ({ lang: locale }));
+	return locales.map((locale) => ({ lang: locale }));
 }
 
 const RootLayout = ({ children, params: { locale } }) => {
+    const messages = useMessages();
 	return (
 		<ClerkProvider>
 			<html lang={locale}>
 				<body>
-					<div className="background" />
-					<Nav />
-					<main className="main">{children}</main>
+					<NextIntlClientProvider locale={locale} messages={messages}>
+						<div className="background" />
+						<Nav />
+						<main className="main">{children}</main>
+					</NextIntlClientProvider>
 				</body>
 			</html>
 		</ClerkProvider>

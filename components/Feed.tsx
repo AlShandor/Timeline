@@ -14,6 +14,7 @@ import ElementChip from "@components/ElementChip";
 import Loader from "./Loader";
 import { useHandleSearchCollection } from "@hooks/useHandleSearchCollection";
 import localFont from "next/font/local";
+import { useTranslations } from "next-intl";
 
 const myFont = localFont({ src: "../public/fonts/Handlee-Regular.ttf" });
 
@@ -48,6 +49,7 @@ const Feed = ({
 	const pathName = usePathname();
 	const { title, start, end, tag, sort } = useCustomParams();
 	const { ref, inView } = useInView();
+	const t = useTranslations("feed");
 
 	const [searchTitle, setSearchTitle] = useState(title);
 	const [searchCollectionTitle, setSearchCollectionTitle] = useState(title);
@@ -169,21 +171,21 @@ const Feed = ({
 						>
 							{pathName.includes("/edit-elementCollection") ? (
 								<option className="select_option" value="searchCollection">
-									Collection
+									{t("collection")}
 								</option>
 							) : (
 								<>
 									<option className="select_option" value="searchTitle">
-										Title
+										{t("title")}
 									</option>
 									<option className="select_option" value="searchTag">
-										Tag
+										{t("tag")}
 									</option>
 									<option className="select_option" value="searchYear">
-										Year
+										{t("year")}
 									</option>
 									<option className="select_option" value="searchCollection">
-										Collection
+										{t("collection")}
 									</option>
 								</>
 							)}
@@ -194,7 +196,7 @@ const Feed = ({
 					{sortBy && sortBy == "searchTitle" && (
 						<input
 							type="text"
-							placeholder="Search for timeline elements"
+							placeholder={t("placeholder")}
 							value={searchTitle}
 							onChange={handleSearchTitle}
 							className="search_input"
@@ -205,7 +207,7 @@ const Feed = ({
 					{sortBy && sortBy == "searchTag" && (
 						<input
 							type="text"
-							placeholder="Search for timeline elements"
+							placeholder={t("placeholder")}
 							value={searchTag}
 							onChange={handleSearchTag}
 							className="search_input"
@@ -216,7 +218,7 @@ const Feed = ({
 					{sortBy && sortBy == "searchYear" && (
 						<input
 							type="number"
-							placeholder="Start Year"
+							placeholder={t("start-year")}
 							value={startYear}
 							onChange={handleSearchStartYear}
 							className="search_year"
@@ -227,7 +229,7 @@ const Feed = ({
 					{sortBy && sortBy == "searchYear" && (
 						<input
 							type="number"
-							placeholder="End Year"
+							placeholder={t("end-year")}
 							value={endYear}
 							onChange={handleSearchEndYear}
 							className={startYear.length > 0 ? "search_year" : "search_year invisible"}
@@ -238,7 +240,7 @@ const Feed = ({
 					{sortBy && sortBy == "searchCollection" && (
 						<input
 							type="text"
-							placeholder="Search for timeline elements"
+							placeholder={t("placeholderCollection")}
 							value={searchCollectionTitle}
 							onChange={handleSearchCollectionTitle}
 							className="search_input"
@@ -252,13 +254,13 @@ const Feed = ({
 					className="font-inter text-sm select_btn bg-primary-green cursor-pointer mx-auto mb-4"
 					onClick={() => handleSelectAllElements()}
 				>
-					Select All
+					{t("select-all")}
 				</p>
 			)}
 
 			{isCollection && (
 				<div className="flex flex-col min-w-[300px]">
-					<h2 className={`${myFont.className} collection-header max-w-[300px] mx-auto`}>Collection</h2>
+					<h2 className={`${myFont.className} collection-header max-w-[300px] mx-auto`}>{t("collection")}</h2>
 					<p className="text-xl font-semibold mb-5 leading-[1.15] text-[#1b1b1b] text-center">
 						{selectedCollectionTitle}
 					</p>
@@ -292,14 +294,14 @@ const Feed = ({
 				{!pathName.includes("/edit-element") && !pathName.includes("/edit-elementCollection") && (
 					<div className="mx-auto ml-4 h-auto w-[200px] flex flex-col">
 						<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
-							Selected Elements
+							{t("selected-elements")}
 						</p>
 						{selected && selected.length > 0 && (
 							<p
 								className="font-inter text-sm select_btn bg-remove-red cursor-pointer mx-auto mb-4"
 								onClick={() => handleRemoveAllElements()}
 							>
-								Remove All
+								{t("remove-all")}
 							</p>
 						)}
 						{selected &&
@@ -316,7 +318,7 @@ const Feed = ({
 					<Loader />
 				</div>
 			) : (
-				<div className="font-noto font-medium text-gray-900 my-8 mx-auto">No more results</div>
+				<div className="font-noto font-medium text-gray-900 my-8 mx-auto">{t("no-results")}</div>
 			)}
 		</section>
 	);

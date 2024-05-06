@@ -2,6 +2,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import { Protect, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useLocale } from "next-intl";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const myFont = localFont({ src: "../public/fonts/GreatVibes-Regular.ttf" });
 
@@ -31,12 +32,16 @@ const Nav = () => {
 					</div>
 				</Protect>
 
-				<SignedOut>
-					<SignInButton />
-				</SignedOut>
-				<SignedIn>
-					<UserButton />
-				</SignedIn>
+				<div className="flex flex-row align-middle">
+					<LocaleSwitcher />
+
+					<SignedOut>
+						<SignInButton />
+					</SignedOut>
+					<SignedIn>
+						<UserButton />
+					</SignedIn>
+				</div>
 			</header>
 		</nav>
 	);

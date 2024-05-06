@@ -1,16 +1,16 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { i18n } from "@/i18n.config";
+import { locales, defaultLocale } from "@/localization.config";
 import createMiddleware from "next-intl/middleware";
 
-const intlMiddleware = createMiddleware(i18n);
+const intlMiddleware = createMiddleware({locales: locales, defaultLocale: defaultLocale});
 
 const isProtectedRoute = createRouteMatcher([
-	"/(" + i18n.locales.join('|') + ")/create-element(.*)",
-	"/(" + i18n.locales.join('|') + ")/edit-element(.*)",
-	"/(" + i18n.locales.join('|') + ")/update-element(.*)",
-	"/(" + i18n.locales.join('|') + ")/create-elementCollection(.*)",
-	"/(" + i18n.locales.join('|') + ")/edit-elementCollection(.*)",
-	"/(" + i18n.locales.join('|') + ")/update-elementCollection(.*)",
+	"/(" + locales.join('|') + ")/create-element(.*)",
+	"/(" + locales.join('|') + ")/edit-element(.*)",
+	"/(" + locales.join('|') + ")/update-element(.*)",
+	"/(" + locales.join('|') + ")/create-elementCollection(.*)",
+	"/(" + locales.join('|') + ")/edit-elementCollection(.*)",
+	"/(" + locales.join('|') + ")/update-elementCollection(.*)",
 ]);
 
 export default clerkMiddleware((auth, req) => {

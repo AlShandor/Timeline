@@ -4,6 +4,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { timelineTitle } from "@utilities/initialEvents";
 import { useEvents } from "@hooks/useEvents";
+import { useTranslations } from "next-intl";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 
@@ -15,6 +16,7 @@ const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const { events, selected, setSelected, isSelected } = useEvents();
+	const t = useTranslations("homepage");
 
 	const handleSelectElement = (newEl) => {
 		setSelected((selected) => [...selected, newEl]);
@@ -37,13 +39,11 @@ const Home = () => {
 		<>
 			<section className="w-full mb-12 flex-center flex-col">
 				<h1 className="head_text text-center">
-					Share & Discover
+					{t("title")}
 					<br className="max-md:hidden" />
-					<span className="blue_gradient text-center">Historical Figures and Events</span>
+					<span className="blue_gradient text-center">{t("blue-title")}</span>
 				</h1>
-				<p className="desc text-center">
-					Timeline is an online tool that helps you study and visualize historical figures and events.
-				</p>
+				<p className="desc text-center">{t("subtitle")}</p>
 			</section>
 			<section>
 				<div className="container w-[1600px] max-w-[1600px]">
