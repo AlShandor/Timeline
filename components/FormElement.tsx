@@ -1,6 +1,7 @@
 import Link from "next/link";
 import TagsInput from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
+import { useLocale } from "next-intl";
 
 const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, errors, tags, setTags }) => {
 	const inputProps = {
@@ -12,6 +13,8 @@ const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, 
 		className: "tags_card",
 		classNameRemove: "tags_card_remove",
 	};
+
+    const locale = useLocale();
 
 	return (
 		<section className="w-full max-w-full flex-start flex-col">
@@ -394,7 +397,7 @@ const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, 
 					</label>
 
 					<div className="flex-end mx-3 my-[18px] gap-4">
-						<Link href="/edit-element" className="text-gray-500 text-sm">
+						<Link href="/edit-element" locale={locale} className="text-gray-500 text-sm">
 							Cancel
 						</Link>
 

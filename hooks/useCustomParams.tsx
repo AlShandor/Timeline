@@ -16,9 +16,9 @@ export const useCustomParams = () => {
 	const end = endYearParam ? endYearParam : "";
 
     let sort;
-    if (!title && pathName == ("/edit-elementCollection")) {
+    if (!title && pathName.includes("/edit-elementCollection")) {
 		sort = "searchCollection";
-    } else if (title) {
+	} else if (title) {
 		sort = "searchTitle";
 	} else if (tag) {
 		sort = "searchTag";

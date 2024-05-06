@@ -73,4 +73,5 @@ const UpdateElement = () => {
 		/>
 	);
 }
+
 export default UpdateElement;

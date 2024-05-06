@@ -1,0 +1,39 @@
+{
+	"localeSwitcher": {
+		"label": "Смяна на език",
+		"locale": "{locale}"
+	},
+	"homepage": {
+		"title": "Открий и Сподели",
+		"blue-title": "Исторически Личности и Събития",
+		"subtitle": "Линията на времето е онлайн инструмент, който ти помага да изследваш и визуализираш исторически личности и събития."
+	},
+	"feed": {
+		"title": "Име",
+		"tag": "Таг",
+		"year": "Година",
+		"collection": "Колекция",
+		"select-all": "Избери всички",
+		"remove-all": "Премахни всички",
+		"selected-elements": "Избрани Елементи",
+		"no-results": "Няма повече резултати",
+		"placeholder": "Търси елементи",
+		"placeholderCollection": "Търси колекции",
+		"start-year": "Начало",
+		"end-year": "Край"
+	},
+	"elementCard": {
+		"select": "Избери",
+		"remove": "Премахни",
+		"edit": "Редактирай",
+		"delete": "Изтрий",
+		"bce": " пр.н.е.",
+		"ce": " н.е."
+	},
+	"elementCollectionCard": {
+		"collection": "Колекция",
+		"view": "Прегледай",
+		"edit": "Редактирай",
+		"delete": "Изтрий"
+	}
+}

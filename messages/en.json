@@ -1,0 +1,39 @@
+{
+	"localeSwitcher": {
+		"label": "Change language",
+		"locale": "{locale}"
+	},
+	"homepage": {
+		"title": "Share & Discover",
+		"blue-title": "Historical Figures and Events",
+		"subtitle": "Timeline is an online tool that helps you study and visualize historical figures and events."
+	},
+	"feed": {
+		"title": "Title",
+		"tag": "Tag",
+		"year": "Year",
+		"collection": "Collection",
+		"select-all": "Select All",
+		"remove-all": "Remove All",
+		"selected-elements": "Selected Elements",
+		"no-results": "No more results",
+		"placeholder": "Search for timeline elements",
+		"placeholderCollection": "Search for collections",
+		"start-year": "Start Year",
+		"end-year": "End Year"
+	},
+    "elementCard": {
+        "select": "Select",
+        "remove": "Remove",
+        "edit": "Edit",
+        "delete": "Delete",
+        "bce": " BCE",
+        "ce": " CE"
+    },
+    "elementCollectionCard": {
+        "collection": "Collection",
+		"view": "View",
+		"edit": "Edit",
+		"delete": "Delete"
+	}
+}

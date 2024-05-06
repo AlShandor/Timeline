@@ -1,12 +1,16 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { locales, defaultLocale } from "@/localization.config";
+import createMiddleware from "next-intl/middleware";
+
+const intlMiddleware = createMiddleware({locales: locales, defaultLocale: defaultLocale});
 
 const isProtectedRoute = createRouteMatcher([
-	"/create-element(.*)",
-	"/edit-element(.*)",
-	"/update-element(.*)",
-	"/create-elementCollection(.*)",
-	"/edit-elementCollection(.*)",
-	"/update-elementCollection(.*)",
+	"/(" + locales.join('|') + ")/create-element(.*)",
+	"/(" + locales.join('|') + ")/edit-element(.*)",
+	"/(" + locales.join('|') + ")/update-element(.*)",
+	"/(" + locales.join('|') + ")/create-elementCollection(.*)",
+	"/(" + locales.join('|') + ")/edit-elementCollection(.*)",
+	"/(" + locales.join('|') + ")/update-elementCollection(.*)",
 ]);
 
 export default clerkMiddleware((auth, req) => {
@@ -16,4 +20,14 @@ export default clerkMiddleware((auth, req) => {
 			return has({ role: "org:admin" });
 		});
 	}
+
+    // do not localize api routes
+    const path = req.nextUrl.pathname;
+	if (!path.includes("/api")) {
+		return intlMiddleware(req);
+	}
 });
+
+export const config = {
+	matcher: "/((?!static|.*\\..*|_next).*)",
+};

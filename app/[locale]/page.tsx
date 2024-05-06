@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { timelineTitle } from "@utilities/initialEvents";
+import { timelineTitle_en, timelineTitle_bg } from "@utilities/initialEvents";
 import { useEvents } from "@hooks/useEvents";
+import { useLocale, useTranslations } from "next-intl";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 
-const DynamicTimeline = dynamic(() => import("../components/Timeline"), {
+const DynamicTimeline = dynamic(() => import("@/components/Timeline"), {
 	ssr: false,
 });
 
@@ -15,21 +16,23 @@ const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const { events, selected, setSelected, isSelected } = useEvents();
+    const locale = useLocale();
+	const t = useTranslations("homepage");
 
-    const handleSelectElement = (newEl) => {
-        setSelected((selected) => [...selected, newEl]);
+	const handleSelectElement = (newEl) => {
+		setSelected((selected) => [...selected, newEl]);
 	};
 
-    const handleSelectAllElements = () => {
+	const handleSelectAllElements = () => {
 		setSelected(elements);
 	};
 
-    const handleRemoveElement = (el) => {
-        const filteredElements = selected.filter((item) => item._id !== el._id);
-        setSelected(filteredElements);
-    };
+	const handleRemoveElement = (el) => {
+		const filteredElements = selected.filter((item) => item._id !== el._id);
+		setSelected(filteredElements);
+	};
 
-    const handleRemoveAllElements = () => {
+	const handleRemoveAllElements = () => {
 		setSelected([]);
 	};
 
@@ -37,20 +40,18 @@ const Home = () => {
 		<>
 			<section className="w-full mb-12 flex-center flex-col">
 				<h1 className="head_text text-center">
-					Discover & Share
+					{t("title")}
 					<br className="max-md:hidden" />
-					<span className="blue_gradient text-center">Historical Figures and Events</span>
+					<span className="blue_gradient text-center">{t("blue-title")}</span>
 				</h1>
-				<p className="desc text-center">
-					Timeline is an online tool that helps you study and visualize historical figures and events.
-				</p>
+				<p className="desc text-center">{t("subtitle")}</p>
 			</section>
 			<section>
 				<div className="container w-[1600px] max-w-[1600px]">
 					<DynamicTimeline
 						target={<div className="timeline" style={{ width: "100%", height: 500 }} />}
 						events={events}
-						title={timelineTitle}
+						title={locale === "en" ? timelineTitle_en : timelineTitle_bg}
 						options=""
 					/>
 				</div>
