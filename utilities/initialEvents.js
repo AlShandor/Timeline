@@ -1,7 +1,17 @@
-export const timelineTitle = {
+export const timelineTitle_en = {
 	text: {
 		headline: "Timeline",
 		text: `Search, compare, visualize. Search for Biblical events and figures and visualize them on the timeline.`,
+	},
+	background: {
+		url: "https://cms-imgp.jw-cdn.org/img/p/1011718/univ/art/1011718_univ_cnt_1_xl.jpg",
+	},
+};
+
+export const timelineTitle_bg = {
+	text: {
+		headline: "Линия на времето",
+		text: `Търси, сравнявай, визуализирай. Търси библейски събития и личности и ги визуализирай на линията на времето`,
 	},
 	background: {
 		url: "https://cms-imgp.jw-cdn.org/img/p/1011718/univ/art/1011718_univ_cnt_1_xl.jpg",

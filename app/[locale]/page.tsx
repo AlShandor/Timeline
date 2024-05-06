@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { timelineTitle } from "@utilities/initialEvents";
+import { timelineTitle_en, timelineTitle_bg } from "@utilities/initialEvents";
 import { useEvents } from "@hooks/useEvents";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 
@@ -16,6 +16,7 @@ const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const { events, selected, setSelected, isSelected } = useEvents();
+    const locale = useLocale();
 	const t = useTranslations("homepage");
 
 	const handleSelectElement = (newEl) => {
@@ -50,7 +51,7 @@ const Home = () => {
 					<DynamicTimeline
 						target={<div className="timeline" style={{ width: "100%", height: 500 }} />}
 						events={events}
-						title={timelineTitle}
+						title={locale === "en" ? timelineTitle_en : timelineTitle_bg}
 						options=""
 					/>
 				</div>
