@@ -292,23 +292,27 @@ const Feed = ({
 				)}
 
 				{!pathName.includes("/edit-element") && !pathName.includes("/edit-elementCollection") && (
-					<div className="mx-auto ml-4 h-auto w-[200px] flex flex-col">
-						<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
-							{t("selected-elements")}
-						</p>
-						{selected && selected.length > 0 && (
-							<p
-								className="font-inter text-sm select_btn bg-remove-red cursor-pointer mx-auto mb-4"
-								onClick={() => handleRemoveAllElements()}
-							>
-								{t("remove-all")}
+					<div className="mx-auto ml-4 h-auto w-[200px]">
+						<div className="sticky top-0 flex flex-col">
+							<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
+								{t("selected-elements")}
 							</p>
-						)}
-						{selected &&
-							selected.length > 0 &&
-							selected
-								.sort((a, b) => a.start_year - b.start_year)
-								.map((el) => <ElementChip key={el._id} element={el} handleRemoveElement={handleRemoveElement} />)}
+							{selected && selected.length > 0 && (
+								<p
+									className="font-inter text-sm select_btn bg-remove-red cursor-pointer mx-auto mb-4"
+									onClick={() => handleRemoveAllElements()}
+								>
+									{t("remove-all")}
+								</p>
+							)}
+							{selected &&
+								selected.length > 0 &&
+								selected
+									.sort((a, b) => a.start_year - b.start_year)
+									.map((el) => (
+										<ElementChip key={el._id} element={el} handleRemoveElement={handleRemoveElement} />
+									))}
+						</div>
 					</div>
 				)}
 			</div>
