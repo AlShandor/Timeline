@@ -38,6 +38,7 @@ export const useEvents = () => {
 							caption: el.media_caption_en,
 							credit: el.media_credit,
 						},
+						group: el.group,
 					};
 				} else if (el.end_year && locale === "bg") {
 					return {
@@ -67,6 +68,7 @@ export const useEvents = () => {
 							caption: el.media_caption_bg,
 							credit: el.media_credit,
 						},
+						group: el.group,
 					};
 				} else if (!el.end_year && locale === "bg") {
 					return {
@@ -90,6 +92,7 @@ export const useEvents = () => {
 							caption: el.media_caption_bg,
 							credit: el.media_credit,
 						},
+						group: el.group,
 					};
 				} else {
 					//(!el.end_year && locale === "en")
@@ -114,6 +117,7 @@ export const useEvents = () => {
 							caption: el.media_caption_en,
 							credit: el.media_credit,
 						},
+                        group: el.group
 					};
 				}
 			})
