@@ -13,6 +13,7 @@ declare global {
 		end_hour: number | null;
 		display_date_en: string | null;
 		display_date_bg: string | null;
+		group: string | null;
 		headline_en: string | null;
 		headline_bg: string | null;
 		text_en: string | null;
@@ -54,6 +55,7 @@ declare global {
 			caption: string | null;
 			credit: string | null;
 		};
+        group?: string | null;
 	}
 
     interface IElementCollection {

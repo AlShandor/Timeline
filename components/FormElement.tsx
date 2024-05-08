@@ -202,6 +202,16 @@ const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, 
 							<p className="text-xs italic text-red-500 mt-2"> {errors.display_date_bg?.message} </p>
 						)}
 					</label>
+
+					{/* Group */}
+					<label>
+						<span className="create_section_input_title">Group</span>
+
+						<input type="text" className="form_input" name="group" {...register("group")} />
+						{errors.group && (
+							<p className="text-xs italic text-red-500 mt-2"> {errors.group?.message} </p>
+						)}
+					</label>
 				</section>
 
 				{/* Text Section */}

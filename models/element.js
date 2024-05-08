@@ -44,6 +44,9 @@ const ElementSchema = new Schema({
 	display_date_bg: {
 		type: String,
 	},
+	group: {
+		type: String,
+	},
 	headline_en: {
 		type: String,
 		required: [true, "Headline EN is required."],

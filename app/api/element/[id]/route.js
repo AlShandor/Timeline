@@ -37,6 +37,7 @@ export async function PATCH(request, { params }) {
 		end_hour,
 		display_date_en,
 		display_date_bg,
+        group,
 		headline_en,
 		headline_bg,
 		text_en,
@@ -73,6 +74,7 @@ export async function PATCH(request, { params }) {
 		existingElement.end_hour = end_hour;
 		existingElement.display_date_en = display_date_en;
 		existingElement.display_date_bg = display_date_bg;
+		existingElement.group = group;
 		existingElement.headline_en = headline_en;
 		existingElement.headline_bg = headline_bg;
 		existingElement.text_en = text_en;

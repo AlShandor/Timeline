@@ -8,67 +8,31 @@ const url = "Valid URL. Must contain 'https://'.";
 
 export const elementSchema = z.object({
 	start_year: z.number(),
-	start_month: z
-		.number()
-		.min(1, { message: month })
-		.max(12, { message: month })
-		.nullable(),
-	start_day: z
-		.number()
-		.min(1, { message: day })
-		.max(31, { message: day })
-		.nullable(),
-	start_hour: z
-		.number()
-		.min(0, { message: hour })
-		.max(23, { message: hour })
-		.nullable(),
+	start_month: z.number().min(1, { message: month }).max(12, { message: month }).nullable(),
+	start_day: z.number().min(1, { message: day }).max(31, { message: day }).nullable(),
+	start_hour: z.number().min(0, { message: hour }).max(23, { message: hour }).nullable(),
 	end_year: z.number().nullable(),
-	end_month: z
-		.number()
-		.min(1, { message: month })
-		.max(12, { message: month })
-		.nullable(),
-	end_day: z
-		.number()
-		.min(1, { message: day })
-		.max(31, { message: day })
-		.nullable(),
-	end_hour: z
-		.number()
-		.min(0, { message: hour })
-		.max(23, { message: hour })
-		.nullable(),
+	end_month: z.number().min(1, { message: month }).max(12, { message: month }).nullable(),
+	end_day: z.number().min(1, { message: day }).max(31, { message: day }).nullable(),
+	end_hour: z.number().min(0, { message: hour }).max(23, { message: hour }).nullable(),
 	display_date_en: z.string(),
 	display_date_bg: z.string(),
+	group: z.string(),
 	headline_en: z.string().min(1, { message: title }),
 	headline_bg: z.string().min(1, { message: title }),
 	text_en: z.string(),
 	text_bg: z.string(),
 	tags: z.string().array(),
-	background_url: z.union([
-		z.literal(""),
-		z.string().trim().url({ message: url }),
-	]),
+	background_url: z.union([z.literal(""), z.string().trim().url({ message: url })]),
 	background_color: z.union([
 		z.literal(""),
-		z
-			.string()
-			.trim()
-			.min(4, { message: "Must be at least 4 characters" })
-			.regex(/^#/, { message: "Must contain '#'" }),
+		z.string().trim().min(4, { message: "Must be at least 4 characters" }).regex(/^#/, { message: "Must contain '#'" }),
 	]),
-	media_url: z.union([
-		z.literal(""),
-		z.string().trim().url({ message: url }),
-	]),
+	media_url: z.union([z.literal(""), z.string().trim().url({ message: url })]),
 	media_caption_en: z.string(),
 	media_caption_bg: z.string(),
 	media_credit: z.string(),
-	media_thumbnail: z.union([
-		z.literal(""),
-		z.string().trim().url({ message: url }),
-	]),
+	media_thumbnail: z.union([z.literal(""), z.string().trim().url({ message: url })]),
 });
 
 export const elementDefaultValues = {
@@ -82,6 +46,7 @@ export const elementDefaultValues = {
 	end_hour: null,
 	display_date_en: "",
 	display_date_bg: "",
+	group: "",
 	headline_en: "",
 	headline_bg: "",
 	text_en: "",
