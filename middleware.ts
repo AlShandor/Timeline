@@ -5,12 +5,12 @@ import createMiddleware from "next-intl/middleware";
 const intlMiddleware = createMiddleware({locales: locales, defaultLocale: defaultLocale});
 
 const isProtectedRoute = createRouteMatcher([
-	"/(" + locales.join('|') + ")/create-element(.*)",
-	"/(" + locales.join('|') + ")/edit-element(.*)",
-	"/(" + locales.join('|') + ")/update-element(.*)",
-	"/(" + locales.join('|') + ")/create-elementCollection(.*)",
-	"/(" + locales.join('|') + ")/edit-elementCollection(.*)",
-	"/(" + locales.join('|') + ")/update-elementCollection(.*)",
+	"/:locale/create-element(.*)",
+	"/:locale/edit-element(.*)",
+	"/:locale/update-element(.*)",
+	"/:locale/create-elementCollection(.*)",
+	"/:locale/edit-elementCollection(.*)",
+	"/:locale/update-elementCollection(.*)",
 ]);
 
 export default clerkMiddleware((auth, req) => {
@@ -23,9 +23,11 @@ export default clerkMiddleware((auth, req) => {
 
     // do not localize api routes
     const path = req.nextUrl.pathname;
-	if (!path.includes("/api")) {
-		return intlMiddleware(req);
-	}
+	if (path.includes("/api")) {
+        return;
+    }
+
+    return intlMiddleware(req);
 });
 
 export const config = {
