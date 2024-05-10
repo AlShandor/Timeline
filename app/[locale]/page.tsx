@@ -12,6 +12,8 @@ const DynamicTimeline = dynamic(() => import("@/components/Timeline"), {
 	ssr: false,
 });
 
+const TIMELINE_WINDOW_HEIGHT = 700;
+
 const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
@@ -49,7 +51,7 @@ const Home = () => {
 			<section>
 				<div className="container w-[1600px] max-w-[1600px]">
 					<DynamicTimeline
-						target={<div className="timeline" style={{ width: "100%", height: 500 }} />}
+						target={<div className="timeline" style={{ width: "100%", height: TIMELINE_WINDOW_HEIGHT }} />}
 						events={events}
 						title={locale === "en" ? timelineTitle_en : timelineTitle_bg}
 					/>

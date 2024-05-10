@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof elementSchema>;
 const DEFAULT_IMG_URL = "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg"
+const DEFAULT_BACKGROUND_URL = "https://cms-imgp.jw-cdn.org/img/p/1011718/univ/art/1011718_univ_cnt_1_xl.jpg";
 
 
 
@@ -31,6 +32,7 @@ const CreateElement = () => {
 	const createElement: SubmitHandler<FormFields> = async (formData) => {
 		try {
             formData.tags = tags;
+            formData.background_url = formData.background_url ? formData.background_url : DEFAULT_BACKGROUND_URL;
             formData.media_url = formData.media_url ? formData.media_url : DEFAULT_IMG_URL;
 
 			const response = await fetch("/api/element/new", {

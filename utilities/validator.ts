@@ -5,6 +5,7 @@ const day = "Between 1-31";
 const hour = "Between 0-23";
 const title = "Must be at least 1 characters";
 const url = "Valid URL. Must contain 'https://'.";
+const MAX_TEXT_LENGTH = 2112;
 
 export const elementSchema = z.object({
 	start_year: z.number(),
@@ -21,8 +22,8 @@ export const elementSchema = z.object({
 	group_bg: z.string(),
 	headline_en: z.string().min(1, { message: title }),
 	headline_bg: z.string().min(1, { message: title }),
-	text_en: z.string(),
-	text_bg: z.string(),
+	text_en: z.string().max(MAX_TEXT_LENGTH),
+	text_bg: z.string().max(MAX_TEXT_LENGTH),
 	tags: z.string().array(),
 	background_url: z.union([z.literal(""), z.string().trim().url({ message: url })]),
 	background_color: z.union([
