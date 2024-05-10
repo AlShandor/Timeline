@@ -44,7 +44,10 @@ const ElementSchema = new Schema({
 	display_date_bg: {
 		type: String,
 	},
-	group: {
+	group_en: {
+		type: String,
+	},
+	group_bg: {
 		type: String,
 	},
 	headline_en: {

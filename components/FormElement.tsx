@@ -203,14 +203,20 @@ const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, 
 						)}
 					</label>
 
-					{/* Group */}
+					{/* Group EN */}
 					<label>
-						<span className="create_section_input_title">Group</span>
+						<span className="create_section_input_title">Group EN</span>
 
-						<input type="text" className="form_input" name="group" {...register("group")} />
-						{errors.group && (
-							<p className="text-xs italic text-red-500 mt-2"> {errors.group?.message} </p>
-						)}
+						<input type="text" className="form_input" name="group_en" {...register("group_en")} />
+						{errors.group_en && <p className="text-xs italic text-red-500 mt-2"> {errors.group_en?.message} </p>}
+					</label>
+
+					{/* Group BG*/}
+					<label>
+						<span className="create_section_input_title">Group BG</span>
+
+						<input type="text" className="form_input" name="group_bg" {...register("group_bg")} />
+						{errors.group_bg && <p className="text-xs italic text-red-500 mt-2"> {errors.group_bg?.message} </p>}
 					</label>
 				</section>
 

@@ -13,7 +13,8 @@ declare global {
 		end_hour: number | null;
 		display_date_en: string | null;
 		display_date_bg: string | null;
-		group: string | null;
+		group_en: string | null;
+		group_bg: string | null;
 		headline_en: string | null;
 		headline_bg: string | null;
 		text_en: string | null;
