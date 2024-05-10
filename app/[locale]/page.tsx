@@ -52,7 +52,6 @@ const Home = () => {
 						target={<div className="timeline" style={{ width: "100%", height: 500 }} />}
 						events={events}
 						title={locale === "en" ? timelineTitle_en : timelineTitle_bg}
-						options=""
 					/>
 				</div>
 			</section>

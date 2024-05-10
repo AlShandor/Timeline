@@ -1,3 +1,5 @@
+import { configOptions } from '@/timeline-options.config';
+
 /* eslint-disable */
 export var TL = (function (t) {
 	var e = {};
@@ -18105,12 +18107,11 @@ export var TL = (function (t) {
 					}),
 					(this.config = null),
 					(this.options = {
-						script_path:
-							"https://cdn.knightlab.com/libs/timeline3/latest/js/",
+						script_path: "https://cdn.knightlab.com/libs/timeline3/latest/js/",
 						height: this._el.container.offsetHeight,
 						width: this._el.container.offsetWidth,
 						debug: !1,
-						font: "default",
+						font: configOptions.font? configOptions.font : "default",
 						is_embed: !1,
 						is_full_embed: !1,
 						hash_bookmark: !1,
@@ -18119,16 +18120,16 @@ export var TL = (function (t) {
 							g: 255,
 							b: 255,
 						},
-						scale_factor: 2,
-						layout: "landscape",
-						timenav_position: "bottom",
+						scale_factor: configOptions.scale_factor ? configOptions.scale_factor : 2,
+						layout: configOptions.layout ? configOptions.layout: "landscape",
+						timenav_position: configOptions.timenav_position ? configOptions.timenav_position : "bottom",
 						optimal_tick_width: 60,
 						base_class: "tl-timeline",
-						timenav_height: null,
-						timenav_height_percentage: 25,
+						timenav_height: configOptions.timenav_height ? configOptions.timenav_height : null,
+						timenav_height_percentage: configOptions.timenav_height_percentage ? configOptions.timenav_height_percentage : 25,
 						timenav_mobile_height_percentage: 40,
-						timenav_height_min: 175,
-						marker_height_min: 30,
+						timenav_height_min: configOptions.timenav_height_min ? configOptions.timenav_height_min : 175,
+						marker_height_min: configOptions.marker_height_min ? configOptions.marker_height_min : 30,
 						marker_width_min: 100,
 						marker_padding: 5,
 						start_at_slide: 0,
@@ -18147,16 +18148,9 @@ export var TL = (function (t) {
 						zoom_sequence: [0.5, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
 						language: "en",
 						ga_property_id: null,
-						track_events: [
-							"back_to_start",
-							"nav_next",
-							"nav_previous",
-							"zoom_in",
-							"zoom_out",
-						],
-						theme: null,
-						sheets_proxy:
-							"https://sheets-proxy.knightlab.com/proxy/",
+						track_events: ["back_to_start", "nav_next", "nav_previous", "zoom_in", "zoom_out"],
+						theme: configOptions.theme? configOptions.theme: null,
+						sheets_proxy: "https://sheets-proxy.knightlab.com/proxy/",
 						soundcite: !1,
 					}),
 					(this.animator_timenav = null),
@@ -18168,10 +18162,7 @@ export var TL = (function (t) {
 					"string" == typeof i.default_bg_color)
 				) {
 					var n = j(i.default_bg_color);
-					n
-						? (i.default_bg_color = n)
-						: (delete i.default_bg_color,
-						  O("Invalid default background color. Ignoring."));
+					n ? (i.default_bg_color = n) : (delete i.default_bg_color, O("Invalid default background color. Ignoring."));
 				}
 
 				var r, a;
