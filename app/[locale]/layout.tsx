@@ -1,20 +1,22 @@
 import "@styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { locales } from "@/localization.config";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import Nav from "@components/Nav";
+import { unstable_setRequestLocale, getMessages } from "next-intl/server";
 
 export const metadata = {
 	title: "Timeline",
 	description: "Explore historical events and people with Timeline tool",
 };
 
-export async function generateStaticParams() {
-	return locales.map((locale) => ({ lang: locale }));
+export function generateStaticParams() {
+  return locales.map((locale) => ({locale}));
 }
 
-const RootLayout = ({ children, params: { locale } }) => {
-    const messages = useMessages();
+const RootLayout = async ({ children, params: { locale } }) => {
+    unstable_setRequestLocale(locale);
+    const messages = await getMessages();
 	return (
 		<ClerkProvider>
 			<html lang={locale}>
