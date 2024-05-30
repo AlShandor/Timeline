@@ -31,7 +31,7 @@ const FormElementCollection = ({
 				{type} Collection of historical events and figures for the Timeline.
 			</p>
 
-			<form onSubmit={handleSubmit(onSubmit)} className="mt-10 w-full flex flex-col gap-5">
+			<form onSubmit={handleSubmit(onSubmit)} className="mt-10 mx-4 w-full flex flex-col gap-5">
 				{/* Title EN*/}
 				<label>
 					<span className="create_section_input_title">

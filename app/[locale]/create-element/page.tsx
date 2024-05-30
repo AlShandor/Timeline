@@ -11,7 +11,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof elementSchema>;
-const DEFAULT_IMG_URL = "https://cms-imgp.jw-cdn.org/img/p/1102013269/univ/art/1102013269_univ_lsr_lg.jpg"
+const DEFAULT_IMG_URL = "https://cms-imgp.jw-cdn.org/img/p/1011569/univ/art/1011569_univ_lsr_md.jpg";
 const DEFAULT_BACKGROUND_URL = "https://cms-imgp.jw-cdn.org/img/p/1011718/univ/art/1011718_univ_cnt_1_xl.jpg";
 
 

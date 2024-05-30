@@ -17,16 +17,16 @@ const Nav = () => {
 
 				<Protect role="org:admin">
 					<div className="flex gap-1">
-						<Link href="/create-element" locale={locale} className="inline-block">
+						<Link href="/create-element" locale={locale} className="hidden lg:inline-block">
 							<p className="nav_btn">Create Element</p>
 						</Link>
-						<Link href="/edit-element" locale={locale} className="inline-block">
+						<Link href="/edit-element" locale={locale} className="hidden lg:inline-block">
 							<p className="nav_btn">Edit Element</p>
 						</Link>
-						<Link href="/create-elementCollection" locale={locale} className="inline-block">
+						<Link href="/create-elementCollection" locale={locale} className="hidden lg:inline-block">
 							<p className="nav_btn">Create Collection</p>
 						</Link>
-						<Link href="/edit-elementCollection" locale={locale} className="inline-block">
+						<Link href="/edit-elementCollection" locale={locale} className="hidden lg:inline-block">
 							<p className="nav_btn">Edit Collection</p>
 						</Link>
 					</div>

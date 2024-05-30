@@ -153,7 +153,7 @@ const Feed = ({
 
 	return (
 		<section className="feed">
-			<form className="relative w-full flex-center leading-5 mb-16">
+			<form className="relative w-full flex-center leading-5 mb-16 px-6">
 				<div
 					className={
 						sortBy != "searchYear"
@@ -267,7 +267,7 @@ const Feed = ({
 				</div>
 			)}
 
-			<div className="flex flex-row">
+			<div className="flex flex-col sm:flex-row">
 				{sortBy == "searchCollection" ? (
 					elementCollections && elementCollections.length > 0 ? (
 						<CollectionCardList
@@ -292,7 +292,7 @@ const Feed = ({
 				)}
 
 				{!pathName.includes("/edit-element") && !pathName.includes("/edit-elementCollection") && (
-					<div className="mx-auto ml-4 h-auto w-[200px]">
+					<div className="mx-auto sm:ml-4 h-auto w-full sm:w-[115px] lg:w-[200px] order-1 sm:order-2">
 						<div className="sticky top-0 flex flex-col">
 							<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-primary-blue">
 								{t("selected-elements")}

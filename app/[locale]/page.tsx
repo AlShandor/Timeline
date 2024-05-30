@@ -43,13 +43,13 @@ const Home = () => {
 			<section className="w-full mb-12 flex-center flex-col">
 				<h1 className="head_text text-center">
 					{t("title")}
-					<br className="max-md:hidden" />
+					<br/>
 					<span className="blue_gradient text-center">{t("blue-title")}</span>
 				</h1>
-				<p className="desc text-center">{t("subtitle")}</p>
+				<p className="desc px-4 text-center">{t("subtitle")}</p>
 			</section>
 			<section>
-				<div className="container w-[1600px] max-w-[1600px]">
+				<div className="container w-[370px] sm:w-[600px] md:w-[720px] lg:w-[980px] xl:w-[1240px] 2xl:w-[1490px] 3xl:w-[1600px] max-w-[1600px]">
 					<DynamicTimeline
 						target={<div className="timeline" style={{ width: "100%", height: TIMELINE_WINDOW_HEIGHT }} />}
 						events={events}

@@ -21,6 +21,9 @@ module.exports = {
 				"en-flag": "url('/icons/en.svg')",
 				"bg-flag": "url('/icons/bg.svg')",
 			},
+			screens: {
+				"3xl": "1600px",
+			},
 		},
 	},
 	plugins: [],

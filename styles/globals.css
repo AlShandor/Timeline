@@ -30,7 +30,7 @@
 }
 
 .head_text {
-	@apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+	@apply mt-5 font-extrabold leading-[1.15] text-black text-3xl sm:text-4xl lg:text-6xl;
 }
 
 .orange_gradient {
@@ -86,7 +86,7 @@
 }
 
 .prompt_layout {
-	@apply max-w-[360px] md:max-w-[745px] xl:max-w-[1130px] border-r border-r-gray-300 pr-4 w-full mb-16 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[25px];
+	@apply max-w-[360px] md:max-w-[745px] xl:max-w-[1130px] border-t border-t-gray-300 pt-4 mt-4 sm:border-t-0 sm:pt-0 sm:mt-0 sm:border-r sm:border-r-gray-300 sm:pr-4 w-full mb-16 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[25px] order-2 sm:order-1;
 }
 
 /* Feed Component */
@@ -96,7 +96,7 @@
 
 /* Form Element Component */
 .create_section {
-	@apply mb-12 flex flex-col gap-7 glassmorphism max-w-[520px] w-full h-fit;
+	@apply mb-12 mx-auto flex flex-col gap-7 glassmorphism max-w-[520px] w-full h-fit;
 }
 
 .create_section_title {
@@ -199,7 +199,7 @@ nav button { /* Sign in button */
 
 /* ElementCard Component */
 .element_card {
-	@apply max-w-[360px] min-w-[360px] w-full h-fit break-inside-avoid rounded-lg border border-gray-300 transition-all duration-200 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter;
+	@apply max-w-[280px] min-w-[240px] lg:max-w-[360px] lg:min-w-[360px] w-full h-fit break-inside-avoid rounded-lg border border-gray-300 transition-all duration-200 bg-clip-padding p-6 pb-4 mx-auto backdrop-blur-lg backdrop-filter;
 }
 
 .select_btn {
