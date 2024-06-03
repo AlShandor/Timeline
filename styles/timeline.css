@@ -1732,7 +1732,7 @@
   z-index: 3;
 }
 .tl-slide .tl-slide-content-container .tl-slide-content {
-  display: table;
+  display: flex;
   vertical-align: middle;
   direction: rtl;
   padding-left: 100px;
@@ -1760,7 +1760,8 @@
   min-width: 120px;
   padding: 0 20px 0 20px;
   display: table-cell;
-  vertical-align: middle;
+  align-self: center;
+  /* vertical-align: middle; */
   text-align: left;
 }
 /* Only Media (no text)
@@ -2502,11 +2503,15 @@
 .tl-text .tl-headline-date,
 .tl-text h3.tl-headline-date {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 15px;
+  font-size: 21px;
+  line-height: 21px;
   font-weight: normal;
   margin: 0 0 3px 0;
   color: #b3b3b3;
+}
+
+.tl-timeline .tl-text h3.tl-headline-date {
+    text-transform: none !important;
 }
 .tl-text .tl-headline-date small,
 .tl-text h3.tl-headline-date small {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { initialEvents } from "@utilities/initialEvents";
+import { initialEvents_en, initialEvents_bg } from "@utilities/initialEvents";
 import { useLocale } from "next-intl";
 
 export const useEvents = () => {
@@ -18,8 +18,8 @@ export const useEvents = () => {
 							month: el.start_month,
 							day: el.start_day,
 							hour: el.start_hour,
-							display_date: el.display_date_en,
 						},
+                        display_date: el.display_date_en,
 						end_date: {
 							year: el.end_year,
 							month: el.end_month,
@@ -48,8 +48,8 @@ export const useEvents = () => {
 							month: el.start_month,
 							day: el.start_day,
 							hour: el.start_hour,
-							display_date: el.display_date_bg,
 						},
+                        display_date: el.display_date_bg,
 						end_date: {
 							year: el.end_year,
 							month: el.end_month,
@@ -78,8 +78,8 @@ export const useEvents = () => {
 							month: el.start_month,
 							day: el.start_day,
 							hour: el.start_hour,
-							display_date: el.display_date_bg,
 						},
+                        display_date: el.display_date_bg,
 						text: {
 							headline: el.headline_bg,
 							text: el.text_bg,
@@ -103,8 +103,8 @@ export const useEvents = () => {
 							month: el.start_month,
 							day: el.start_day,
 							hour: el.start_hour,
-							display_date: el.display_date_en,
 						},
+                        display_date: el.display_date_en,
 						text: {
 							headline: el.headline_en,
 							text: el.text_en,
@@ -128,12 +128,14 @@ export const useEvents = () => {
 		if (selected.length > 0) {
 			updateEvents(selected);
 		} else {
+            const initialEvents = locale === "en" ? initialEvents_en : initialEvents_bg;
 			setEvents(initialEvents);
 		}
 	}, [selected]);
 
 	// set initial events
 	useEffect(() => {
+        const initialEvents = locale === "en" ? initialEvents_en : initialEvents_bg;
 		setEvents(initialEvents);
 	}, []);
 
