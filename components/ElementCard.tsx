@@ -12,12 +12,21 @@ interface Props {
 	handleRemoveElement: Function;
 }
 
-const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handleSelectElement, handleRemoveElement, isSelected }: Props) => {
+const ElementCard = ({
+	element,
+	handleEdit,
+	handleDelete,
+	handleTagClick,
+	handleSelectElement,
+	handleRemoveElement,
+	isSelected,
+}: Props) => {
 	const pathName = usePathname();
-    const t = useTranslations("elementCard");
-    const locale = useLocale();
-    const headline = locale === "en" ? element.headline_en : element.headline_bg;
-    const text = locale === "en" ? element.text_en : element.text_bg;
+	const t = useTranslations("elementCard");
+	const locale = useLocale();
+	const headline = locale === "en" ? element.headline_en : element.headline_bg;
+	const text = locale === "en" ? element.text_en : element.text_bg;
+	const displayDate = locale === "en" ? element.display_date_en : element.display_date_bg;
 
 	return (
 		<div className={isSelected(element) ? "element_card bg-selected-green" : "element_card bg-white/70"}>
@@ -38,11 +47,18 @@ const ElementCard = ({ element, handleEdit, handleDelete, handleTagClick, handle
 							{headline}
 						</h3>
 						<p className="font-noto text-sm text-gray-500">
-							{element.start_year < 0 ? Math.abs(element.start_year) + t("bce") : element.start_year + t("ce")}{" "}
-							{element.end_year
-								? " - " +
-								  (element.end_year < 0 ? Math.abs(element.end_year) + t("bce") : element.end_year + t("ce"))
-								: ""}
+							{displayDate
+								? displayDate
+								: (element.start_year < 0
+										? Math.abs(element.start_year) + t("bce")
+										: element.start_year + t("ce")) +
+								  " " +
+								  (element.end_year
+										? " - " +
+										  (element.end_year < 0
+												? Math.abs(element.end_year) + t("bce")
+												: element.end_year + t("ce"))
+										: "")}
 						</p>
 					</div>
 				</div>
