@@ -1002,7 +1002,7 @@
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
   box-sizing: border-box;
-  border-left: 1px solid #d9d9d9;
+  border-left: 1px solid #838383;
   z-index: 5;
   content: " ";
   position: absolute;
@@ -1022,9 +1022,9 @@
   position: absolute;
   left: -4px;
   bottom: 0px;
-  height: 6px;
-  width: 6px;
-  background-color: #919191;
+  height: 7px;
+  width: 7px;
+  background-color: #f4f3f3;
   z-index: 8;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1032,7 +1032,7 @@
 }
 .tl-timemarker .tl-timemarker-content-container {
   position: absolute;
-  background-color: #C3663C; 
+  background-color: #e09455; 
   border: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -1168,11 +1168,11 @@
 .tl-timemarker:focus .tl-timemarker-timespan .tl-timemarker-line-left:after,
 .tl-timemarker:hover .tl-timemarker-timespan .tl-timemarker-line-right:after,
 .tl-timemarker:focus .tl-timemarker-timespan .tl-timemarker-line-right:after {
-  background-color: #3d3d3d;
+  background-color: #ffff;
 }
 .tl-timemarker:hover .tl-timemarker-content-container,
 .tl-timemarker:focus .tl-timemarker-content-container {
-  background-color: #ea7b47; /* #C3663C, #c35b3c */
+  background-color: rgb(224,148,85,0.9);
   border-color: #a6a6a6;
   -webkit-transition: height 250ms cubic-bezier(0.77, 0, 0.175, 1), width 250ms cubic-bezier(0.77, 0, 0.175, 1);
   -moz-transition: height 250ms cubic-bezier(0.77, 0, 0.175, 1), width 250ms cubic-bezier(0.77, 0, 0.175, 1);
@@ -1241,7 +1241,7 @@
 .tl-timemarker:focus.tl-timemarker-active .tl-timemarker-line-left:after,
 .tl-timemarker:hover.tl-timemarker-active .tl-timemarker-line-right:after,
 .tl-timemarker:focus.tl-timemarker-active .tl-timemarker-line-right:after {
-  background-color: #000;
+  background-color: #ffff;
 }
 .tl-timemarker:focus-visible {
   outline: none;
@@ -1255,7 +1255,7 @@
 }
 .tl-timemarker.tl-timemarker-active .tl-timemarker-line-left,
 .tl-timemarker.tl-timemarker-active .tl-timemarker-line-right {
-  border-color: rgba(51, 51, 51, 0.5);
+  border-color: rgba(51, 51, 51, 0.7);
   border-width: 1px;
   z-index: 8;
   box-shadow: 0px 1px 3px rgba(145, 145, 145, 0.5);
@@ -1265,7 +1265,7 @@
   background-color: #333;
 }
 .tl-timemarker.tl-timemarker-active .tl-timemarker-content-container {
-  background-color: #10808A;
+  background-color: #a86f40;
   color: #333;
   z-index: 9;
   border-color: rgba(51, 51, 51, 0.5);
@@ -1302,7 +1302,7 @@
 }
 .tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan .tl-timemarker-line-left,
 .tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan .tl-timemarker-line-right {
-  z-index: 5;
+  z-index: 7;
 }
 .tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan:after {
   display: block;
@@ -1312,7 +1312,7 @@
   bottom: -7px;
   height: 6px;
   width: 100%;
-  background-color: rgba(115, 115, 115, 0.15);
+  background-color: rgb(224,148,85,0.7);
   z-index: 6;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -1328,10 +1328,10 @@
   box-shadow: none;
 }
 .tl-timemarker.tl-timemarker-with-end:hover .tl-timemarker-timespan:after {
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: #e09455;
 }
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-timespan:after {
-  background-color: rgba(51, 51, 51, 0.5);
+  background-color: #e09455;
 }
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-left,
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-right {
@@ -1339,13 +1339,13 @@
 }
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-left:after,
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-right:after {
-  background-color: #333 !important;
+  background-color: #ffff;
 }
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-left {
   box-shadow: none;
 }
 .tl-timemarker.tl-timemarker-with-end.tl-timemarker-active:hover .tl-timemarker-timespan:after {
-  background-color: rgba(51, 51, 51, 0.5);
+  background-color: rgb(197,171,58,0.9);
 }
 /* Skinny
 ================================================== */
@@ -1546,7 +1546,9 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #FFF;
+  /* background: linear-gradient(to right, #0EA2BE, #555CE0);  */
+  background: linear-gradient(to right, #555CE0, #653AC5); 
+  /* #04AEEF */
   border-top: 1px solid #e5e5e5;
   z-index: 2;
 }
@@ -1623,12 +1625,12 @@
 .tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick {
   font-size: 12px;
   line-height: 14px;
-  color: #737373;
+  color: #c6c4c4;
   width: 100px;
   margin-left: -50px;
 }
 .tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick:before {
-  border-color: #a6a6a6;
+  border-color: #FFF;
   font-size: 18px;
   line-height: 18px;
   margin-bottom: 2px;

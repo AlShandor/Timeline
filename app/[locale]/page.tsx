@@ -58,10 +58,12 @@ const Home = () => {
 	return (
 		<>
 			<section className="w-full mb-12 flex-center flex-col">
-				<h1 className="head_text text-center">
-					{t("title")}
+				<h1 className="mt-5 text-center">
+                    <span className="font-bold leading-[1.15] text-gray-700 text-3xl sm:text-4xl lg:text-6xl">
+					    {t("title")}
+                    </span>
 					<br/>
-					<span className="blue_gradient text-center">{t("blue-title")}</span>
+					<span className="font-extrabold leading-[1.15] text-black text-3xl sm:text-4xl lg:text-6xl text-center blue_gradient">{t("blue-title")}</span>
 				</h1>
 				<p className="desc px-4 text-center">{t("subtitle")}</p>
 			</section>
