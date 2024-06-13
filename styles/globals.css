@@ -203,7 +203,12 @@ nav button { /* Sign in button */
 }
 
 .select_btn {
-    @apply w-fit rounded-lg border border-gray-700 py-1.5 px-7 ml-auto text-white transition-all duration-200 hover:opacity-90 hover:text-white text-center text-sm font-inter flex items-center justify-center;
+    @apply w-fit rounded-lg py-1.5 px-7 ml-auto text-white font-bold transition-all duration-200 hover:opacity-90 hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.plus_minus_btn {
+    @apply text-lg border border-gray-700  bg-white cursor-pointer mx-auto w-fit rounded-lg py-1.5 px-7 text-gray-700 disabled:text-gray-200 disabled:border-gray-200 disabled:pointer-events-none font-bold transition-all duration-200 text-center font-inter flex items-center justify-center ;
+
 }
 
 .yellow_btn {

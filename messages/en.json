@@ -4,9 +4,10 @@
 		"locale": "{locale}"
 	},
 	"homepage": {
-		"title": "Share & Discover",
+		"title": "Discover & Share",
 		"blue-title": "Historical Figures and Events",
-		"subtitle": "Timeline is an online tool that helps you study and visualize historical figures and events."
+		"subtitle": "Timeline is an online tool that helps you study and visualize historical figures and events.",
+        "timenav-height": "Timeline height:"
 	},
 	"feed": {
 		"title": "Title",

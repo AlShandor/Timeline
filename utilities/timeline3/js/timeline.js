@@ -18128,7 +18128,7 @@ export var TL = (function (t) {
 						timenav_height: configOptions.timenav_height ? configOptions.timenav_height : null,
 						timenav_height_percentage: configOptions.timenav_height_percentage ? configOptions.timenav_height_percentage : 25,
 						timenav_mobile_height_percentage: 40,
-						timenav_height_min: configOptions.timenav_height_min ? configOptions.timenav_height_min : 175,
+						timenav_height_min: e.options.timenav_height_min,// 175, // configOptions.timenav_height_min ? configOptions.timenav_height_min : 175,
 						marker_height_min: configOptions.marker_height_min ? configOptions.marker_height_min : 30,
 						marker_width_min: 100,
 						marker_padding: 5,
