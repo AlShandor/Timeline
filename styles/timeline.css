@@ -1002,7 +1002,7 @@
   -moz-box-sizing: border-box;
   /* Firefox, other Gecko */
   box-sizing: border-box;
-  border-left: 1px solid #838383;
+  border-left: 1px solid #d9d9d9;
   z-index: 5;
   content: " ";
   position: absolute;
@@ -1302,7 +1302,7 @@
 }
 .tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan .tl-timemarker-line-left,
 .tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan .tl-timemarker-line-right {
-  z-index: 7;
+  z-index: 5;
 }
 .tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan:after {
   display: block;
@@ -1313,7 +1313,7 @@
   height: 6px;
   width: 100%;
   background-color: rgb(224,148,85,0.7);
-  z-index: 6;
+  z-index: 4;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
