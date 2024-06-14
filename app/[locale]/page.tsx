@@ -7,6 +7,7 @@ import { useEvents } from "@hooks/useEvents";
 import { useLocale, useTranslations } from "next-intl";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
+import { Protect } from "@clerk/nextjs";
 
 const DynamicTimeline = dynamic(() => import("@/components/Timeline"), {
 	ssr: false,
@@ -57,6 +58,7 @@ const Home = () => {
 
 	return (
 		<>
+        <Protect permission="org:approved:read">
 			<section className="w-full mb-12 flex-center flex-col">
 				<h1 className="mt-5 text-center">
                     <span className="font-bold leading-[1.15] text-gray-700 text-3xl sm:text-4xl lg:text-6xl">
@@ -111,6 +113,7 @@ const Home = () => {
 				isSelected={isSelected}
 			/>
 			<Footer />
+        </Protect>
 		</>
 	);
 };
