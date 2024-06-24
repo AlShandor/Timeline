@@ -136,7 +136,7 @@ const Feed = ({
 
 	// activate infinite scroll when Loader is in view
 	useEffect(() => {
-		if (inView && !isLoading) {
+		if (inView && !isLoading && !isCollection) {
 			setSize(size + 1);
 		}
 	}, [inView]);
@@ -317,7 +317,7 @@ const Feed = ({
 				)}
 			</div>
 
-			{!isReachingEnd ? (
+			{(!isReachingEnd && !isCollection) ? (
 				<div ref={ref} className="mt-10">
 					<Loader />
 				</div>
