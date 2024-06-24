@@ -34,7 +34,7 @@ const Home = () => {
 	};
 
 	const handleSelectAllElements = () => {
-		setSelected(elements);
+		setSelected([...selected, ...elements]);
 	};
 
 	const handleRemoveElement = (el) => {
