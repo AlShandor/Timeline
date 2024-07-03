@@ -6,7 +6,6 @@ interface Props {
 const ElementChip = ({ element, handleRemoveElement }: Props) => {
 	return (
 		<div className="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 mb-2 h-8 text-small rounded-full bg-[#D4D4D8] text-gray-700">
-			<span className="flex-1 pr-1 px-2 text-base overflow-hidden pointer-events-none text-ellipsis max-w-[200px]">{element.headline_en}</span>
 			<span
 				role="button"
 				onClick={() => handleRemoveElement && handleRemoveElement(element)}
@@ -19,6 +18,7 @@ const ElementChip = ({ element, handleRemoveElement }: Props) => {
 					></path>
 				</svg>
 			</span>
+			<span className="flex-1 pr-2 pl-[2px] text-base overflow-hidden pointer-events-none text-ellipsis max-w-[200px]">{element.headline_en}</span>
 		</div>
 	);
 };
