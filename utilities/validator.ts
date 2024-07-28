@@ -12,7 +12,7 @@ export const elementSchema = z.object({
 	start_month: z.union([z.number().min(1, { message: month }).max(12, { message: month }).nullable(), z.nan()]),
 	start_day: z.union([z.number().min(1, { message: day }).max(31, { message: day }).nullable(), z.nan()]),
 	start_hour: z.union([z.number().min(0, { message: hour }).max(23, { message: hour }).nullable(), z.nan()]),
-	end_year: z.number().nullable(),
+	end_year: z.union([z.number().nullable(), z.nan()]),
 	end_month: z.union([z.number().min(1, { message: month }).max(12, { message: month }).nullable(), z.nan()]),
 	end_day: z.union([z.number().min(1, { message: day }).max(31, { message: day }).nullable(), z.nan()]),
 	end_hour: z.union([z.number().min(0, { message: hour }).max(23, { message: hour }).nullable(), z.nan()]),
