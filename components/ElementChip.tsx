@@ -5,7 +5,7 @@ interface Props {
 
 const ElementChip = ({ element, handleRemoveElement }: Props) => {
 	return (
-		<div className="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 mb-2 h-8 text-small rounded-full bg-[#D4D4D8] text-gray-700">
+		<div className="relative max-w-fit inline-flex items-center justify-between box-border whitespace-nowrap px-1 mb-2 h-8 text-small rounded-full bg-[#D4D4D8] text-gray-700">
 			<span
 				role="button"
 				onClick={() => handleRemoveElement && handleRemoveElement(element)}

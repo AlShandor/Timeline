@@ -25,7 +25,7 @@ const ElementCard = ({
 	const t = useTranslations("elementCard");
 	const locale = useLocale();
 	const headline = locale === "en" ? element.headline_en : element.headline_bg;
-	const text = locale === "en" ? element.text_en : element.text_bg;
+	const text = locale === "en" ? element.text_en.replace(/<\/br>|<i>|<\/i>|<\/a>|<a.+\">/g, '') : element.text_bg.replace(/<\/br>|<i>|<\/i>|<\/a>|<a.+\">/g, '');
 	const displayDate = locale === "en" ? element.display_date_en : element.display_date_bg;
 
 	return (
