@@ -43,7 +43,7 @@ const ElementCard = ({
 					</div>
 
 					<div className="flex flex-col">
-						<h3 className="font-noto font-semibold text-gray-900 break-all line-clamp-3 leading-[22px]">
+						<h3 className="font-noto font-semibold text-gray-900 line-clamp-3 leading-[22px]">
 							{headline}
 						</h3>
 						<p className="font-noto text-sm text-gray-500">

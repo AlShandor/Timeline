@@ -36,7 +36,7 @@ const ElementCollectionCard = ({ collection, handleEdit, handleDelete, handleVie
 					</div>
 
 					<div className="w-full flex flex-col">
-						<h3 className="font-noto font-semibold text-center text-gray-900 break-all line-clamp-3 leading-[22px]">
+						<h3 className="font-noto font-semibold text-center text-gray-900 line-clamp-3 leading-[22px]">
 							{title}
 						</h3>
 					</div>
