@@ -31,8 +31,8 @@ interface Props {
 	isSelected: Function;
 }
 
-const PAGE_SIZE = 9;
-const PAGE_SIZE_COLLECTION = 12;
+const PAGE_SIZE = 30;
+const PAGE_SIZE_COLLECTION = 30;
 
 const Feed = ({
 	elements,
