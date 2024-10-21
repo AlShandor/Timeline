@@ -27,7 +27,14 @@ const CreateElementCollection = () => {
 	};
 
 	const handleSelectAllElements = () => {
-		setSelected(elements);
+        let mergedElements = [...selected, ...elements].reduce((acc, el) => {
+            if (!acc.some(existingEl => existingEl._id === el._id)) {
+                acc.push(el);
+            }
+            return acc;
+        }, []);
+
+		setSelected(mergedElements);
 	};
 
 	const handleRemoveElement = (el) => {
