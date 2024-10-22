@@ -68,7 +68,7 @@ const ElementCard = ({
 
 			{/* Tags */}
 			{element.tags && (
-				<div className="flex gap-1 mb-4 min-h-[28px]">
+				<div className="flex flex-wrap gap-x-1 mb-4 min-h-[28px]">
 					{element.tags.map((tag) => (
 						<p
 							key={tag}
