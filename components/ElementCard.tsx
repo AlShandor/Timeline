@@ -25,7 +25,7 @@ const ElementCard = ({
 	const t = useTranslations("elementCard");
 	const locale = useLocale();
 	const headline = locale === "en" ? element.headline_en : element.headline_bg;
-	const text = locale === "en" ? element.text_en.replace(/<\/br>|<i>|<\/i>|<\/a>|<a.+\">/g, '') : element.text_bg.replace(/<\/br>|<i>|<\/i>|<\/a>|<a.+\">/g, '');
+	const text = locale === "en" ? element.text_en.replace(/<\/br>|<b>|<\/b>|<i>|<\/i>|<\/a>|<a.+\">/g, '') : element.text_bg.replace(/<\/br>|<b>|<\/b>|<i>|<\/i>|<\/a>|<a.+\">/g, '');
 	const displayDate = locale === "en" ? element.display_date_en : element.display_date_bg;
 
 	return (
@@ -72,7 +72,7 @@ const ElementCard = ({
 					{element.tags.map((tag) => (
 						<p
 							key={tag}
-							className="inline-block font-inter p-1 text-sm text-cyan-500 cursor-pointer"
+							className="inline-block font-inter p-1 text-sm text-cyan-500 cursor-pointer text-nowrap"
 							onClick={() => handleTagClick && handleTagClick(tag)}
 						>
 							#{tag}
