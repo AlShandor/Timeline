@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { timelineTitle_en, timelineTitle_bg } from "@utilities/initialEvents";
 import { useEvents } from "@hooks/useEvents";
@@ -22,12 +22,14 @@ const Home = () => {
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
 	const [timenavHeight, setTimenavHeight] = useState<number>(TIMELINE_NAV_DEFAULT_HEIGHT);
 	const [timelineWindowHeight, setTimelineWindowHeight] = useState<number>(TIMELINE_DEFAULT_HEIGHT);
+	const [options, setSetOptions] = useState<{timenav_height_min: number}>({ timenav_height_min: timenavHeight });
 	const { events, selected, setSelected, isSelected } = useEvents();
     const locale = useLocale();
 	const t = useTranslations("homepage");
-    const options = {
-        timenav_height_min: timenavHeight
-    };
+
+    useEffect(() => {
+		setSetOptions({ timenav_height_min:timenavHeight });
+	}, [timenavHeight]);
 
 	const handleSelectElement = (newEl) => {
 		setSelected((selected) => [...selected, newEl]);
