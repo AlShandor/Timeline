@@ -292,7 +292,7 @@ const Feed = ({
 				)}
 
 				{!pathName.includes("/edit-element") && !pathName.includes("/edit-elementCollection") && (
-					<div className="mx-auto sm:ml-4 h-dvh w-full sm:w-[115px] lg:w-[200px] order-1 sm:order-2 sticky top-0 overflow-x-hidden overflow-y-overlay">
+					<div className="mx-auto sm:ml-4 h-dvh w-full sm:w-[200px] lg:w-[200px] order-1 sm:order-2 sticky top-0 overflow-x-hidden overflow-y-overlay">
 						<div className="flex flex-col">
 							<p className="font-noto text-xl text-center border-b border-gray-300 pb-1 mb-4 font-semibold text-gray-600">
 								{t("selected-elements")}

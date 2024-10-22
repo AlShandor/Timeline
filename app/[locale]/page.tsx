@@ -78,8 +78,8 @@ const Home = () => {
 				</h1>
 				<p className="desc px-4 text-center">{t("subtitle")}</p>
 			</section>
-			<section>
-				<div className="container w-[370px] sm:w-[600px] md:w-[720px] lg:w-[980px] xl:w-[1240px] 2xl:w-[1490px] 3xl:w-[1600px] max-w-[1600px]">
+			<section className="w-full">
+				<div className="w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] mx-auto">
 					<DynamicTimeline
 						target={<div className="timeline" style={{ width: "100%", height: timelineWindowHeight }} />}
 						events={events}
@@ -87,7 +87,7 @@ const Home = () => {
                         options={options}
 					/>
 				</div>
-                <div className="flex flex-row w-fit mt-8 ">
+                <div className="flex flex-row w-fit mt-8 ml-[2rem] lg:ml-[4rem]">
                     <button
                         className="plus_minus_btn"
                         onClick={() => decreaseTimenavHeight()}
