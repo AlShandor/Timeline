@@ -24,14 +24,11 @@ const FormElementCollection = ({
 
 	return (
 		<section className="w-full max-w-full flex-start flex-col">
-			<h1 className="head_text text-left cursor-default">
+			<h1 className="head_text text-left cursor-default mx-4 lg:ml-12">
 				<span className="blue_gradient">{type} Timeline Collection</span>
 			</h1>
-			<p className="desc text-left max-w-md cursor-default">
-				{type} Collection of historical events and figures for the Timeline.
-			</p>
 
-			<form onSubmit={handleSubmit(onSubmit)} className="mt-10 mx-4 w-full flex flex-col gap-5">
+			<form onSubmit={handleSubmit(onSubmit)} className="mt-10 mx-4 w-full flex flex-col gap-5 lg:ml-12">
 				{/* Title EN*/}
 				<label>
 					<span className="create_section_input_title">
