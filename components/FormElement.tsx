@@ -18,16 +18,12 @@ const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, 
 
 	return (
 		<section className="w-full max-w-full flex-start flex-col">
-			<h1 className="head_text text-left cursor-default mx-auto lg:mx-0">
+			<h1 className="head_text text-left cursor-default mx-auto">
 				<span className="blue_gradient">{type} Timeline Element</span>
 			</h1>
-			<p className="desc text-left max-w-md cursor-default mx-auto lg:mx-0">
-				{type} historical events and figures for the Timeline.
-			</p>
-
 			<form onSubmit={handleSubmit(onSubmit)} className="mt-10 w-full flex flex-col lg:flex-row gap-5">
 				{/* Date Section */}
-				<section className="create_section">
+				<section className="create_section ml-auto">
 					<label>
 						<h1 className="create_section_title">Date Section</h1>
 						<hr className="solid"></hr>
@@ -299,7 +295,7 @@ const FormCollection = ({ type, isSubmitting, onSubmit, register, handleSubmit, 
 				</section>
 
 				{/* Media Section */}
-				<section className="create_section">
+				<section className="create_section mr-auto">
 					<label>
 						<h1 className="create_section_title">Media Section</h1>
 						<hr className="solid"></hr>
