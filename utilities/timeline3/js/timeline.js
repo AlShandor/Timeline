@@ -18375,7 +18375,6 @@ export var TL = (function (t) {
 				this.fire("dataloaded"),
 					this._initLayout(),
 					this._initEvents(),
-					this._initAnalytics(),
 					this.message && this.message.hide();
 				new IntersectionObserver(
 					((t, e) => {
@@ -18933,42 +18932,6 @@ export var TL = (function (t) {
 					: O(
 							"updateDisplay called but timeline is not in ready state"
 					  );
-			}
-
-			_initGoogleAnalytics() {
-				var t, e, i, n, r, a;
-				(t = window),
-					(e = document),
-					(i = "script"),
-					(n = "ga"),
-					(t.GoogleAnalyticsObject = n),
-					(t.ga =
-						t.ga ||
-						function () {
-							(t.ga.q = t.ga.q || []).push(arguments);
-						}),
-					(t.ga.l = 1 * new Date()),
-					(r = e.createElement(i)),
-					(a = e.getElementsByTagName(i)[0]),
-					(r.async = 1),
-					(r.src = "//www.google-analytics.com/analytics.js"),
-					a.parentNode.insertBefore(r, a),
-					ga("create", this.options.ga_property_id, "auto"),
-					ga("set", "anonymizeIp", !0);
-			}
-
-			_initAnalytics() {
-				if (null !== this.options.ga_property_id) {
-					this._initGoogleAnalytics(), ga("send", "pageview");
-					var t = this.options.track_events;
-
-					for (let i = 0; i < t.length; i++) {
-						var e = t[i];
-						this.addEventListener(e, function (t) {
-							ga("send", "event", t.type, "clicked");
-						});
-					}
-				}
 			}
 		}
 
