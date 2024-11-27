@@ -11827,7 +11827,7 @@ export var TL = (function (t) {
 					year: "yyyy",
 					month_short: "mmm",
 					month: "mmmm yyyy",
-					full_short: "mmm d",
+					full_short: "d",
 					full: "mmmm d',' yyyy",
 					time: "h:MM:ss TT' <small>'mmmm d',' yyyy'</small>'",
 					time_short: "h:MM:ss TT",
