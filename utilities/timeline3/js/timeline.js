@@ -17334,7 +17334,7 @@ export var TL = (function (t) {
 					(this._el.background = T(
 						"div",
 						"tl-slide-background",
-						this._el.container
+						this._el.content_container
 					)),
 					this.data.background)
 				) {
