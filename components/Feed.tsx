@@ -153,7 +153,7 @@ const Feed = ({
 
 	return (
 		<section className="feed">
-			<form className="relative w-full flex-center leading-5 mb-16 px-6">
+			<form className="relative w-full flex-center leading-5 mb-16 px-6" onSubmit={(e) => e.preventDefault}>
 				<div
 					className={
 						sortBy != "searchYear"
@@ -200,6 +200,9 @@ const Feed = ({
 							value={searchTitle}
 							onChange={handleSearchTitle}
 							className="search_input"
+							onKeyDown={(e) => {
+								if (e.key === "Enter") e.preventDefault();
+							}}
 						/>
 					)}
 
@@ -211,6 +214,9 @@ const Feed = ({
 							value={searchTag}
 							onChange={handleSearchTag}
 							className="search_input"
+							onKeyDown={(e) => {
+								if (e.key === "Enter") e.preventDefault();
+							}}
 						/>
 					)}
 
@@ -222,6 +228,9 @@ const Feed = ({
 							value={startYear}
 							onChange={handleSearchStartYear}
 							className="search_year"
+							onKeyDown={(e) => {
+								if (e.key === "Enter") e.preventDefault();
+							}}
 						/>
 					)}
 
@@ -233,6 +242,9 @@ const Feed = ({
 							value={endYear}
 							onChange={handleSearchEndYear}
 							className={startYear.length > 0 ? "search_year" : "search_year invisible"}
+							onKeyDown={(e) => {
+								if (e.key === "Enter") e.preventDefault();
+							}}
 						/>
 					)}
 
@@ -244,6 +256,9 @@ const Feed = ({
 							value={searchCollectionTitle}
 							onChange={handleSearchCollectionTitle}
 							className="search_input"
+							onKeyDown={(e) => {
+								if (e.key === "Enter") e.preventDefault();
+							}}
 						/>
 					)}
 				</div>
@@ -317,7 +332,7 @@ const Feed = ({
 				)}
 			</div>
 
-			{(!isReachingEnd && !isCollection) ? (
+			{!isReachingEnd && !isCollection ? (
 				<div ref={ref} className="mt-10">
 					<Loader />
 				</div>
