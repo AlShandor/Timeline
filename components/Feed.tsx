@@ -37,8 +37,8 @@ const PAGE_SIZE_COLLECTION = 30;
 const Feed = ({
 	elements,
 	setElements,
-    elementCollections,
-    setElementCollections,
+	elementCollections,
+	setElementCollections,
 	handleSelectElement,
 	handleSelectAllElements,
 	handleRemoveElement,
@@ -118,20 +118,20 @@ const Feed = ({
 			searchedElements &&
 			searchedElements[searchedElements.length - 1]?.length < PAGE_SIZE_COLLECTION);
 
-    const handleView = async (collection) => {     
-        try {
-            fetch(`/api/element-collection/${collection._id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setElements(data.elements);
-                setSelectedCollectionTitle(data.title_en);
-            });
-        } catch (error) {
-            console.log(error);
-        }
+	const handleView = async (collection) => {
+		try {
+			fetch(`/api/element-collection/${collection._id}`)
+				.then((res) => res.json())
+				.then((data) => {
+					setElements(data.elements);
+					setSelectedCollectionTitle(data.title_en);
+				});
+		} catch (error) {
+			console.log(error);
+		}
 
-        setIsCollection(true);
-        setSortBy("searchTitle");
+		setIsCollection(true);
+		setSortBy("searchTitle");
 	};
 
 	// activate infinite scroll when Loader is in view
@@ -323,7 +323,21 @@ const Feed = ({
 							{selected &&
 								selected.length > 0 &&
 								selected
-									.sort((a, b) => a.start_year - b.start_year)
+									.sort((a, b) => {
+										if (a.start_year !== b.start_year) {
+											return a.start_year - b.start_year;
+										}
+										// Compare start_month, treating null as earlier (-1)
+										if ((a.start_month ?? -1) !== (b.start_month ?? -1)) {
+											return (a.start_month ?? -1) - (b.start_month ?? -1);
+										}
+										// Compare start_day, treating null as earlier (-1)
+										if ((a.start_day ?? -1) !== (b.start_day ?? -1)) {
+											return (a.start_day ?? -1) - (b.start_day ?? -1);
+										}
+										// Compare start_hour, treating null as earlier (-1)
+										return (a.start_hour ?? -1) - (b.start_hour ?? -1);
+									})
 									.map((el) => (
 										<ElementChip key={el._id} element={el} handleRemoveElement={handleRemoveElement} />
 									))}
