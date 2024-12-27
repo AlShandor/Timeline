@@ -12,6 +12,7 @@ export const useEvents = () => {
 			elements.map((el) => {
 				if (locale === "bg") {
 					return {
+                        id: el._id,
 						start_date: {
 							year: el.start_year,
 							month: el.start_month,
@@ -43,6 +44,7 @@ export const useEvents = () => {
 					};
 				} else {
 					return {
+						id: el._id,
 						start_date: {
 							year: el.start_year,
 							month: el.start_month,

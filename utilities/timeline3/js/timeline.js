@@ -16052,50 +16052,19 @@ export var TL = (function (t) {
 			_initLayout() {
 				if (
 					((this._el.container = T("div", "tl-timemarker")),
-					this.data.unique_id &&
-						(this._el.container.id =
-							this.data.unique_id + "-marker"),
+					this.data.unique_id && (this._el.container.id = this.data.id ?? "initial"),
 					this.data.end_date &&
-						((this.has_end_date = !0),
-						(this._el.container.className =
-							"tl-timemarker tl-timemarker-with-end")),
-					(this._el.timespan = T(
-						"div",
-						"tl-timemarker-timespan",
-						this._el.container
-					)),
-					(this._el.timespan_content = T(
-						"div",
-						"tl-timemarker-timespan-content",
-						this._el.timespan
-					)),
-					(this._el.content_container = T(
-						"div",
-						"tl-timemarker-content-container",
-						this._el.container
-					)),
-					(this._el.content = T(
-						"div",
-						"tl-timemarker-content",
-						this._el.content_container
-					)),
-					(this._el.line_left = T(
-						"div",
-						"tl-timemarker-line-left",
-						this._el.timespan
-					)),
-					(this._el.line_right = T(
-						"div",
-						"tl-timemarker-line-right",
-						this._el.timespan
-					)),
+						((this.has_end_date = !0), (this._el.container.className = "tl-timemarker tl-timemarker-with-end")),
+					(this._el.timespan = T("div", "tl-timemarker-timespan", this._el.container)),
+					(this._el.timespan_content = T("div", "tl-timemarker-timespan-content", this._el.timespan)),
+					(this._el.content_container = T("div", "tl-timemarker-content-container", this._el.container)),
+					(this._el.remove_btn = T("div", "remove-btn", this._el.content_container)),
+					(this._el.content = T("div", "tl-timemarker-content", this._el.content_container)),
+					(this._el.line_left = T("div", "tl-timemarker-line-left", this._el.timespan)),
+					(this._el.line_right = T("div", "tl-timemarker-line-right", this._el.timespan)),
 					this.data.media)
 				) {
-					this._el.media_container = T(
-						"div",
-						"tl-timemarker-media-container",
-						this._el.content
-					);
+					this._el.media_container = T("div", "tl-timemarker-media-container", this._el.content);
 					var t = {
 							url: this.data.media.thumbnail,
 						},
@@ -16106,22 +16075,14 @@ export var TL = (function (t) {
 						i.on(
 							"loaded",
 							function () {
-								(this._el.media = T(
-									"img",
-									"tl-timemarker-media",
-									this._el.media_container
-								)),
+								(this._el.media = T("img", "tl-timemarker-media", this._el.media_container)),
 									(this._el.media.src = i.getImageURL());
 							}.bind(this)
 						),
 							i.loadMedia();
 					} else {
 						var n = $e(this.data.media).type;
-						this._el.media = T(
-							"span",
-							"tl-icon-" + n,
-							this._el.media_container
-						);
+						this._el.media = T("span", "tl-icon-" + n, this._el.media_container);
 					}
 				}
 

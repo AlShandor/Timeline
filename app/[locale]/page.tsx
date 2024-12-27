@@ -20,16 +20,54 @@ const TIMELINE_NAV_HEIGHT_CHANGE = 100;
 const Home = () => {
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
+    const [removeElementId, setRemoveElementId] = useState<string>("");
 	const [timenavHeight, setTimenavHeight] = useState<number>(TIMELINE_NAV_DEFAULT_HEIGHT);
 	const [timelineWindowHeight, setTimelineWindowHeight] = useState<number>(TIMELINE_DEFAULT_HEIGHT);
 	const [options, setSetOptions] = useState<{timenav_height_min: number}>({ timenav_height_min: timenavHeight });
 	const { events, selected, setSelected, isSelected } = useEvents();
     const locale = useLocale();
 	const t = useTranslations("homepage");
-
+    
     useEffect(() => {
-		setSetOptions({ timenav_height_min:timenavHeight });
+        setSetOptions({ timenav_height_min:timenavHeight });
 	}, [timenavHeight]);
+    
+    // Remove button on timeline
+    useEffect(() => {
+		const targetNode = document.querySelector(".timeline-container");
+		const config = { childList: true, subtree: true };
+
+		const handleClick = (event) => {
+            const id = event.target.parentNode.parentNode.id;
+			setRemoveElementId(id);
+		};
+
+		const observer = new MutationObserver((mutationsList) => {
+			mutationsList.forEach((mutation) => {
+				if (mutation.type === "childList") {
+					const buttons = document.querySelectorAll(".remove-btn");
+					buttons.forEach((button) => {
+						const htmlButton = button as HTMLElement;
+						if (!htmlButton.dataset.listenerAdded) {
+							htmlButton.addEventListener("click", handleClick);
+							htmlButton.dataset.listenerAdded = "true";
+						}
+					});
+				}
+			});
+		});
+
+		observer.observe(targetNode, config);
+
+		// Cleanup observer and event listeners on unmount
+		return () => {
+			observer.disconnect();
+			const buttons = document.querySelectorAll(".remove-btn");
+			buttons.forEach((button) => {
+				button.removeEventListener("click", handleClick);
+			});
+		};
+	}, []);
 
 	const handleSelectElement = (newEl) => {
 		setSelected((selected) => [...selected, newEl]);
@@ -50,6 +88,15 @@ const Home = () => {
 		const filteredElements = selected.filter((item) => item._id !== el._id);
 		setSelected(filteredElements);
 	};
+
+    const handleRemoveElementById = (id) => {
+		const filteredElements = selected.filter((item) => item._id !== id);
+		setSelected(filteredElements);
+	};
+
+    useEffect(() => {
+		handleRemoveElementById(removeElementId);
+	}, [removeElementId]);
 
 	const handleRemoveAllElements = () => {
 		setSelected([]);
@@ -78,7 +125,7 @@ const Home = () => {
 				</h1>
 				<p className="desc px-4 text-center">{t("subtitle")}</p>
 			</section>
-			<section className="w-full">
+			<section className="w-full timeline-container">
 				<div className="w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] mx-auto">
 					<DynamicTimeline
 						target={<div className="timeline" style={{ width: "100%", height: timelineWindowHeight }} />}

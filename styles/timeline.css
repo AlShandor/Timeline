@@ -1071,6 +1071,7 @@
 .tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text {
   overflow: hidden;
   position: relative;
+  padding-right: 16px;
 }
 .tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline,
 .tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline p {
@@ -2977,6 +2978,41 @@
 }
 .tl-rtl .tl-credit {
   text-align: left;
+}
+
+.remove-btn {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.remove-btn::before,
+.remove-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1px;
+  background-color: white;
+  transform-origin: center;
+}
+
+.remove-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.remove-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#initial .remove-btn {
+    display: none;
 }
 
 
