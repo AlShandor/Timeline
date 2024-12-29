@@ -54,7 +54,7 @@ const ElementCard = ({
 										: element.start_year + t("ce")) +
 								  " " +
 								  (element.end_year
-										? " - " +
+										? " – " +
 										  (element.end_year < 0
 												? Math.abs(element.end_year) + t("bce")
 												: element.end_year + t("ce"))
