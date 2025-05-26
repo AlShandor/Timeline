@@ -57,7 +57,9 @@ const Home = () => {
 			});
 		});
 
-		observer.observe(targetNode, config);
+        if (targetNode) {
+            observer.observe(targetNode, config);
+		}
 
 		// Cleanup observer and event listeners on unmount
 		return () => {
