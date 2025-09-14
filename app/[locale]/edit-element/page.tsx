@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Feed from "@components/Feed";
 import Footer from "@components/Footer";
 
@@ -17,18 +17,20 @@ const EditElement = () => {
 
 	return (
 		<>
-			<Feed
-				elements={elements}
-				setElements={setElements}
-				elementCollections={elementCollections}
-				setElementCollections={setElementCollections}
-				handleSelectElement={handleSelectElement}
-				handleSelectAllElements={handleSelectAllElements}
-				handleRemoveElement={handleRemoveElement}
-				handleRemoveAllElements={handleRemoveAllElements}
-				selected={selected}
-				isSelected={isSelected}
-			/>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Feed
+					elements={elements}
+					setElements={setElements}
+					elementCollections={elementCollections}
+					setElementCollections={setElementCollections}
+					handleSelectElement={handleSelectElement}
+					handleSelectAllElements={handleSelectAllElements}
+					handleRemoveElement={handleRemoveElement}
+					handleRemoveAllElements={handleRemoveAllElements}
+					selected={selected}
+					isSelected={isSelected}
+				/>
+			</Suspense>
 			<Footer />
 		</>
 	);

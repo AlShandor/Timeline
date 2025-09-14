@@ -3,8 +3,9 @@
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { Suspense } from "react";
 
-export default function AuthError() {
+function AuthErrorContent() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
   const locale = useLocale();
@@ -53,5 +54,13 @@ export default function AuthError() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AuthError() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AuthErrorContent />
+    </Suspense>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import { timelineTitle_en, timelineTitle_bg } from "@utilities/initialEvents";
 import { useEvents } from "@hooks/useEvents";
@@ -156,18 +156,20 @@ const Home = () => {
                     </button>
                 </div>
 			</section>
-			<Feed
-				elements={elements}
-				setElements={setElements}
-				elementCollections={elementCollections}
-				setElementCollections={setElementCollections}
-				handleSelectElement={handleSelectElement}
-				handleSelectAllElements={handleSelectAllElements}
-				handleRemoveElement={handleRemoveElement}
-				handleRemoveAllElements={handleRemoveAllElements}
-				selected={selected}
-				isSelected={isSelected}
-			/>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Feed
+					elements={elements}
+					setElements={setElements}
+					elementCollections={elementCollections}
+					setElementCollections={setElementCollections}
+					handleSelectElement={handleSelectElement}
+					handleSelectAllElements={handleSelectAllElements}
+					handleRemoveElement={handleRemoveElement}
+					handleRemoveAllElements={handleRemoveAllElements}
+					selected={selected}
+					isSelected={isSelected}
+				/>
+			</Suspense>
 			<Footer />
 		</>
 	);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import FormElementCollection from "@components/FormElementCollection";
 import { useEvents } from "@hooks/useEvents";
@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof elementCollectionSchema>;
 
-const UpdateElementCollection = () => {
+function UpdateElementCollectionContent() {
 	const router = useRouter();
 	const [elements, setElements] = useState<Array<IElement>>([]);
 	const [elementCollections, setElementCollections] = useState<Array<IElementCollection>>([]);
@@ -106,6 +106,14 @@ const UpdateElementCollection = () => {
 			register={register}
 			errors={errors}
 		/>
+	);
+}
+
+const UpdateElementCollection = () => {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<UpdateElementCollectionContent />
+		</Suspense>
 	);
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import FormElementCollection from "@components/FormElementCollection";
 import { useEvents } from "@hooks/useEvents";
 import { useRouter } from "next/navigation";
@@ -74,24 +74,26 @@ const CreateElementCollection = () => {
 	};
     
 	return (
-		<FormElementCollection
-			type="Create"
-			elements={elements}
-			setElements={setElements}
-			elementCollections={elementCollections}
-			setElementCollections={setElementCollections}
-			handleSelectElement={handleSelectElement}
-			handleSelectAllElements={handleSelectAllElements}
-			handleRemoveElement={handleRemoveElement}
-			handleRemoveAllElements={handleRemoveAllElements}
-			selected={selected}
-			isSelected={isSelected}
-			onSubmit={createElementCollection}
-			isSubmitting={isSubmitting}
-			handleSubmit={handleSubmit}
-			register={register}
-			errors={errors}
-		/>
+		<Suspense fallback={<div>Loading...</div>}>
+			<FormElementCollection
+				type="Create"
+				elements={elements}
+				setElements={setElements}
+				elementCollections={elementCollections}
+				setElementCollections={setElementCollections}
+				handleSelectElement={handleSelectElement}
+				handleSelectAllElements={handleSelectAllElements}
+				handleRemoveElement={handleRemoveElement}
+				handleRemoveAllElements={handleRemoveAllElements}
+				selected={selected}
+				isSelected={isSelected}
+				onSubmit={createElementCollection}
+				isSubmitting={isSubmitting}
+				handleSubmit={handleSubmit}
+				register={register}
+				errors={errors}
+			/>
+		</Suspense>
 	);
 };
 

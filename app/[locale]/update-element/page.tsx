@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import FormElement from "@components/FormElement";
 
@@ -12,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof elementSchema>;
 
-const UpdateElement = () => {
+function UpdateElementContent() {
     const router = useRouter();
     const [tags, setTags] = useState([]);
     const searchParams = useSearchParams();
@@ -72,6 +72,14 @@ const UpdateElement = () => {
 			setTags={setTags}
 		/>
 	);
+}
+
+const UpdateElement = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <UpdateElementContent />
+        </Suspense>
+    );
 }
 
 export default UpdateElement;
