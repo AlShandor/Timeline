@@ -1,9 +1,9 @@
 import "@styles/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { locales } from "@/localization.config";
 import { NextIntlClientProvider } from "next-intl";
 import Nav from "@components/Nav";
 import { unstable_setRequestLocale, getMessages } from "next-intl/server";
+import { AuthProvider } from "@/components/AuthProvider";
 
 export const metadata = {
 	title: "Timeline",
@@ -18,17 +18,17 @@ const RootLayout = async ({ children, params: { locale } }) => {
     unstable_setRequestLocale(locale);
     const messages = await getMessages();
 	return (
-		<ClerkProvider>
-			<html lang={locale}>
-				<body>
+		<html lang={locale}>
+			<body>
+				<AuthProvider>
 					<NextIntlClientProvider locale={locale} messages={messages}>
 						<div className="background" />
 						<Nav />
 						<main className="main">{children}</main>
 					</NextIntlClientProvider>
-				</body>
-			</html>
-		</ClerkProvider>
+				</AuthProvider>
+			</body>
+		</html>
 	);
 };
 

@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 const Loader = () => (
 	<div className="flex-center w-full">
-		<img
+		<Image
 			src="/icons/loader.svg"
 			alt="loader"
 			width={64}

@@ -1,6 +1,7 @@
 import Element from "@models/element";
 import { connectToDB } from "@utilities/database";
-import { auth } from "@clerk/nextjs/server";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
 
 export async function GET(request, { params }){
 	try {
@@ -19,9 +20,9 @@ export async function GET(request, { params }){
 
 export async function PATCH(request, { params }) {
 	// check if admin
-	const { has } = auth();
-	if (!has({ role: "org:admin" })) {
-		return new Response("You do not have rights", {
+	const session = await getServerSession(authOptions);
+	if (!session?.user?.isAdmin) {
+		return new Response("You do not have admin rights", {
 			status: 401,
 		});
 	}
@@ -104,9 +105,9 @@ export async function PATCH(request, { params }) {
 export async function DELETE(request, { params }) {
 	try {
         // check if admin
-        const { has } = auth();
-		if (!has({ role: "org:admin" })) {
-			return new Response("You do not have rights", {
+        const session = await getServerSession(authOptions);
+		if (!session?.user?.isAdmin) {
+			return new Response("You do not have admin rights", {
 				status: 401,
 			});
 		}

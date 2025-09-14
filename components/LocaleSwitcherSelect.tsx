@@ -38,6 +38,7 @@ export default function LocaleSwitcherSelect({ children, currentLocale, label }:
 				defaultValue={currentLocale}
 				disabled={isPending}
 				onChange={onSelectChange}
+                name="locale"
 			>
 				{children}
 			</select>
